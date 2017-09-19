@@ -32,7 +32,7 @@ public class AparatoAptarnavimas {
 
 	public void isplaukAparatus(Kava[] aparatuMasyvas) {
 		for (int i = 0; i < aparatuMasyvas.length; i++) {
-			aparatuMasyvas[i].aparatoValymas();
+			aparatuMasyvas[i].atlikPlovima();
 		}
 	}
 
@@ -51,7 +51,7 @@ public class AparatoAptarnavimas {
 
 	public void priskirkSkirtingusProduktusMasyvui(Kava[] aparatuMasyvas, Produktai produktuObj) {
 		for (int i = 0; i < aparatuMasyvas.length; i++) {
-			aparatuMasyvas[i].setProduktai(produktuObj.produktuKopija());
+			aparatuMasyvas[i].setProduktai(produktuObj.gaukKopija());
 		}
 	}
 	
