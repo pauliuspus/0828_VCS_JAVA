@@ -2,7 +2,13 @@ package lt.vcs.kavosaparatas.manvydas.aparatai;
 
 import java.util.Scanner;
 
+<<<<<<< HEAD
 import lt.vcs.kavosaparatas.common.CoffeeMashine;
+=======
+import lt.vcs.kavosaparatas.common.CoffeeCup;
+import lt.vcs.kavosaparatas.common.CoffeeMashine;
+import lt.vcs.kavosaparatas.common.Products;
+>>>>>>> 3ca13b297463384a422e58cf60b2a24d5bd9054a
 import lt.vcs.kavosaparatas.manvydas.kavospuodeliai.DvigubaEspresso;
 import lt.vcs.kavosaparatas.manvydas.kavospuodeliai.Espresso;
 import lt.vcs.kavosaparatas.manvydas.kavospuodeliai.JuodaKava;
@@ -10,7 +16,11 @@ import lt.vcs.kavosaparatas.manvydas.kavospuodeliai.KavaSuPienu;
 import lt.vcs.kavosaparatas.manvydas.kavospuodeliai.KavosPuodelis;
 import lt.vcs.kavosaparatas.manvydas.resursai.Produktai;
 
+<<<<<<< HEAD
 public class KavosAparatas{
+=======
+public class KavosAparatas implements CoffeeMashine{
+>>>>>>> 3ca13b297463384a422e58cf60b2a24d5bd9054a
 
 	// Konstanta, kuri galioja visiems aparatams
 	private static final int PANAUDOJIMU_SK_PRIES_PLOVIMA = 2;
@@ -64,11 +74,11 @@ public class KavosAparatas{
 		// Jei truksta vieno is produktu, iskvieciamas papildymo metodas
 		if (produktai.getKavaAparateGramais() < 40) {
 			System.out.println("Aparate truksta kavos");
-			papildykKava();
+			papildykPupeliu(0);
 		}
 		if (produktai.getCukrusAparateGramais() < 20) {
 			System.out.println("Aparate truksta cukraus");
-			papildykCukru();
+			papildykCukraus(0);
 		}
 		if (produktai.getPienasAparateMililitrais() < 20) {
 			System.out.println("Aparate truksta pieno");
@@ -164,14 +174,14 @@ public class KavosAparatas{
 				produktai.getCukrusAparateGramais() - kavosPuodelis.getProduktai().getCukrusAparateGramais());
 		produktai.setPienasAparateMililitrais(
 				produktai.getPienasAparateMililitrais() - kavosPuodelis.getProduktai().getPienasAparateMililitrais());
-		kavosPuodelis.setArKavaPagaminta(true);
+		kavosPuodelis.setKavaPagaminta(true);
 		this.panaudojimuSkaicius++;
 
 	}
 
 	// Metodas papildyti cukru
-	public void papildykCukru() {
-		int cukrus;
+	@Override
+	public void papildykCukraus(int cukrus) {
 		Scanner s = new Scanner(System.in);
 		System.out.println("Cukraus kiekis aparate yra: " + produktai.getCukrusAparateGramais() + " g.");
 		System.out.println("Kiek gramu cukraus ipilsite?");
@@ -193,7 +203,8 @@ public class KavosAparatas{
 	}
 
 	// Metodas papildyti kava
-	public void papildykKava() {
+	@Override
+	public void papildykPupeliu(int pupeliuKiekis) {
 		int kava;
 		Scanner s = new Scanner(System.in);
 		System.out.println("Kavos kiekis aparate yra: " + produktai.getKavaAparateGramais() + " g.");
@@ -277,7 +288,8 @@ public class KavosAparatas{
 	}
 
 	// Pasako, ar aparatas paruostas naudojimui
-	public boolean arParuostas() {
+	@Override
+	public boolean arAparatasPasiruoses() {
 		boolean paruostas = !arReikiaPlauti() && produktai.getKavaAparateGramais() != 0
 				&& produktai.getCukrusAparateGramais() != 0 && produktai.getPienasAparateMililitrais() != 0;
 		if (paruostas) {
@@ -294,5 +306,35 @@ public class KavosAparatas{
 
 	private void setPanaudojimuSkaicius(int panaudojimuSkaicius) {
 		this.panaudojimuSkaicius = panaudojimuSkaicius;
+	}
+
+	@Override
+	public CoffeeCup gaminkKava(String kavosTipas) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void ismurzinkAparata() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void isvalykProduktus() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Products getProduktaiKopija() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void papildykVandens(int vandensKiekis) {
+		// TODO Auto-generated method stub
+		
 	}
 }

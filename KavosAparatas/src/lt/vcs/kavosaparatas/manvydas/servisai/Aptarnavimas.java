@@ -1,9 +1,9 @@
 package lt.vcs.kavosaparatas.manvydas.servisai;
 
+import lt.vcs.kavosaparatas.common.CoffeMashineService;
 import lt.vcs.kavosaparatas.manvydas.aparatai.KavosAparatas;
-import lt.vcs.kavosaparatas.manvydas.resursai.Produktai;
 
-public class Aptarnavimas {
+public class Aptarnavimas implements CoffeMashineService{
 
 	// Sukuria kavos aparata ir ji grazina
 	public KavosAparatas sukurkAparata(int cukrusAparateGramais, int kavaAparateGramais,
