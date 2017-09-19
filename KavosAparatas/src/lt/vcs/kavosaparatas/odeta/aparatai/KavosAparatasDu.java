@@ -3,6 +3,7 @@ package lt.vcs.kavosaparatas.odeta.aparatai;
 import lt.vcs.kavosaparatas.common.CoffeeCup;
 import lt.vcs.kavosaparatas.common.CoffeeMashine;
 import lt.vcs.kavosaparatas.odeta.produktai.Produktai;
+import lt.vcs.kavosaparatas.odeta.puodeliai.KavosPuodelis;
 
 public class KavosAparatasDu implements CoffeeMashine {
 
@@ -28,7 +29,12 @@ public class KavosAparatasDu implements CoffeeMashine {
 		this(DEFAULT_PRODUCT_VALUE, DEFAULT_PRODUCT_VALUE, DEFAULT_PRODUCT_VALUE);
 	}
 	
-	//updatinti pagal trecia kavos aparat reikia:
+	
+	public void gaminkKava(KavosPuodelis puodelis) {
+		Produktai produktai = puodelis.getProduktai();
+		gaminkKava(produktai.getCukrausKiekis(), produktai.getKavosPupeliuKiekis(), produktai.getVandensKiekis());
+		puodelis.setKavaPagaminta(true);
+	}
 
 	public void gaminkKava(String kavosTipas) {
 		switch (kavosTipas) {
