@@ -13,6 +13,7 @@ public class KavaMain {
 		Kava kava = new Kava(300, 300, 400);
 		
 		kava.pasirinkKava();
+		kava.kiekProduktuLike();
 		
 		
 		
