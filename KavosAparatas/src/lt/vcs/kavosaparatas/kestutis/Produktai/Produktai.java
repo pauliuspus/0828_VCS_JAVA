@@ -1,4 +1,4 @@
-package Produktai;
+package lt.vcs.kavosaparatas.kestutis.Produktai;
 
 public class Produktai {
 	
