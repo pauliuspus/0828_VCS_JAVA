@@ -25,10 +25,10 @@ public class MainKavosDu {
 		KavosAparatasDu aparatai[] = kac.sukurkKavosAparatus(3);
 		
 		aparatai[1].setProduktai(p);
-		aparatai[1].pasakykProduktuBusena();
-		aparatai[1].isvalykVisusProduktus();
+		aparatai[1].sakykProduktuBusena();
+		aparatai[1].isvalykProduktus();
 		
-		aparatai[1].pasakykProduktuBusena();
+		aparatai[1].sakykProduktuBusena();
 
 		
 	

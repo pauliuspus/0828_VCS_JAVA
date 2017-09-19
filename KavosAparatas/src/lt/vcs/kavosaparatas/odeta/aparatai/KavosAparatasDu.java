@@ -27,6 +27,8 @@ public class KavosAparatasDu implements CoffeeMashine {
 	public KavosAparatasDu() {
 		this(DEFAULT_PRODUCT_VALUE, DEFAULT_PRODUCT_VALUE, DEFAULT_PRODUCT_VALUE);
 	}
+	
+	//updatinti pagal trecia kavos aparat reikia:
 
 	public void gaminkKava(String kavosTipas) {
 		switch (kavosTipas) {
@@ -44,10 +46,10 @@ public class KavosAparatasDu implements CoffeeMashine {
 		}
 	}
 
-	//nereikia this prie produktu, nes cia 
+	//nereikia this prie produktu
 	
 	private void gaminkKava(int cukrausKiekis, int kavosPupeliuKiekis, int vandensKiekis) {
-		if (arUzteksProduktu(cukrausKiekis, kavosPupeliuKiekis, vandensKiekis) & arPasiruosesGaminimui() & !arJauReikiaPlovimo()) {
+		if (arUzteksProduktu(cukrausKiekis, kavosPupeliuKiekis, vandensKiekis) & arAparatasPasiruoses() & !arJauReikiaPlovimo()) {
 		produktai.setCukrausKiekis(produktai.getCukrausKiekis() - cukrausKiekis);
 		produktai.setKavosPupeliuKiekis(produktai.getKavosPupeliuKiekis() - kavosPupeliuKiekis);
 		produktai.setVandensKiekis(produktai.getVandensKiekis() - vandensKiekis);
@@ -80,7 +82,7 @@ public class KavosAparatasDu implements CoffeeMashine {
 	}
 	
 	
-	public void isvalykVisusProduktus() {
+	public void isvalykProduktus() {
 		produktai.setCukrausKiekis(0);
 		produktai.setKavosPupeliuKiekis(0);
 		produktai.setVandensKiekis(0);
@@ -96,7 +98,7 @@ public class KavosAparatasDu implements CoffeeMashine {
 		}
 	}
 
-	public boolean arPasiruosesGaminimui() {
+	public boolean arAparatasPasiruoses() {
 		if ((arProduktaiNeNuliai() & pasakykArIsivales())) {
 			System.out.println("Pasiruoses");
 			return true;
@@ -127,8 +129,8 @@ public class KavosAparatasDu implements CoffeeMashine {
 		}
 	}
 
-	public void pasakykKokiaAparatoBusena() {
-		pasakykProduktuBusena();
+	public void pasakykAparatoBusena() {
+		sakykProduktuBusena();
 		pasakykKiekLikoPanaudojimuIkiPlovimo();
 	}
 
@@ -136,7 +138,7 @@ public class KavosAparatasDu implements CoffeeMashine {
 		System.out.println("Iki plovimo liko: " + (PANAUDOJIMU_SKAICIUS_KADA_PLAUTI - panaudojimuKiekis));
 	}
 
-	public void pasakykProduktuBusena() {
+	public void sakykProduktuBusena() {
 		System.out.println("Cukraus liko: " + produktai.getCukrausKiekis());
 		System.out.println("Kavos pupeliu liko: " + produktai.getKavosPupeliuKiekis());
 		System.out.println("Vandens liko: " + produktai.getVandensKiekis());
@@ -157,15 +159,15 @@ public class KavosAparatasDu implements CoffeeMashine {
 	
 	//Produktu papildymu metodai:
 
-	public void papildykCukrausKieki (int cukrausKiekis) {
+	public void papildykCukraus (int cukrausKiekis) {
 		produktai.setCukrausKiekis(produktai.getCukrausKiekis() + cukrausKiekis);
 	}
 	
-	public void papildykKavosPupeliuKieki (int kavosPupeliuKiekis) {
+	public void papildykKavosPupeliu (int kavosPupeliuKiekis) {
 		produktai.setKavosPupeliuKiekis(produktai.getKavosPupeliuKiekis() + kavosPupeliuKiekis);
 	}
 	
-	public void papildykVandensKieki (int vandensKiekis) {
+	public void papildykVandens (int vandensKiekis) {
 		produktai.setVandensKiekis(produktai.getVandensKiekis() + vandensKiekis);
 	}
 
@@ -183,50 +185,10 @@ public class KavosAparatasDu implements CoffeeMashine {
 
 	@Override
 	public void ismurzinkAparata() {
-		// TODO Auto-generated method stub
+		this.panaudojimuKiekis = PANAUDOJIMU_SKAICIUS_KADA_PLAUTI;
+        System.out.println("DEMSIO DEMESIO DEMESIO - APARATUI DIRBTINAI PADIDINTAS PANAUDOJIMU SKAICIUS");
 		
 	}
 
-	@Override
-	public void sakykProduktuBusena() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void sakykAparatoBusena() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean arAparatasPasiruoses() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void isvalykProduktus() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void papildykPupeliu(int pupeliuKiekis) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void papildykCukraus(int cukrausKiekis) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void papildykVandens(int vandensKiekis) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 }
