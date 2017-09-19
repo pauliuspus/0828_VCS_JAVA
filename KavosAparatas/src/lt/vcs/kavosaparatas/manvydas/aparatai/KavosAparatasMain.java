@@ -1,8 +1,8 @@
 package lt.vcs.kavosaparatas.manvydas.aparatai;
 
-import lt.vcs.kavosaparatas.manvydas.aparatai.servisai.Aptarnavimas;
 import lt.vcs.kavosaparatas.manvydas.kavospuodeliai.KavosPuodelis;
 import lt.vcs.kavosaparatas.manvydas.kavospuodeliai.Puodelis;
+import lt.vcs.kavosaparatas.manvydas.servisai.Aptarnavimas;
 
 public class KavosAparatasMain {
 

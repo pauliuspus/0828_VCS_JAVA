@@ -1,4 +1,4 @@
-package lt.vcs.kavosaparatas.manvydas.aparatai.servisai;
+package lt.vcs.kavosaparatas.manvydas.servisai;
 
 import lt.vcs.kavosaparatas.manvydas.aparatai.KavosAparatas;
 import lt.vcs.kavosaparatas.manvydas.resursai.Produktai;
