@@ -1,4 +1,10 @@
-package lt.vcs.kavosaparatas.pijus.visosklases;
+package lt.vcs.kavosaparatas.pijus.aparatai;
+
+import lt.vcs.kavosaparatas.pijus.produktai.Produktai;
+import lt.vcs.kavosaparatas.pijus.puodeliai.JuodaKavaPuodelis;
+import lt.vcs.kavosaparatas.pijus.puodeliai.KavosPuodelis;
+import lt.vcs.kavosaparatas.pijus.puodeliai.LattePuodelis;
+import lt.vcs.kavosaparatas.pijus.puodeliai.MochaPuodelis;
 
 public class KavosAparatas2 {
 	Produktai p;
