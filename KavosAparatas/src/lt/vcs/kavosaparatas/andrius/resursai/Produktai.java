@@ -1,6 +1,8 @@
 package lt.vcs.kavosaparatas.andrius.resursai;
 
-public class Produktai {
+import lt.vcs.kavosaparatas.common.Products;
+
+public class Produktai implements Products{
 	private int vandensKiekis = 0;
 	private int cukrausKiekis = 0;
 	private int pupeliuKiekis = 0;

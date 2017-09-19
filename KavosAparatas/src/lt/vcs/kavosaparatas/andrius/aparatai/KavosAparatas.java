@@ -5,8 +5,9 @@ import lt.vcs.kavosaparatas.andrius.kavos.Dviguba;
 import lt.vcs.kavosaparatas.andrius.kavos.Normali;
 import lt.vcs.kavosaparatas.andrius.puodeliai.KavosPuodelis;
 import lt.vcs.kavosaparatas.andrius.resursai.Produktai;
+import lt.vcs.kavosaparatas.common.CoffeeMashine;
 
-public class KavosAparatas {
+public class KavosAparatas implements CoffeeMashine{
 
     // Static, klases kintamasis, kuri bendrai mato visi objektai
     // Final reiskia kad negalesiu sios reiksmes pakeisti

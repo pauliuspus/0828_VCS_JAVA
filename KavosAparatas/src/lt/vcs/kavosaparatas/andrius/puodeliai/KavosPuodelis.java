@@ -1,8 +1,9 @@
 package lt.vcs.kavosaparatas.andrius.puodeliai;
 
 import lt.vcs.kavosaparatas.andrius.resursai.Produktai;
+import lt.vcs.kavosaparatas.common.CoffeeCup;
 
-public class KavosPuodelis extends Puodelis {
+public class KavosPuodelis extends Puodelis implements CoffeeCup{
     protected Produktai produktai;
 
     protected String kavosPavadinimas;
