@@ -1,4 +1,4 @@
-package lt.vcs.kavosaparatas.pijus.visosklases;
+package lt.vcs.kavosaparatas.pijus.puodeliai;
 
 public class Puodelis {
 	protected double maxPuodelioTalpa = 0.4;

@@ -1,4 +1,6 @@
-package lt.vcs.kavosaparatas.pijus.visosklases;
+package lt.vcs.kavosaparatas.pijus.aparatai;
+
+import lt.vcs.kavosaparatas.pijus.produktai.Produktai;
 
 public class KavosAparatai2 {
 	public KavosAparatas2 sukurkKavosAparata() {

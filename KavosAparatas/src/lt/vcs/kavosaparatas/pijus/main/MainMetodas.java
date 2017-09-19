@@ -1,4 +1,8 @@
-package lt.vcs.kavosaparatas.pijus.visosklases;
+package lt.vcs.kavosaparatas.pijus.main;
+
+import lt.vcs.kavosaparatas.pijus.aparatai.KavosAparatai2;
+import lt.vcs.kavosaparatas.pijus.aparatai.KavosAparatas2;
+import lt.vcs.kavosaparatas.pijus.produktai.Produktai;
 
 public class MainMetodas {
 
@@ -40,7 +44,8 @@ public class MainMetodas {
 		mas[3].gaminkKava("Mocha");
 		mas[3].aparatoBusena();
 		
-		
+		KavosAparatas2 kv = new KavosAparatas2(1, 2, 3);
+	kv.aparatoBusena();
 
 
 	}
