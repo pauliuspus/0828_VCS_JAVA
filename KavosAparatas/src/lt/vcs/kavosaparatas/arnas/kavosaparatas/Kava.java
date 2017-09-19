@@ -7,8 +7,10 @@ import lt.vcs.kavosaparatas.arnas.puodeliai.BeCukrausPuodelis;
 import lt.vcs.kavosaparatas.arnas.puodeliai.JuodaPuodelis;
 import lt.vcs.kavosaparatas.arnas.puodeliai.KavosPuodelis;
 import lt.vcs.kavosaparatas.arnas.puodeliai.PraskiestaPuodelis;
+import lt.vcs.kavosaparatas.common.CoffeeCup;
+import lt.vcs.kavosaparatas.common.CoffeeMashine;
 
-public class Kava {
+public class Kava implements CoffeeMashine   {
 
 	private int panaudojimuSkaicius;
 	private static int panaudojimoSkaiciausRiba = 10;
@@ -19,7 +21,7 @@ public class Kava {
 		produktai = new Produktai(cukrus, kava, vanduo);
 	}
 
-	public void kiekProduktuLike() {
+	public void sakykProduktuBusena() {
 		System.out.println("Cukraus likutis " + produktai.getCukrausKiekis() + " gramai(u)");
 		System.out.println("Kavos likutis " + produktai.getKavosPupeles() + " gramai(u)");
 		System.out.println("Vandens likutis " + produktai.getVandensKiekis() + " gramai(u)");
@@ -31,71 +33,78 @@ public class Kava {
 
 	}
 
-	public void aparatoValymas() {
+	public void atlikPlovima() {
 		panaudojimuSkaicius = 0;
 		System.out.println("Aparatas isvalytas");
 
 	}
 
-	public void cukrausPapildymas(int cukrusGramais) {
+	public void ismurzinkAparata() {
+		this.panaudojimuSkaicius = panaudojimoSkaiciausRiba;
+		System.out.println("DEMSIO DEMESIO DEMESIO - APARATUI DIRBTINAI PADIDINTAS PANAUDOJIMU SKAICIUS");
+	}
+
+	public void isvalykProduktus() {
+		setProduktai(0, 0, 0);
+	}
+
+	public void papildykCukraus(int cukrusGramais) {
 		produktai.setCukrausKiekis(produktai.getCukrausKiekis() + cukrusGramais);
 		System.out.println("Cukraus papildyta");
 
 	}
 
-	public void kavosPupeliuPapildymas(int pupelesGramais) {
+	public void papildykPupeliu(int pupelesGramais) {
 		produktai.setKavosPupeles(produktai.getKavosPupeles() + pupelesGramais);
 		System.out.println("Kavos papildyta");
 
 	}
 
-	public void vandensPapildymas(int vanduoGramais) {
+	public void papildykVandens(int vanduoGramais) {
 		produktai.setVandensKiekis(produktai.getVandensKiekis() + vanduoGramais);
 		System.out.println("Vandens papildyta");
 
 	}
 
-	public void aparatoBusena() {
-		kiekProduktuLike();
+	public void sakykAparatoBusena() {
+		sakykProduktuBusena();
 		kiekLikoIkiPlovimo();
 	}
 
-	public void arParuosta() {
-		String arParuosta = null;
+	public boolean arAparatasPasiruoses() {
+		boolean arParuosta = false;
 		if (arUztenkaProduktu() && (panaudojimuSkaicius < panaudojimoSkaiciausRiba)) {
 			System.out.println("Pasiruosta naudotis");
-
+			arParuosta = true;
 		}
 		if (produktai.getCukrausKiekis() < 10) {
 			System.out.println("Prasau papildyti cukru");
-
+			return arParuosta;
 		}
 		if (produktai.getKavosPupeles() < 80) {
 			System.out.println("Prasau papildyti kavos pupeliu");
-
+			return arParuosta;
 		}
 		if (produktai.getVandensKiekis() < 400) {
 			System.out.println("Prasau papildyti vandens");
-
+			return arParuosta;
 		}
 		if (panaudojimuSkaicius >= panaudojimoSkaiciausRiba) {
 			System.out.println("prasau isplaut aparata");
-
+			return arParuosta;
 		}
+		return arParuosta;
 
 	}
+	
+	
 
-	public KavosPuodelis pasirinkKava() {
-		Scanner input = new Scanner(System.in);
-		String kavosTipas;
+	public KavosPuodelis gaminkKava(String kavosTipas) {
+		
+		String pasirinkimas = kavosTipas.toUpperCase();
 		KavosPuodelis kavosPuodelis = null;
-		System.out.println("Iveskite kokios kavos pageidaujate");
-		System.out.println("Juoda");
-		System.out.println("Be cukraus");
-		System.out.println("Praskiesta");
-
-		kavosTipas = new String(input.nextLine().toUpperCase());
-		switch (kavosTipas) {
+		
+		switch (pasirinkimas) {
 		case "JUODA":
 			kavosPuodelis = new JuodaPuodelis();
 			break;
@@ -111,7 +120,7 @@ public class Kava {
 		}
 
 		if (kavosPuodelis != null)
-			gaminkKava(kavosPuodelis);
+			gamink(kavosPuodelis);
 
 		return kavosPuodelis;
 	}
@@ -126,7 +135,7 @@ public class Kava {
 		return true;
 	}
 
-	private void gaminkKava(KavosPuodelis kavosPuodelis) {
+	private void gamink(KavosPuodelis kavosPuodelis) {
 		if (arUztenkaProduktu()) {
 			Produktai produktai = kavosPuodelis.getProduktai();
 			gaminkKava(produktai.getCukrausKiekis(), produktai.getKavosPupeles(), produktai.getVandensKiekis());
@@ -168,6 +177,10 @@ public class Kava {
 
 	public Produktai getProduktai() {
 		return produktai;
+	}
+
+	public Produktai getProduktaiKopija() {
+		return this.produktai.gaukKopija();
 	}
 
 	public void setProduktai(Produktai produktai) {

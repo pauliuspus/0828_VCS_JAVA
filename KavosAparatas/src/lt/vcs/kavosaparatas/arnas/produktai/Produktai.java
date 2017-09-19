@@ -1,6 +1,8 @@
 package lt.vcs.kavosaparatas.arnas.produktai;
 
-public class Produktai {
+import lt.vcs.kavosaparatas.common.Products;
+
+public class Produktai implements Products {
 
 	private int cukrausKiekis;
 	private int kavosPupeles;
@@ -12,7 +14,7 @@ public class Produktai {
 		vandensKiekis = vanduo;
 	}
 
-	public Produktai produktuKopija() {
+	public Produktai gaukKopija() {
 		Produktai produktuKopija = new Produktai(cukrausKiekis, kavosPupeles, vandensKiekis);
 		return produktuKopija;
 	}
