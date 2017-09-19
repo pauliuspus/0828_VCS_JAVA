@@ -21,7 +21,7 @@ public class KavosPuodelis extends Puodelis {
 	// }
 
 	public Produktai getProduktai() {
-		return this.produktai.grazinkKopija(produktai);
+		return this.produktai.grazinkKopija();
 	}
 
 	public void kavaPagaminta() {

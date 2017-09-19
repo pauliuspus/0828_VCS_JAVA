@@ -19,8 +19,8 @@ public class Produktai {
 
 	// Metodas grazina produktu kopija, t.y. kita kintamaji su perduto kintamojo
 	// reiksmemis
-	public Produktai grazinkKopija(Produktai produktai) {
-		return new Produktai(produktai.cukrausKiekis, produktai.kavosPupeliuKiekis, produktai.vandensKiekis);
+	public Produktai grazinkKopija() {
+		return new Produktai(kavosPupeliuKiekis, cukrausKiekis,vandensKiekis);
 	}
 
 	public void atspausdinkProduktus() {

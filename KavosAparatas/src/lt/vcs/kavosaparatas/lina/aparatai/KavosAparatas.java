@@ -121,7 +121,7 @@ public class KavosAparatas {
 	}
 
 	public Produktai getProduktai() {
-		return produktai.grazinkKopija(produktai);
+		return produktai.grazinkKopija();
 	}
 
 }
