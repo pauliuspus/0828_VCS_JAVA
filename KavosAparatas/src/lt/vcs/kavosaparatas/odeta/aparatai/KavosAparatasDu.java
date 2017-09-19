@@ -1,8 +1,10 @@
 package lt.vcs.kavosaparatas.odeta.aparatai;
 
+import lt.vcs.kavosaparatas.common.CoffeeCup;
+import lt.vcs.kavosaparatas.common.CoffeeMashine;
 import lt.vcs.kavosaparatas.odeta.produktai.Produktai;
 
-public class KavosAparatasDu {
+public class KavosAparatasDu implements CoffeeMashine {
 
 	private Produktai produktai;
 
@@ -165,6 +167,66 @@ public class KavosAparatasDu {
 	
 	public void papildykVandensKieki (int vandensKiekis) {
 		produktai.setVandensKiekis(produktai.getVandensKiekis() + vandensKiekis);
+	}
+
+	
+	//sitie buvo auto importuoti. Reikia updatinti/sutvarkyti:
+	
+	/*@Override
+	public CoffeeCup gaminkKava(String kavosTipas) {
+		// TODO Auto-generated method stub
+		return null;
+	}*/
+	
+	
+	
+
+	@Override
+	public void ismurzinkAparata() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void sakykProduktuBusena() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void sakykAparatoBusena() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean arAparatasPasiruoses() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void isvalykProduktus() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void papildykPupeliu(int pupeliuKiekis) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void papildykCukraus(int cukrausKiekis) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void papildykVandens(int vandensKiekis) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
