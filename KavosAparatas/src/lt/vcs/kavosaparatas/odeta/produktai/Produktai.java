@@ -1,6 +1,8 @@
 package lt.vcs.kavosaparatas.odeta.produktai;
 
-public class Produktai {
+import lt.vcs.kavosaparatas.common.Products;
+
+public class Produktai implements Products {
 
 	private int cukrausKiekis = 0;
 	private int kavosPupeliuKiekis = 0;
