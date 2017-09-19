@@ -38,7 +38,7 @@ public class KavosAparatuServisas {
 			System.out.println(
 					i + " aparato isvalyta vandens: " + kavosAparatai[i].getProduktai().getKavosPupeliuKiekis());
 			System.out.println(i + " aparato isvalyta cukraus: " + kavosAparatai[i].getProduktai().getVandensKiekis());
-			kavosAparatai[i].isvalykVisusProduktus();
+			kavosAparatai[i].isvalykProduktus();
 		}
 	}
 
