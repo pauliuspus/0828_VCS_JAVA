@@ -12,7 +12,7 @@ import lt.vcs.kavosaparatas.manvydas.kavospuodeliai.KavaSuPienu;
 import lt.vcs.kavosaparatas.manvydas.kavospuodeliai.KavosPuodelis;
 import lt.vcs.kavosaparatas.manvydas.resursai.Produktai;
 
-public class KavosAparatas implements CoffeeMashine{
+public class KavosAparatas implements CoffeeMashine {
 
 	// Konstanta, kuri galioja visiems aparatams
 	private static final int PANAUDOJIMU_SK_PRIES_PLOVIMA = 2;
@@ -33,13 +33,6 @@ public class KavosAparatas implements CoffeeMashine{
 
 	public KavosAparatas(int kavaAparateGramais) {
 		this(kavaAparateGramais, 0, 0);
-	}
-
-	// Grazina produktu kopija NB!! Sitas metodas yra blogai parasytas!!!
-	public Produktai grazinkProduktuKopija() {
-		Produktai produktuKopija = new Produktai(0, 0, 0);
-		produktuKopija = this.produktai;
-		return produktuKopija;
 	}
 
 	// Produktu set metodas
@@ -95,45 +88,45 @@ public class KavosAparatas implements CoffeeMashine{
 				continue;
 			}
 		} while (kavosPasirinkimas > 4 || kavosPasirinkimas < 1);
-		
+
 		// Atspausdinami cukraus kieko pasirinkimai
-				do {
-					System.out.println("Ar noresite papildomai cukraus?");
-					System.out.println("1. Ne");
-					System.out.println("2. Viena cukraus");
-					System.out.println("3. Du cukraus");
+		do {
+			System.out.println("Ar noresite papildomai cukraus?");
+			System.out.println("1. Ne");
+			System.out.println("2. Viena cukraus");
+			System.out.println("3. Du cukraus");
 
-					// Sukuriame ir issaugome pasirinkimo kintamaji
-					cukrausPasirinkimas = s.nextInt();
+			// Sukuriame ir issaugome pasirinkimo kintamaji
+			cukrausPasirinkimas = s.nextInt();
 
-					// Apsaugome nuo neteisingo pasirinkimo
-					if (cukrausPasirinkimas > 3 || cukrausPasirinkimas < 1) {
-						System.out.println("Blogai ivestas pasirinkimas, bandykite is naujo");
-						continue;
-					}
-				} while (cukrausPasirinkimas > 3 || cukrausPasirinkimas < 1);
+			// Apsaugome nuo neteisingo pasirinkimo
+			if (cukrausPasirinkimas > 3 || cukrausPasirinkimas < 1) {
+				System.out.println("Blogai ivestas pasirinkimas, bandykite is naujo");
+				continue;
+			}
+		} while (cukrausPasirinkimas > 3 || cukrausPasirinkimas < 1);
 		// Kvieciama privatu kavos gaminimo metoda
-		gaminkKava(kavosPasirinkimas,cukrausPasirinkimas);
+		gaminkKava(kavosPasirinkimas, cukrausPasirinkimas);
 
 	}
 
 	// Pasleptas metodas kavos gaminimui
 	private KavosPuodelis gaminkKava(int kavosPasirinkimas, int cukrausPasirinkimas) {
-		
+
 		// Pamazinam cukraus pagal pasirinkima
-				switch (cukrausPasirinkimas) {
-				case 1:
+		switch (cukrausPasirinkimas) {
+		case 1:
 
-					break;
-				case 2:
-					produktai.setCukrusAparateGramais(produktai.getCukrusAparateGramais() - 10);
-					break;
-				case 3:
-					produktai.setCukrusAparateGramais(produktai.getCukrusAparateGramais() - 20);
-					break;
-				}
+			break;
+		case 2:
+			produktai.setCukrusAparateGramais(produktai.getCukrusAparateGramais() - 10);
+			break;
+		case 3:
+			produktai.setCukrusAparateGramais(produktai.getCukrusAparateGramais() - 20);
+			break;
+		}
 
-		//iskvieciam metoda pamazinti produktus pagal pasirinkta kava
+		// iskvieciam metoda pamazinti produktus pagal pasirinkta kava
 		KavosPuodelis puodelis = null;
 		switch (kavosPasirinkimas) {
 		case 1:
@@ -158,6 +151,7 @@ public class KavosAparatas implements CoffeeMashine{
 		return puodelis;
 
 	}
+
 	// Pamazinam kavos pagal pasirinkima
 	private void apartProdMinusPuodelioProd(KavosPuodelis kavosPuodelis) {
 		produktai.setKavaAparateGramais(
@@ -308,25 +302,26 @@ public class KavosAparatas implements CoffeeMashine{
 
 	@Override
 	public void ismurzinkAparata() {
-		// TODO Auto-generated method stub
-		
+		this.panaudojimuSkaicius = PANAUDOJIMU_SK_PRIES_PLOVIMA;
+		System.out.println("Achtung Attention Attenzione!!! Aparatas per prievarta ismurzintas");
 	}
 
 	@Override
 	public void isvalykProduktus() {
-		// TODO Auto-generated method stub
-		
+		this.produktai.setCukrusAparateGramais(0);
+		this.produktai.setKavaAparateGramais(0);
+		this.produktai.setPienasAparateMililitrais(0);
 	}
 
 	@Override
-	public Products getProduktaiKopija() {
-		// TODO Auto-generated method stub
-		return null;
+	public Produktai getProduktaiKopija() {
+		return this.produktai.gaukKopija();
 	}
 
 	@Override
 	public void papildykVandens(int vandensKiekis) {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Vandens papildyt nereikia");
+		System.out.println("Aparatas prijungtas prie vandentiekio :)");
+
 	}
 }
