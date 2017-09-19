@@ -1,4 +1,4 @@
-package lt.vcs.kavosaparatas.pijus.visosklases;
+package lt.vcs.kavosaparatas.pijus.produktai;
 
 public class Produktai {
 	// Kintamieji
