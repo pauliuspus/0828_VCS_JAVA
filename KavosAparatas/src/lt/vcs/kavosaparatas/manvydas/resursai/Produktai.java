@@ -1,6 +1,8 @@
 package lt.vcs.kavosaparatas.manvydas.resursai;
 
-public class Produktai {
+import lt.vcs.kavosaparatas.common.Products;
+
+public class Produktai implements Products{
 
 	private int cukrusAparateGramais;
 	private int kavaAparateGramais;
@@ -44,6 +46,11 @@ public class Produktai {
 
 	public void setPienasAparateMililitrais(int pienasAparateMililitrais) {
 		this.pienasAparateMililitrais = pienasAparateMililitrais;
+	}
+	
+	@Override
+	public Produktai gaukKopija() {
+		return new Produktai(cukrusAparateGramais, kavaAparateGramais, pienasAparateMililitrais);
 	}
 
 }
