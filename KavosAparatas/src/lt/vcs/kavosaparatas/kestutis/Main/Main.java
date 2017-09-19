@@ -1,8 +1,9 @@
-package Main;
+package lt.vcs.kavosaparatas.kestutis.Main;
 
 import java.util.Scanner;
 
-import KavosAparatas.KavosAparatas;
+import lt.vcs.kavosaparatas.kestutis.KavosAparatas.KavosAparatas;
+
 
 public class Main {
 	

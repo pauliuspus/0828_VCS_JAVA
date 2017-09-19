@@ -1,6 +1,6 @@
-package KavosAparatas;
+package lt.vcs.kavosaparatas.kestutis.KavosAparatas;
 
-import Produktai.Produktai;
+import lt.vcs.kavosaparatas.kestutis.Produktai.Produktai;
 
 public class KavosAparatas {
 	
