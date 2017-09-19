@@ -8,7 +8,7 @@ public class Main {
 	public static void main(String[] args) {
 		KavosAparataAptarnaujantiKlase p = new KavosAparataAptarnaujantiKlase();
 		KavosAparatas kavosaparatas = p.sukurkKavosAparata();
-		kavosaparatas.atspausdinkAparatoBusena();
+		kavosaparatas.sakykAparatoBusena();
 		kavosaparatas.gaminkKava("latte");
 
 	}

@@ -25,8 +25,8 @@ public class KavosAparataAptarnaujantiKlase {
 		for (int i = 0; i < masyvas.length; i++) {
 			KavosAparatas kavosaparatas = masyvas[i];
 
-			Produktai k = kavosaparatas.getProduktai();
-			kavosaparatas.isvalykAparatoProduktus();
+			Produktai k = kavosaparatas.getProduktaiKopija();
+			kavosaparatas.isvalykProduktus();
 
 			System.out.println("Aparatas isvalytas. Isvalyta buvo: ");
 			k.atspausdinkProduktus();
@@ -71,12 +71,12 @@ public class KavosAparataAptarnaujantiKlase {
 
 	public Produktai istraukProduktus(KavosAparatas k) {
 		// return k.getProduktai();
-		return k.getProduktai();
+		return k.getProduktaiKopija();
 	}
 
 	public void atspausdinkLikuti(KavosAparatas[] masyvas) {
 		for (int i = 0; i < masyvas.length; i++) {
-			masyvas[i].atspausdinkProduktuLikuti();
+			masyvas[i].sakykProduktuBusena();
 		}
 	}
 }

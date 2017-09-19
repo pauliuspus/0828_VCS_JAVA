@@ -1,8 +1,9 @@
 package lt.vcs.kavosaparatas.lina.puodelis;
 
+import lt.vcs.kavosaparatas.common.CoffeeCup;
 import lt.vcs.kavosaparatas.lina.produkcija.Produktai;
 
-public class KavosPuodelis extends Puodelis {
+public class KavosPuodelis extends Puodelis implements CoffeeCup {
 	private Produktai produktai;
 	private String kavosPavadinimas;
 	private boolean arPagaminta;
@@ -12,16 +13,16 @@ public class KavosPuodelis extends Puodelis {
 		this.produktai = new lt.vcs.kavosaparatas.lina.produkcija.Produktai(cukrus, pupeles, vanduo);
 	}
 
-	public boolean arKavaPagaminta() {
+	public boolean isKavaPagaminta() {
 		return arPagaminta;
 	}
 
-	// public Produktai getProduktai() {
-	// return this.produktai.grazinkKopija();
-	// }
+	public void setKavaPagaminta(boolean arPagaminta) {
+		this.arPagaminta = arPagaminta;
+	}
 
 	public Produktai getProduktai() {
-		return this.produktai.grazinkKopija();
+		return this.produktai.gaukKopija();
 	}
 
 	public void kavaPagaminta() {

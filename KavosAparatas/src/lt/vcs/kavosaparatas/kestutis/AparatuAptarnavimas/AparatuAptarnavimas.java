@@ -66,7 +66,7 @@ public void sumuokIrValykProduktus(KavosAparatas[] masyvas, int cukrausSuma, int
 	}	
 	
 	public Produktai istraukProduktus(KavosAparatas k) {
-		return k.getProduktai();
+		return k.getProduktaiKopija();
 	}
 	
 	

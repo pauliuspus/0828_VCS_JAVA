@@ -2,6 +2,7 @@ package lt.vcs.kavosaparatas.manvydas.aparatai;
 
 import java.util.Scanner;
 
+import lt.vcs.kavosaparatas.common.CoffeeMashine;
 import lt.vcs.kavosaparatas.manvydas.kavospuodeliai.DvigubaEspresso;
 import lt.vcs.kavosaparatas.manvydas.kavospuodeliai.Espresso;
 import lt.vcs.kavosaparatas.manvydas.kavospuodeliai.JuodaKava;
@@ -9,7 +10,7 @@ import lt.vcs.kavosaparatas.manvydas.kavospuodeliai.KavaSuPienu;
 import lt.vcs.kavosaparatas.manvydas.kavospuodeliai.KavosPuodelis;
 import lt.vcs.kavosaparatas.manvydas.resursai.Produktai;
 
-public class KavosAparatas {
+public class KavosAparatas{
 
 	// Konstanta, kuri galioja visiems aparatams
 	private static final int PANAUDOJIMU_SK_PRIES_PLOVIMA = 2;

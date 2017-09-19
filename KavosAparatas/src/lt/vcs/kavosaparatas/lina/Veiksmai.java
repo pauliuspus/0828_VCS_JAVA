@@ -37,14 +37,14 @@ public class Veiksmai {
 		
 		for (int i=0;i<kavosAparatuMasyvas.length;i++) {
 			System.out.println("Aparatas "+i);
-			kavosAparatuMasyvas[i].atspausdinkAparatoBusena();
+			kavosAparatuMasyvas[i].sakykAparatoBusena();
 			System.out.println("");
 			
 			if (i%2 == 0) {
 				kavosAparatuMasyvas[i].gaminkKava(KavosAparatas.LATTE);
 			}
 			
-			kavosAparatuMasyvas[i].atspausdinkAparatoBusena();
+			kavosAparatuMasyvas[i].sakykAparatoBusena();
 			System.out.println("");
 			
 		}

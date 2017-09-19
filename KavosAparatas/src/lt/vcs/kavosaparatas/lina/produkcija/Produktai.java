@@ -1,6 +1,8 @@
 package lt.vcs.kavosaparatas.lina.produkcija;
 
-public class Produktai {
+import lt.vcs.kavosaparatas.common.Products;
+
+public class Produktai implements Products{
 	private int cukrausKiekis;
 	private int kavosPupeliuKiekis;
 	private int vandensKiekis;
@@ -19,7 +21,7 @@ public class Produktai {
 
 	// Metodas grazina produktu kopija, t.y. kita kintamaji su perduto kintamojo
 	// reiksmemis
-	public Produktai grazinkKopija() {
+	public Produktai gaukKopija() {
 		return new Produktai(kavosPupeliuKiekis, cukrausKiekis,vandensKiekis);
 	}
 
