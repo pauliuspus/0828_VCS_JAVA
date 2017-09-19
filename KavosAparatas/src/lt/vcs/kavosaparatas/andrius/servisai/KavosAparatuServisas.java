@@ -48,10 +48,6 @@ public class KavosAparatuServisas {
 			kavosAparatai[i].setProduktai(produktai);
 		}
 	}
-	
-	public Produktai istraukProduktus(KavosAparatas k){
-	   return k.getProduktai().gaukKopija();
-	}
 
 	public void priskirkVisiemsTaAtskiraProdukta(KavosAparatas[] kavosAparatai) {
 		for (int i = 0; i < kavosAparatai.length; i++) {
