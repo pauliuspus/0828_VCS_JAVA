@@ -47,11 +47,10 @@ public class Produktai implements Products{
 	public void setPienasAparateMililitrais(int pienasAparateMililitrais) {
 		this.pienasAparateMililitrais = pienasAparateMililitrais;
 	}
-
+	
 	@Override
-	public Products gaukKopija() {
-		// TODO Auto-generated method stub
-		return null;
+	public Produktai gaukKopija() {
+		return new Produktai(cukrusAparateGramais, kavaAparateGramais, pienasAparateMililitrais);
 	}
 
 }
