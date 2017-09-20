@@ -1,13 +1,15 @@
-package lt.vcs.kavosaparatas.kestutis.Main;
+package lt.vcs.kavosaparatas.kestutis.main;
 
-import java.util.Scanner;
 
-import lt.vcs.kavosaparatas.kestutis.KavosAparatas.KavosAparatas;
+
+
+import lt.vcs.kavosaparatas.kestutis.kavosaparatas.KavosAparatas;
+import lt.vcs.kavosaparatas.kestutis.puodeliai.KavosPuodelis;
 
 
 public class Main {
 	
-	public static void pradekAparatoDarba() {
+	/*public static void pradekAparatoDarba() {
 		KavosAparatas aparatas = new KavosAparatas(0, 0, 0);
 		sukuriamMenu();
 		Scanner scanner = new Scanner(System.in);
@@ -62,9 +64,12 @@ public class Main {
 		System.out.println("7. Plauti");
 		System.out.println("8. Busena");
 	}
-
+*/
 	public static void main(String[] args) {
-		pradekAparatoDarba();
+		KavosPuodelis p = new KavosAparatas(50, 50, 50).gaminkKava("Juoda Kava");
+
+        System.out.println(p);
+
 		
 		
 		
