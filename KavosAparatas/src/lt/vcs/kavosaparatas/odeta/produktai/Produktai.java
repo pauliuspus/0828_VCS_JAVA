@@ -19,6 +19,7 @@ public class Produktai implements Products {
 	public Produktai() {
 	}
 	
+	
 
 	//Produktai produktai = new Produktai(0,0,0);
 	
