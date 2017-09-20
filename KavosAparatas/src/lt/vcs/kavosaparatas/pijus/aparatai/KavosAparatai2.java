@@ -32,22 +32,21 @@ public class KavosAparatai2 {
 
 	public void isvalykAparatuProduktuMasyva(KavosAparatas2[] aparatai) {
 		for (int i = 0; i < aparatai.length; i++) {
-			aparatai[i].aparatoBusena();
+			aparatai[i].sakykAparatoBusena();
 			aparatai[i].isvalykProduktus();
 		}
 	}
 
-	public void priskirkTuosPaciusProduktus(KavosAparatas2[] aparatas, Produktai produktai) {
-		for (int i = 0; i < aparatas.length; i++) {
-			aparatas[i].setProduktai(produktai);
-		}
-	}
+	// public void priskirkTuosPaciusProduktus(KavosAparatas2[] aparatas, Produktai
+	// produktai) {
+	// for (int i = 0; i < aparatas.length; i++) {
+	// aparatas[i].setProduktai(produktai);
+	// }
+	// }
+	//
+	// public void priskirkSkirtingusProduktus(KavosAparatas2[] aparatas) {
+	// for (int i = 0; i < aparatas.length; i++) {
+	// aparatas[i].keiskProduktus(new Produktai(90, 90, 90));
+	// }
 
-	public void priskirkSkirtingusProduktus(KavosAparatas2[] aparatas) {
-		for (int i = 0; i < aparatas.length; i++) {
-			aparatas[i].setProduktai(new Produktai(90, 90, 90));
-		}
-
-	}
 }
-

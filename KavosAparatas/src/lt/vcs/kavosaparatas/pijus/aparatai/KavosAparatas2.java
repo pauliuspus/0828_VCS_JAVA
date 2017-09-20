@@ -1,12 +1,16 @@
 package lt.vcs.kavosaparatas.pijus.aparatai;
 
+import lt.vcs.kavosaparatas.common.CoffeeCup;
+import lt.vcs.kavosaparatas.common.CoffeeMashine;
+import lt.vcs.kavosaparatas.common.Products;
 import lt.vcs.kavosaparatas.pijus.produktai.Produktai;
 import lt.vcs.kavosaparatas.pijus.puodeliai.JuodaKavaPuodelis;
 import lt.vcs.kavosaparatas.pijus.puodeliai.KavosPuodelis;
 import lt.vcs.kavosaparatas.pijus.puodeliai.LattePuodelis;
 import lt.vcs.kavosaparatas.pijus.puodeliai.MochaPuodelis;
+import lt.vcs.kavosaparatas.pijus.puodeliai.Puodelis;
 
-public class KavosAparatas2 {
+public class KavosAparatas2 implements CoffeeMashine {
 	Produktai p;
 
 	private int panaudojimuSkaicius;
@@ -24,27 +28,27 @@ public class KavosAparatas2 {
 	}
 
 	// Kavos gaminimas ir kita
-	public void gaminkKava(String tipas) {
-		switch (tipas) {
+	public KavosPuodelis gaminkKava(String kavosTipas) {
+		KavosPuodelis puodelis = null;
+		switch (kavosTipas) {
 		case "Mocha":
-			MochaPuodelis kpm = new MochaPuodelis();
-			// kavosGaminimas(5, 5, 5);
-			kavosGaminimas(kpm);
+			puodelis = new MochaPuodelis();
 			break;
 		case "late":
-			LattePuodelis kpl = new LattePuodelis();
-			// kavosGaminimas(4, 4, 3);
-			kavosGaminimas(kpl);
+			puodelis = new LattePuodelis();
 			break;
 		case "juoda":
-			JuodaKavaPuodelis kpj = new JuodaKavaPuodelis();
-			// kavosGaminimas(5, 3, 7);
-			kavosGaminimas(kpj);
+			puodelis = new JuodaKavaPuodelis();
 			break;
 		default:
 			System.out.println("tokios kavos neturim");
 			break;
 		}
+		if (puodelis != null)
+			gaminkKava(puodelis);
+
+		return puodelis;
+
 	}
 
 	/*
@@ -56,66 +60,71 @@ public class KavosAparatas2 {
 	 * panaudojimuSkaicius++; System.out.println("skanios kavos"); } }
 	 */
 
-	private KavosPuodelis kavosGaminimas(KavosPuodelis kp) {
-		
-		if (kp instanceof LattePuodelis) {
-			LattePuodelis latte = (LattePuodelis) kp;
+	/*
+	 * private KavosPuodelis kavosGaminimas(KavosPuodelis kp) {
+	 * 
+	 * if (kp instanceof LattePuodelis) { LattePuodelis latte = (LattePuodelis) kp;
+	 * 
+	 * if (arUzteks(p.getVandensKiekis(), p.getCukrausKiekis(),
+	 * p.getPupeliuKiekis()) && !arValyti()) {
+	 * p.setPupeliuKiekis(p.getPupeliuKiekis() -
+	 * latte.produktai.getPupeliuKiekis()); p.setCukrausKiekis(p.getCukrausKiekis()
+	 * - latte.produktai.getCukrausKiekis());
+	 * p.setVandensKiekis(p.getVandensKiekis() -
+	 * latte.produktai.getVandensKiekis()); latte.arPagaminta = true;
+	 * panaudojimuSkaicius++; System.out.println("skanios kavos"); return latte; } }
+	 * 
+	 * if (kp instanceof JuodaKavaPuodelis) { JuodaKavaPuodelis juoda =
+	 * (JuodaKavaPuodelis) kp;
+	 * 
+	 * if (arUzteks(p.getVandensKiekis(), p.getCukrausKiekis(),
+	 * p.getPupeliuKiekis()) && !arValyti()) {
+	 * p.setPupeliuKiekis(p.getPupeliuKiekis() -
+	 * juoda.produktai.getPupeliuKiekis()); p.setCukrausKiekis(p.getCukrausKiekis()
+	 * - juoda.produktai.getCukrausKiekis());
+	 * p.setVandensKiekis(p.getVandensKiekis() -
+	 * juoda.produktai.getVandensKiekis()); juoda.arPagaminta = true;
+	 * panaudojimuSkaicius++; System.out.println("skanios kavos"); return juoda; } }
+	 * 
+	 * if (kp instanceof MochaPuodelis) { MochaPuodelis mocha = (MochaPuodelis) kp;
+	 * 
+	 * if (arUzteks(p.getVandensKiekis(), p.getCukrausKiekis(),
+	 * p.getPupeliuKiekis()) && !arValyti()) {
+	 * p.setPupeliuKiekis(p.getPupeliuKiekis() -
+	 * mocha.produktai.getPupeliuKiekis()); p.setCukrausKiekis(p.getCukrausKiekis()
+	 * - mocha.produktai.getCukrausKiekis());
+	 * p.setVandensKiekis(p.getVandensKiekis() -
+	 * mocha.produktai.getVandensKiekis()); mocha.arPagaminta = true;
+	 * panaudojimuSkaicius++; System.out.println("skanios kavos"); return mocha; } }
+	 * return kp; }
+	 */
+	private void gaminkKava(KavosPuodelis puodelis) {
+		Produktai produktai = puodelis.getProduktai();
+		gaminkKava(produktai.getVandensKiekis(), produktai.getCukrausKiekis(), produktai.getPupeliuKiekis());
+		puodelis.setKavaPagaminta(true);
+	}
 
-			if (arUzteks(p.getVandensKiekis(), p.getCukrausKiekis(),
-					p.getPupeliuKiekis()) && !arValyti()) {
-				p.setPupeliuKiekis(p.getPupeliuKiekis() - latte.produktai.getPupeliuKiekis());
-				p.setCukrausKiekis(p.getCukrausKiekis() - latte.produktai.getCukrausKiekis());
-				p.setVandensKiekis(p.getVandensKiekis() - latte.produktai.getVandensKiekis());
-				latte.arPagaminta = true ;
-				panaudojimuSkaicius++;
-				System.out.println("skanios kavos");
-				return latte;
-			}
+	private void gaminkKava(int vandensKiekis, int cukrausKiekis, int pupeliuKiekis) {
+		if (arUzteks(vandensKiekis, cukrausKiekis, pupeliuKiekis) && arValyti() != false) {
+			p.setCukrausKiekis(p.getCukrausKiekis() - cukrausKiekis);
+			p.setPupeliuKiekis(p.getPupeliuKiekis() - pupeliuKiekis);
+			p.setVandensKiekis(p.getVandensKiekis() - vandensKiekis);
+			panaudojimuSkaicius++;
+			System.out.println("skanios kavos");
 		}
-		
-		if (kp instanceof JuodaKavaPuodelis) {
-			JuodaKavaPuodelis juoda = (JuodaKavaPuodelis) kp;
-
-			if (arUzteks(p.getVandensKiekis(), p.getCukrausKiekis(),
-					p.getPupeliuKiekis()) && !arValyti()) {
-				p.setPupeliuKiekis(p.getPupeliuKiekis() - juoda.produktai.getPupeliuKiekis());
-				p.setCukrausKiekis(p.getCukrausKiekis() - juoda.produktai.getCukrausKiekis());
-				p.setVandensKiekis(p.getVandensKiekis() - juoda.produktai.getVandensKiekis());
-				juoda.arPagaminta = true ;
-				panaudojimuSkaicius++;
-				System.out.println("skanios kavos");
-				return juoda;
-			}
-		}
-
-		if (kp instanceof MochaPuodelis) {
-			MochaPuodelis mocha = (MochaPuodelis) kp;
-
-			if (arUzteks(p.getVandensKiekis(), p.getCukrausKiekis(),
-					p.getPupeliuKiekis()) && !arValyti()) {
-				p.setPupeliuKiekis(p.getPupeliuKiekis() - mocha.produktai.getPupeliuKiekis());
-				p.setCukrausKiekis(p.getCukrausKiekis() - mocha.produktai.getCukrausKiekis());
-				p.setVandensKiekis(p.getVandensKiekis() - mocha.produktai.getVandensKiekis());
-				mocha.arPagaminta = true ;
-				panaudojimuSkaicius++;
-				System.out.println("skanios kavos");
-				return mocha;
-			}
-		}
-		return kp;
 	}
 
 	private boolean arUzteks(int vandensKiekis, int cukrausKiekis, int pupeliuKiekis) {
 		boolean random = true;
-		if (vandensKiekis < 0) {
+		if (vandensKiekis >= p.getVandensKiekis()) {
 			System.out.println("truksta vandens");
 			return false;
 		}
-		if (cukrausKiekis < 0) {
+		if (cukrausKiekis >= p.getCukrausKiekis()) {
 			System.out.println("truksta cukraus");
 			return false;
 		}
-		if (pupeliuKiekis < 0) {
+		if (pupeliuKiekis >= p.getPupeliuKiekis()) {
 			System.out.println("truksta pupeliu");
 			return false;
 		}
@@ -124,13 +133,16 @@ public class KavosAparatas2 {
 
 	private boolean arValyti() {
 		if (panaudojimuSkaicius >= panaudotuSkaiciuRiba)
-			return true;
-		return false;
+			return false;
+		return true;
 	}
 
-	public void arPasiruoses() {
-		if (arNeTuscias() && panaudojimuSkaicius < panaudotuSkaiciuRiba)
+	public boolean arAparatasPasiruoses() {
+		if (arNeTuscias() && panaudojimuSkaicius < panaudotuSkaiciuRiba) {
 			System.out.println("pasiruoses");
+			return true;
+		}
+		return false;
 	}
 
 	public boolean arNeTuscias() {
@@ -138,7 +150,7 @@ public class KavosAparatas2 {
 		return true;
 	}
 
-	public void isvalykAparata() {
+	public void atlikPlovima() {
 		panaudojimuSkaicius = 0;
 	}
 
@@ -148,13 +160,28 @@ public class KavosAparatas2 {
 		p.setVandensKiekis(0);
 	}
 
+	public void sakykProduktuBusena() {
+		System.out.println(p.getCukrausKiekis());
+		System.out.println(p.getVandensKiekis());
+		System.out.println(p.getPupeliuKiekis());
+	}
+
+	public void isvalykAparata() {
+		panaudojimuSkaicius = 0;
+	}
+
+	public void ismurzinkAparata() {
+		this.panaudojimuSkaicius = panaudotuSkaiciuRiba;
+		System.out.println("maksimalus panaudojimu skaicus");
+	}
+
 	public void keiskProduktus(int vandensKiekis, int cukrausKiekis, int pupeliuKiekis) {
 		p.setCukrausKiekis(cukrausKiekis);
 		p.setVandensKiekis(vandensKiekis);
 		p.setPupeliuKiekis(pupeliuKiekis);
 	}
 
-	public void aparatoBusena() {
+	public void sakykAparatoBusena() {
 		System.out.println("cukraus liko " + p.getCukrausKiekis());
 		System.out.println("pupeliu liko " + p.getPupeliuKiekis());
 		System.out.println("vandens liko " + p.getVandensKiekis());
@@ -162,8 +189,26 @@ public class KavosAparatas2 {
 		System.out.println("panaudijumu liko " + (panaudotuSkaiciuRiba - panaudojimuSkaicius));
 	}
 
-	public void setProduktai(Produktai produktai) {
+	public void getProduktkaiKopija(Produktai produktai) {
 		this.p = produktai;
+	}
+
+	public void papildykPupeliu(int pupeliuKiekis) {
+		p.setPupeliuKiekis(p.getPupeliuKiekis() + pupeliuKiekis);
+	}
+
+	public void papildykCukraus(int cukrausKiekis) {
+		p.setCukrausKiekis(p.getCukrausKiekis() + cukrausKiekis);
+	}
+
+	public void papildykVandens(int vandensKiekis) {
+		p.setVandensKiekis(p.getVandensKiekis() + vandensKiekis);
+	}
+
+	@Override
+	public Products getProduktaiKopija() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
