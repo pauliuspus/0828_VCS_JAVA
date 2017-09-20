@@ -40,15 +40,45 @@ public class KavosAparatas implements CoffeeMashine {
 		this.produktai = produktai;
 	}
 
-	// Metodas kavai gaminti
-	public void gaminkKava() {
-
-		// Vidiniai metodo kintamieji, kurie saugo pasirinkimus
-		int kavosPasirinkimas;
-		int cukrausPasirinkimas;
-
-		// Scanneris, skirtas irasyti ivestiems pasirinkimams
+	@Override
+	public KavosPuodelis gaminkKava(String kavosTipas) {
+		KavosPuodelis kavosPuodelis = null;
 		Scanner s = new Scanner(System.in);
+		kavosTipas = kavosTipas.toUpperCase();
+
+		// Tikriname, ar uzteks produktu
+		if (kavosTipas == "JUODA") {
+			if (produktai.getKavaAparateGramais() < 20) {
+				System.out.println("Aparate truksta kavos");
+				papildykPupeliu();
+			}
+			if (produktai.getCukrusAparateGramais() < 20) {
+				System.out.println("Aparate truksta cukraus");
+				papildykCukraus();
+			}
+		} else if (kavosTipas == "ESPRESSO") {
+			if (produktai.getKavaAparateGramais() < 20) {
+				System.out.println("Aparate truksta kavos");
+				papildykPupeliu();
+			}
+		} else if (kavosTipas == "DVIGUBA ESPRESSO") {
+			if (produktai.getKavaAparateGramais() < 40) {
+				System.out.println("Aparate truksta kavos");
+				papildykPupeliu();
+			}
+		} else if (kavosTipas == "SU PIENU") {
+			if (produktai.getKavaAparateGramais() < 20) {
+				System.out.println("Aparate truksta kavos");
+				papildykPupeliu();
+			}
+			if (produktai.getPienasAparateMililitrais() < 40) {
+				System.out.println("Aparate truksta pieno");
+				papildykPiena();
+			}
+		} else {
+			System.out.println("Tokios kavos neturime, bandykite dar karta!");
+			System.exit(0);
+		}
 
 		// Tikriname, ar reikia islplauti pries naudojima
 		if (PANAUDOJIMU_SK_PRIES_PLOVIMA - this.panaudojimuSkaicius <= 0) {
@@ -56,100 +86,27 @@ public class KavosAparatas implements CoffeeMashine {
 			atlikPlovima();
 		}
 
-		// Jei truksta vieno is produktu, iskvieciamas papildymo metodas
-		if (produktai.getKavaAparateGramais() < 40) {
-			System.out.println("Aparate truksta kavos");
-			papildykPupeliu(0);
-		}
-		if (produktai.getCukrusAparateGramais() < 20) {
-			System.out.println("Aparate truksta cukraus");
-			papildykCukraus(0);
-		}
-		if (produktai.getPienasAparateMililitrais() < 20) {
-			System.out.println("Aparate truksta pieno");
-			papildykPiena();
-		}
-
-		// Atspausdinami kavos pasirinkimai
-		do {
-			System.out.println("Aparatas pasiruoses");
-			System.out.println("Pasirinkite, kokios kavos noresite?");
-			System.out.println("1. Juoda kava");
-			System.out.println("2. Espresso");
-			System.out.println("3. Dviguba Espresso");
-			System.out.println("4. Kava su pienu");
-
-			// Sukuriame ir issaugome pasirinkimo kintamaji
-			kavosPasirinkimas = s.nextInt();
-
-			// Apsaugome nuo neteisingo pasirinkimo
-			if (kavosPasirinkimas > 4 || kavosPasirinkimas < 1) {
-				System.out.println("Blogai ivestas pasirinkimas, bandykite is naujo");
-				continue;
-			}
-		} while (kavosPasirinkimas > 4 || kavosPasirinkimas < 1);
-
-		// Atspausdinami cukraus kieko pasirinkimai
-		do {
-			System.out.println("Ar noresite papildomai cukraus?");
-			System.out.println("1. Ne");
-			System.out.println("2. Viena cukraus");
-			System.out.println("3. Du cukraus");
-
-			// Sukuriame ir issaugome pasirinkimo kintamaji
-			cukrausPasirinkimas = s.nextInt();
-
-			// Apsaugome nuo neteisingo pasirinkimo
-			if (cukrausPasirinkimas > 3 || cukrausPasirinkimas < 1) {
-				System.out.println("Blogai ivestas pasirinkimas, bandykite is naujo");
-				continue;
-			}
-		} while (cukrausPasirinkimas > 3 || cukrausPasirinkimas < 1);
-		// Kvieciama privatu kavos gaminimo metoda
-		gaminkKava(kavosPasirinkimas, cukrausPasirinkimas);
-
-	}
-
-	// Pasleptas metodas kavos gaminimui
-	private KavosPuodelis gaminkKava(int kavosPasirinkimas, int cukrausPasirinkimas) {
-
-		// Pamazinam cukraus pagal pasirinkima
-		switch (cukrausPasirinkimas) {
-		case 1:
-
+		switch (kavosTipas) {
+		case "JUODA":
+			kavosPuodelis = new JuodaKava();
 			break;
-		case 2:
-			produktai.setCukrusAparateGramais(produktai.getCukrusAparateGramais() - 10);
+		case "ESPRESSO":
+			kavosPuodelis = new Espresso();
 			break;
-		case 3:
-			produktai.setCukrusAparateGramais(produktai.getCukrusAparateGramais() - 20);
+		case "DVIGUBA ESPRESSO":
+			kavosPuodelis = new DvigubaEspresso();
+			break;
+		case "SU PIENU":
+			kavosPuodelis = new KavaSuPienu();
 			break;
 		}
 
-		// iskvieciam metoda pamazinti produktus pagal pasirinkta kava
-		KavosPuodelis puodelis = null;
-		switch (kavosPasirinkimas) {
-		case 1:
-			puodelis = new JuodaKava();
-			break;
-		case 2:
-			puodelis = new Espresso();
-			break;
-		case 3:
-			puodelis = new DvigubaEspresso();
-			break;
-		case 4:
-			puodelis = new KavaSuPienu();
-			break;
+		if (kavosPuodelis != null) {
+			apartProdMinusPuodelioProd(kavosPuodelis);
+			System.out.println(kavosPuodelis.toString());
 		}
 
-		if (puodelis != null) {
-			apartProdMinusPuodelioProd(puodelis);
-			System.out.println(puodelis.toString());
-		}
-
-		return puodelis;
-
+		return kavosPuodelis;
 	}
 
 	// Pamazinam kavos pagal pasirinkima
@@ -166,8 +123,8 @@ public class KavosAparatas implements CoffeeMashine {
 	}
 
 	// Metodas papildyti cukru
-	@Override
-	public void papildykCukraus(int cukrus) {
+	public void papildykCukraus() {
+		int cukrus;
 		Scanner s = new Scanner(System.in);
 		System.out.println("Cukraus kiekis aparate yra: " + produktai.getCukrusAparateGramais() + " g.");
 		System.out.println("Kiek gramu cukraus ipilsite?");
@@ -188,7 +145,43 @@ public class KavosAparatas implements CoffeeMashine {
 		} while (cukrus < 20);
 	}
 
+	@Override
+	public void papildykCukraus(int cukrus) {
+		if (produktai.getCukrusAparateGramais() + cukrus > 1000) {
+			produktai.setCukrusAparateGramais(1000);
+			System.out.println("Maximalus galimas kiekis yra 1000 g.");
+			System.out.println("Aparate yra " + produktai.getCukrusAparateGramais() + " g. cukraus");
+		} else if (cukrus < 20) {
+			System.out.println("Minimalus galimas papildyti kiekis yra 20 g.");
+			System.out.println("Iveskite is naujo");
+		} else {
+			produktai.setCukrusAparateGramais(produktai.getCukrusAparateGramais() + cukrus);
+			System.out.println("Aparate yra " + produktai.getCukrusAparateGramais() + " g. cukraus");
+		}
+	}
+
 	// Metodas papildyti kava
+	public void papildykPupeliu() {
+		int pupeliuKiekis;
+		Scanner s = new Scanner(System.in);
+		System.out.println("Kavos kiekis aparate yra: " + produktai.getKavaAparateGramais() + " g.");
+		System.out.println("Kiek gramu kavos idesite?");
+		do {
+			pupeliuKiekis = s.nextInt();
+			if (produktai.getKavaAparateGramais() + pupeliuKiekis > 1000) {
+				produktai.setKavaAparateGramais(1000);
+				System.out.println("Maximalus galimas kiekis yra 1000 g.");
+				System.out.println("Aparate yra " + produktai.getKavaAparateGramais() + " g. kavos");
+			} else if (pupeliuKiekis < 40) {
+				System.out.println("Minimalus kiekis, kuri galima papildyti yra 40 g.");
+				System.out.println("Iveskite is naujo");
+			} else {
+				produktai.setKavaAparateGramais(produktai.getKavaAparateGramais() + pupeliuKiekis);
+				System.out.println("Aparate yra " + produktai.getKavaAparateGramais() + " g. kavos");
+			}
+		} while (pupeliuKiekis < 40);
+	}
+	
 	@Override
 	public void papildykPupeliu(int pupeliuKiekis) {
 		int kava;
@@ -224,14 +217,28 @@ public class KavosAparatas implements CoffeeMashine {
 				produktai.setPienasAparateMililitrais(1000);
 				System.out.println("Maximalus galimas kiekis yra 1000 ml.");
 				System.out.println("Aparate yra " + produktai.getPienasAparateMililitrais() + " ml. pieno");
-			} else if (pienas < 20) {
-				System.out.println("Minimalus galimas papildyti kiekis yra 20 ml.");
+			} else if (pienas < 40) {
+				System.out.println("Minimalus galimas papildyti kiekis yra 40 ml.");
 				System.out.println("Iveskite is naujo");
 			} else {
 				produktai.setPienasAparateMililitrais(produktai.getPienasAparateMililitrais() + pienas);
 				System.out.println("Aparate yra " + produktai.getPienasAparateMililitrais() + " ml. pieno");
 			}
 		} while (pienas < 20);
+	}
+
+	public void papildykPiena(int pienas) {
+		if (produktai.getPienasAparateMililitrais() + pienas > 1000) {
+			produktai.setPienasAparateMililitrais(1000);
+			System.out.println("Maximalus galimas kiekis yra 1000 ml.");
+			System.out.println("Aparate yra " + produktai.getPienasAparateMililitrais() + " ml. pieno");
+		} else if (pienas < 40) {
+			System.out.println("Minimalus galimas papildyti kiekis yra 40 ml.");
+			System.out.println("Iveskite is naujo");
+		} else {
+			produktai.setPienasAparateMililitrais(produktai.getPienasAparateMililitrais() + pienas);
+			System.out.println("Aparate yra " + produktai.getPienasAparateMililitrais() + " ml. pieno");
+		}
 	}
 
 	// Atlieka aparato plovima, kuris trunka nustatyta laiko trukme
@@ -295,12 +302,6 @@ public class KavosAparatas implements CoffeeMashine {
 	}
 
 	@Override
-	public CoffeeCup gaminkKava(String kavosTipas) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public void ismurzinkAparata() {
 		this.panaudojimuSkaicius = PANAUDOJIMU_SK_PRIES_PLOVIMA;
 		System.out.println("Achtung Attention Attenzione!!! Aparatas per prievarta ismurzintas");
@@ -322,6 +323,7 @@ public class KavosAparatas implements CoffeeMashine {
 	public void papildykVandens(int vandensKiekis) {
 		System.out.println("Vandens papildyt nereikia");
 		System.out.println("Aparatas prijungtas prie vandentiekio :)");
+		System.out.println("Galima papildyti cukraus, pieno arba pupeliu");
 
 	}
 }
