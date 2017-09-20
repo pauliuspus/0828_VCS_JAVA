@@ -8,17 +8,17 @@ public interface CoffeeMashine {
 
 	public void ismurzinkAparata();
 
-	public void atlikPlovima();
+	public void atlikPlovima();// +
 
-	public void sakykProduktuBusena();
+	public void sakykProduktuBusena();// +
 
-	public void sakykAparatoBusena();
+	public void sakykAparatoBusena(); // +
 
-	public boolean arAparatasPasiruoses();
+	public boolean arAparatasPasiruoses();// +
 
-	public void isvalykProduktus();
+	public void isvalykProduktus();// +
 
-	public Products getProduktaiKopija();
+	public Products getProduktaiKopija();// +
 
 	public void papildykPupeliu(int pupeliuKiekis);
 
