@@ -1,4 +1,4 @@
-package lt.vcs.kavosaparatas.kestutis.produktai;
+package lt.vcs.kavosaparatas.kestutis.Produktai;
 
 import lt.vcs.kavosaparatas.common.Products;
 

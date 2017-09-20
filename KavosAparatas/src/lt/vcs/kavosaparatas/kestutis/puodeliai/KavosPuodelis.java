@@ -2,7 +2,7 @@ package lt.vcs.kavosaparatas.kestutis.puodeliai;
 
 
 import lt.vcs.kavosaparatas.common.CoffeeCup;
-import lt.vcs.kavosaparatas.kestutis.produktai.Produktai;
+import lt.vcs.kavosaparatas.kestutis.Produktai.Produktai;
 
 public class KavosPuodelis extends Puodelis implements CoffeeCup{
     protected Produktai produktai;

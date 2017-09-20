@@ -1,4 +1,4 @@
-package lt.vcs.kavosaparatas.kestutis.kavosaparatas;
+package lt.vcs.kavosaparatas.kestutis.KavosAparatas;
 
 
 
@@ -6,7 +6,7 @@ import lt.vcs.kavosaparatas.common.CoffeeMashine;
 import lt.vcs.kavosaparatas.kestutis.kavos.Capuccino;
 import lt.vcs.kavosaparatas.kestutis.kavos.Espresso;
 import lt.vcs.kavosaparatas.kestutis.kavos.JuodaKava;
-import lt.vcs.kavosaparatas.kestutis.produktai.Produktai;
+import lt.vcs.kavosaparatas.kestutis.Produktai.Produktai;
 import lt.vcs.kavosaparatas.kestutis.puodeliai.KavosPuodelis;
 
 public class KavosAparatas implements CoffeeMashine {

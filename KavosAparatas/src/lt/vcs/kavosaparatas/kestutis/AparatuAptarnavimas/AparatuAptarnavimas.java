@@ -1,7 +1,7 @@
-package lt.vcs.kavosaparatas.kestutis.aparatuaptarnavimas;
+package lt.vcs.kavosaparatas.kestutis.AparatuAptarnavimas;
 
-import lt.vcs.kavosaparatas.kestutis.kavosaparatas.KavosAparatas;
-import lt.vcs.kavosaparatas.kestutis.produktai.Produktai;
+import lt.vcs.kavosaparatas.kestutis.KavosAparatas.KavosAparatas;
+import lt.vcs.kavosaparatas.kestutis.Produktai.Produktai;
 
 public class AparatuAptarnavimas {
 	

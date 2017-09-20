@@ -1,9 +1,9 @@
-package lt.vcs.kavosaparatas.kestutis.main;
+package lt.vcs.kavosaparatas.kestutis.Main;
 
 
 
 
-import lt.vcs.kavosaparatas.kestutis.kavosaparatas.KavosAparatas;
+import lt.vcs.kavosaparatas.kestutis.KavosAparatas.KavosAparatas;
 import lt.vcs.kavosaparatas.kestutis.puodeliai.KavosPuodelis;
 
 
