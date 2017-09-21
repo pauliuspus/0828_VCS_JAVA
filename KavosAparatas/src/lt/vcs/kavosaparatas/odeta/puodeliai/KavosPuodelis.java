@@ -49,9 +49,8 @@ public class KavosPuodelis extends Puodelis implements CoffeeCup {
 
 
 	@Override
-	public Products getProduktai() {
-		
-		return null;
+	public Produktai getProduktai() {
+		return this.puodelioProduktai;
 	}
 
 }
