@@ -42,4 +42,11 @@ public class Produktai implements Products{
 	public void setPupeliuKiekis(int pupeliuKiekis) {
 		this.pupeliuKiekis = pupeliuKiekis;
 	}
+
+	@Override
+	public String toString() {
+		return "Produktai [vandensKiekis=" + vandensKiekis + ", cukrausKiekis=" + cukrausKiekis + ", pupeliuKiekis="
+				+ pupeliuKiekis + "]";
+	}
+	
 }
