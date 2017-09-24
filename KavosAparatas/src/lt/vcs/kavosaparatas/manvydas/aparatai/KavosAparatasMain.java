@@ -1,13 +1,18 @@
 package lt.vcs.kavosaparatas.manvydas.aparatai;
 
+
 public class KavosAparatasMain {
 
 	public static void main(String[] args) {
 		
-		KavosAparatas k = new KavosAparatas();
+		KavosAparatas kavosAparatas = new KavosAparatas();
 		
-		k.gaminkKava("JUODA");
+		kavosAparatas.pridekPuodeli("JUODA", 10, 20, 0);
+		kavosAparatas.pridekPuodeli("Naujoviska", 30, 30, 30);
 		
+		
+		kavosAparatas.gaminkKavaJeiYra("naujoviska");
+		kavosAparatas.sakykAparatoBusena();
 	}
 
 }
