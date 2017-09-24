@@ -9,7 +9,7 @@ public class KavosPuodelis extends Puodelis implements CoffeeCup {
 	protected boolean arPagaminta;
 	protected Produktai produktaiKavai;
 	
-	protected KavosPuodelis (String kavosPavadinimas, int cukrus, int kava, int vanduo) {
+	public KavosPuodelis (String kavosPavadinimas, int cukrus, int kava, int vanduo) {
 		produktaiKavai = new Produktai(cukrus, kava, vanduo);
 		this.kavosPavadinimas = kavosPavadinimas;
 	}
@@ -25,6 +25,8 @@ public class KavosPuodelis extends Puodelis implements CoffeeCup {
 	public Produktai getProduktai() {
 		return this.produktaiKavai.gaukKopija();
 	}
+	
+	
 	
 	@Override
 	public String toString() {
