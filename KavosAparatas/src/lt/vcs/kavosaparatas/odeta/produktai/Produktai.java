@@ -32,8 +32,6 @@ public class Produktai implements Products {
 	
 	
 	
-	
-	
 	public int getCukrausKiekis() {
 		return cukrausKiekis;
 	}
