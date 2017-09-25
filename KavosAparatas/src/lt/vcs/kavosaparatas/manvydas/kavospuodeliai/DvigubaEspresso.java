@@ -7,7 +7,7 @@ public class DvigubaEspresso extends KavosPuodelis {
 	
 
 		public DvigubaEspresso() {
-			super("Dviguba Espresso", 10,40,0);
+			super("Dviguba Espresso",0,40,0);
 		}
 	
 	

@@ -2,6 +2,9 @@ package lt.vcs.kavosaparatas.odeta.aparatai;
 
 import lt.vcs.kavosaparatas.common.CoffeeCup;
 import lt.vcs.kavosaparatas.common.CoffeeMashine;
+import lt.vcs.kavosaparatas.odeta.kavospuodeliai.CapuccinoKavosPuodelis;
+import lt.vcs.kavosaparatas.odeta.kavospuodeliai.JuodosKavosPuodelis;
+import lt.vcs.kavosaparatas.odeta.kavospuodeliai.LatteKavosPuodelis;
 import lt.vcs.kavosaparatas.odeta.produktai.Produktai;
 import lt.vcs.kavosaparatas.odeta.puodeliai.KavosPuodelis;
 
@@ -30,13 +33,39 @@ public class KavosAparatasDu implements CoffeeMashine {
 	}
 	
 	
+	public KavosPuodelis gaminkKava(String kavosTipas) {
+		
+		KavosPuodelis puodelis = null;
+		switch (kavosTipas) {
+		case "juoda":
+			puodelis = new JuodosKavosPuodelis();
+			break;
+		case "latte":
+			puodelis = new LatteKavosPuodelis();
+			break;
+		case "capuccino":
+			puodelis = new CapuccinoKavosPuodelis();
+			break;
+		default:
+			System.out.println("Atsiprasome, tokios kavos rusies neturime");
+			break;
+		}
+		
+		if(puodelis != null)
+			gaminkKava(puodelis);
+		
+		return puodelis;
+	}
+	
 	public void gaminkKava(KavosPuodelis puodelis) {
 		Produktai produktai = puodelis.getProduktai();
 		gaminkKava(produktai.getCukrausKiekis(), produktai.getKavosPupeliuKiekis(), produktai.getVandensKiekis());
 		puodelis.setKavaPagaminta(true);
 	}
-
-	public void gaminkKava(String kavosTipas) {
+	
+	//ar gerai?
+	
+	public void gaminkKavaKitaip(String kavosTipas) {
 		switch (kavosTipas) {
 		case "juoda":
 			gaminkKava(1, 2, 3);
@@ -135,7 +164,7 @@ public class KavosAparatasDu implements CoffeeMashine {
 		}
 	}
 
-	public void pasakykAparatoBusena() {
+	public void sakykAparatoBusena() {
 		sakykProduktuBusena();
 		pasakykKiekLikoPanaudojimuIkiPlovimo();
 	}
@@ -193,6 +222,13 @@ public class KavosAparatasDu implements CoffeeMashine {
 	public void ismurzinkAparata() {
 		this.panaudojimuKiekis = PANAUDOJIMU_SKAICIUS_KADA_PLAUTI;
         System.out.println("DEMSIO DEMESIO DEMESIO - APARATUI DIRBTINAI PADIDINTAS PANAUDOJIMU SKAICIUS");
+		
+	}
+
+
+	@Override
+	public void papildykPupeliu(int pupeliuKiekis) {
+		// TODO Auto-generated method stub
 		
 	}
 

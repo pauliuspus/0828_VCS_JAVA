@@ -3,7 +3,7 @@ package lt.vcs.kavosaparatas.manvydas.kavospuodeliai;
 import lt.vcs.kavosaparatas.common.CoffeeCup;
 import lt.vcs.kavosaparatas.manvydas.resursai.Produktai;
 
-public class KavosPuodelis extends Puodelis implements CoffeeCup{
+public class KavosPuodelis extends Puodelis implements CoffeeCup {
 
 	protected Produktai produktai;
 	protected String kavosVardas;
@@ -17,9 +17,8 @@ public class KavosPuodelis extends Puodelis implements CoffeeCup{
 	public String toString() {
 		if (arKavaPagaminta) {
 			return (kavosVardas + " pagaminta. Skanaus!");
-		}
-		return "kava nepagaminta";
-
+		} else
+			return "kava nepagaminta";
 	}
 
 	@Override

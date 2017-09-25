@@ -1,7 +1,7 @@
 package lt.vcs.kavosaparatas.pijus.main;
 
 import lt.vcs.kavosaparatas.pijus.aparatai.KavosAparatai2;
-import lt.vcs.kavosaparatas.pijus.aparatai.KavosAparatas2;
+import lt.vcs.kavosaparatas.pijus.aparatai.KavosAparatas;
 import lt.vcs.kavosaparatas.pijus.produktai.Produktai;
 
 public class MainMetodas {

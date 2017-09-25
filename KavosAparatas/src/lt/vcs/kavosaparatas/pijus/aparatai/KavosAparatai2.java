@@ -1,36 +1,57 @@
 package lt.vcs.kavosaparatas.pijus.aparatai;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+
 import lt.vcs.kavosaparatas.pijus.produktai.Produktai;
 
 public class KavosAparatai2 {
-	public KavosAparatas2 sukurkKavosAparata() {
-		return new KavosAparatas2(10, 10, 10); // jis kolkas neturi reiksmes nes mes rankiniu budu turim irasyti viska
+	static int KavosAparatuSkaicius = 0;
+
+	public static void aparatuSkaicius() {
+		System.out.println("sukurta: " + KavosAparatuSkaicius);
 	}
 
-	public KavosAparatas2 vienasAparatas() {
-		return new KavosAparatas2();
+	public KavosAparatas sukurkKavosAparata() {
+		KavosAparatuSkaicius++;
+		return new KavosAparatas(10, 10, 10); // jis kolkas neturi reiksmes nes mes rankiniu budu turim irasyti viska
 	}
 
-	public KavosAparatas2[] daugKavosAparatu(int g) {
-		KavosAparatas2[] kavosAparatai = new KavosAparatas2[g];
+	public KavosAparatas vienasAparatas() {
+		KavosAparatuSkaicius++;
+		return new KavosAparatas();
+	}
 
-		for (int i = 0; i < kavosAparatai.length; i++) {
-			kavosAparatai[i] = new KavosAparatas2();
+	public List<KavosAparatas> sukurkKavosAparatuSarasa(int g) {
+		List<KavosAparatas> list = new ArrayList<KavosAparatas>();
+
+		for (int i = 0; i < g; i++) {
+			list.add(new KavosAparatas());
 		}
-		return kavosAparatai;
+		return list;
 	}
 
-	public void isvalykAparata(KavosAparatas2 aparatas) {
+	public Map<Integer, KavosAparatas> sukurkKavosAparatuMapa(int g) {
+		Map<Integer, KavosAparatas> mapas = new HashMap<Integer, KavosAparatas>();
+		for (int i = 0; i < g; i++) {
+			mapas.put(i, new KavosAparatas());
+		}
+		return mapas;
+	}
+
+	public void isvalykAparata(KavosAparatas aparatas) {
 		aparatas.isvalykAparata();
 	}
 
-	public void isvalykAparatuPanaudojimuMasyva(KavosAparatas2[] aparatai) {
+	public void isvalykAparatuPanaudojimuMasyva(KavosAparatas[] aparatai) {
 		for (int i = 0; i < aparatai.length; i++) {
 			aparatai[i].isvalykAparata();
 		}
 	}
 
-	public void isvalykAparatuProduktuMasyva(KavosAparatas2[] aparatai) {
+	public void isvalykAparatuProduktuMasyva(KavosAparatas[] aparatai) {
 		for (int i = 0; i < aparatai.length; i++) {
 			aparatai[i].sakykAparatoBusena();
 			aparatai[i].isvalykProduktus();

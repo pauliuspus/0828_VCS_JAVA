@@ -1,5 +1,7 @@
 package lt.vcs.kavosaparatas.manvydas.servisai;
 
+import java.util.ArrayList;
+
 import lt.vcs.kavosaparatas.common.CoffeMashineService;
 import lt.vcs.kavosaparatas.manvydas.aparatai.KavosAparatas;
 
@@ -21,6 +23,11 @@ public class Aptarnavimas implements CoffeMashineService{
 		for (int i = 0; i < kavosAparatai.length; i++) {
 			kavosAparatai[i] = new KavosAparatas();
 		}
+		return kavosAparatai;
+	}
+	
+	public ArrayList sukurkKavosAparatus() {
+		ArrayList kavosAparatai = new ArrayList();		
 		return kavosAparatai;
 	}
 
@@ -54,6 +61,11 @@ public class Aptarnavimas implements CoffeMashineService{
 				System.out.println("Aparatas, kurio indeksas " + i + " sekmingai isplautas!");
 			}
 		}
+	}
+	
+	// Skaiciuoja, kiek buvo sukurta kavos aparatu
+	public static void skaiciuokKiekKavosAparatuSukurta() {
+		
 	}
 	
 
