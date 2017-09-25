@@ -22,7 +22,9 @@ public class MainKavosDu {
 	
 		KavosAparatuServisas kac = new KavosAparatuServisas();
 		
-		KavosAparatasDu aparatai[] = kac.sukurkKavosAparatus(3);
+		kac.sakykKiekBuvoSukurtaAparatu();
+		
+		KavosAparatasDu aparatai[] = kac.sukurkKavosAparatus(2);
 		
 		aparatai[1].setProduktai(p);
 		aparatai[1].sakykProduktuBusena();
@@ -30,6 +32,8 @@ public class MainKavosDu {
 		
 		aparatai[1].sakykProduktuBusena();
 
+	kac.sakykKiekBuvoSukurtaAparatu();
+		
 		
 	
 		//kavosAparatasDu.gaminkKava("juoda");
@@ -37,9 +41,6 @@ public class MainKavosDu {
 		//KavosAparatuServisas delKavosAparatu = new KavosAparatuServisas();
 	
 		//delKavosAparatu.sukurkKavosAparatus(5);
-		
-
-		
 			
 		//Produktai produktaiMusu = new Produktai(5, 10, 10);
 		

@@ -4,8 +4,11 @@ import lt.vcs.kavosaparatas.odeta.aparatai.KavosAparatasDu;
 import lt.vcs.kavosaparatas.odeta.produktai.Produktai;
 
 public class KavosAparatuServisas {
+	
+	static int skaiciusKiekSukurtaKavosAparatu = 0;
 
 	public KavosAparatasDu sukurVienaKavosAparata() {
+		skaiciusKiekSukurtaKavosAparatu = ++skaiciusKiekSukurtaKavosAparatu;
 		KavosAparatasDu kavosAparatasDu = new KavosAparatasDu();
 		return kavosAparatasDu;
 	}
@@ -23,6 +26,11 @@ public class KavosAparatuServisas {
 
 	}
 
+	
+	public static int sakykKiekBuvoSukurtaAparatu() {
+		System.out.println("Buvo sukurta tiek aparatu: " + skaiciusKiekSukurtaKavosAparatu);
+		return skaiciusKiekSukurtaKavosAparatu;
+	}
 	
 	public void isplaukAparatus(KavosAparatasDu[] kavosAparatai) {
 		for (int i = 0; i < kavosAparatai.length; i++) {
