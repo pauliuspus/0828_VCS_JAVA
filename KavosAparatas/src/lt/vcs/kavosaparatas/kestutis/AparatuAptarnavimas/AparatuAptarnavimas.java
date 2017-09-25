@@ -1,5 +1,11 @@
 package lt.vcs.kavosaparatas.kestutis.AparatuAptarnavimas;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+
 import lt.vcs.kavosaparatas.kestutis.KavosAparatas.KavosAparatas;
 import lt.vcs.kavosaparatas.kestutis.Produktai.Produktai;
 
@@ -67,6 +73,29 @@ public void sumuokIrValykProduktus(KavosAparatas[] masyvas, int cukrausSuma, int
 	
 	public Produktai istraukProduktus(KavosAparatas k) {
 		return k.getProduktai();*/
+	
+	
+	static int sukurtuAparatuSkaicius;
+	
+	public static void kiekSukurtaAparatu(){
+		System.out.println("iveskite kiek aparatu kursite");
+		sukurtuAparatuSkaicius = new Scanner(System.in).nextInt();
+		System.out.println("sukurta aparatu" + sukurtuAparatuSkaicius);	
+		
+	}
+	
+	public void kurkKavosAparatuLista() {
+		List<KavosAparatas> kavosAparatuListas = new ArrayList<KavosAparatas>(sukurtuAparatuSkaicius);
+		for (int i = 0; i < kavosAparatuListas.size(); i++)
+			kavosAparatuListas.add(i, new KavosAparatas(10, 10, 10));
+	}
+	
+	public void kurkKavosAparatuMapa() {
+		Map<Integer, KavosAparatas> kavosAparatuMapas = new HashMap<Integer, KavosAparatas>();
+		for (int i = 0; i < sukurtuAparatuSkaicius; i++) 
+		kavosAparatuMapas.put(i+1, new KavosAparatas(10, 10, 10));
+	}
+		
 	
 	public KavosAparatas[] sukurkKavosAparatus(int skaicius) {
 		KavosAparatas[] kavosAparatai = new KavosAparatas[skaicius];

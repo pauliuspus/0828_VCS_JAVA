@@ -2,12 +2,19 @@ package lt.vcs.kavosaparatas.kestutis.KavosAparatas;
 
 
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+
 import lt.vcs.kavosaparatas.common.CoffeeMashine;
 import lt.vcs.kavosaparatas.kestutis.kavos.Capuccino;
 import lt.vcs.kavosaparatas.kestutis.kavos.Espresso;
 import lt.vcs.kavosaparatas.kestutis.kavos.JuodaKava;
 import lt.vcs.kavosaparatas.kestutis.Produktai.Produktai;
 import lt.vcs.kavosaparatas.kestutis.puodeliai.KavosPuodelis;
+import lt.vcs.kavosaparatas.kestutis.puodeliai.Puodelis;
 
 public class KavosAparatas implements CoffeeMashine {
 	
@@ -15,8 +22,11 @@ public class KavosAparatas implements CoffeeMashine {
 	//int kava = 0;
 	//int vanduo = 0;
 	private int panaudojimai = 0;
-	
 	public Produktai produktai;
+	
+	Map<String, KavosPuodelis> m = new HashMap<String, KavosPuodelis>();
+	
+	
 	
 	public KavosAparatas (int cukrus, int kava, int vanduo) {
 		/*this.cukrus = cukrus;
@@ -74,8 +84,29 @@ public void gaminkCapuccino() {
 	
 }*/
 	
+	public void pridekPuodeli(String rusis, int cukrus, int kava, int vanduo) {
+		m.put(rusis, new KavosPuodelis(rusis, cukrus, kava, vanduo) );
+		
+	}
 	
+	public void pasalinkPuodeli(String rusis) {
+		if (m.containsKey(rusis))
+			m.remove(rusis);
+		else System.out.println("tokios rusies nera");
+	}
 	
+	public void pridekPuodeliuSarasa(int puodeliuMapoDydis) {
+		List<Map<String, KavosPuodelis>> sarasas = new ArrayList<Map<String, KavosPuodelis>>();
+		for (int i = 0; i < puodeliuMapoDydis; i++) 
+			sarasas.add(m);
+	}
+		
+	public void gaminkKavaJeiYra(String rusis) {
+		if (m.containsKey(rusis.toLowerCase()) || m.containsKey(rusis.toUpperCase())) {	
+			KavosPuodelis kopija = m.get(rusis);
+			gaminkKava(kopija);
+	}	
+	}
 	public KavosPuodelis gaminkKava(String kavosTipas) {
 
         KavosPuodelis puodelis = null;
