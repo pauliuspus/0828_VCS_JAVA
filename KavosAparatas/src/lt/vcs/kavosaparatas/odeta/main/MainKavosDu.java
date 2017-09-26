@@ -18,6 +18,7 @@ public class MainKavosDu {
 		
 		aparatas.gaminkKava("juoda");
 		
+		
 		//System.out.println(p.getCukrausKiekis());
 		//System.out.println(p.getKavosPupeliuKiekis());
 		//System.out.println(p.getVandensKiekis());
@@ -45,6 +46,8 @@ public class MainKavosDu {
 		//Produktai produktaiMusu = new Produktai(5, 10, 10);
 		
 		//produktaiMusu.getCukrausKiekis();
+	
+	
 		
 	}
 
