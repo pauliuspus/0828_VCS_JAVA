@@ -2,27 +2,39 @@ package lt.vcs.kavosaparatas.odeta.servisai;
 
 import lt.vcs.kavosaparatas.odeta.aparatai.KavosAparatasDu;
 import lt.vcs.kavosaparatas.odeta.produktai.Produktai;
+import java.util.ArrayList;
+import java.util.List;
 
 public class KavosAparatuServisas {
 	
 	static int skaiciusKiekSukurtaKavosAparatu = 0;
 
 	public KavosAparatasDu sukurVienaKavosAparata() {
-		skaiciusKiekSukurtaKavosAparatu = ++skaiciusKiekSukurtaKavosAparatu;
+		skaiciusKiekSukurtaKavosAparatu++;
 		KavosAparatasDu kavosAparatasDu = new KavosAparatasDu();
 		return kavosAparatasDu;
 	}
 
 	public KavosAparatasDu[] sukurkKavosAparatus(int skaicius) {
 		KavosAparatasDu[] kavosAparatai = new KavosAparatasDu[skaicius];
-
 		for (int i = 0; i < kavosAparatai.length; i++) {
+			
 			// kavosAparatai[i] = new KavosAparatasDu(); - kitas variantas
 
 			kavosAparatai[i] = sukurVienaKavosAparata();
 		}
 
 		return kavosAparatai;
+
+	}
+	
+	public List<KavosAparatasDu> sukurkKavosAparatus(int skaiciusKiekSukurtiListe){
+		List<KavosAparatasDu>sukurtuKavosAparatuListas = new ArrayList<KavosAparatasDu>(skaiciusKiekSukurtiListe);
+		for (int i = 0; i < sukurtuKavosAparatuListas.size(); i++) {
+			sukurtuKavosAparatuListas.add(i, new KavosAparatasDu());
+	
+		}
+		return sukurtuKavosAparatuListas;
 
 	}
 

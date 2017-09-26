@@ -10,21 +10,21 @@ public class MainKavosDu {
 
 		Produktai p = new Produktai(5, 5, 5);
 		
-		KavosAparatasDu kavosAparatasDu = new KavosAparatasDu();
+		KavosAparatuServisas kac = new KavosAparatuServisas();
 		
-		kavosAparatasDu.setProduktai(p);
+		KavosAparatasDu aparatas =kac.sukurVienaKavosAparata();
 		
-		kavosAparatasDu.gaminkKava("juoda");
+		aparatas.setProduktai(p);
+		
+		aparatas.gaminkKava("juoda");
 		
 		//System.out.println(p.getCukrausKiekis());
 		//System.out.println(p.getKavosPupeliuKiekis());
 		//System.out.println(p.getVandensKiekis());
-	
-		KavosAparatuServisas kac = new KavosAparatuServisas();
 		
 		kac.sakykKiekBuvoSukurtaAparatu();
 		
-		KavosAparatasDu aparatai[] = kac.sukurkKavosAparatus(2);
+		KavosAparatasDu aparatai[] = kac.sukurkKavosAparatus(8);
 		
 		aparatai[1].setProduktai(p);
 		aparatai[1].sakykProduktuBusena();
