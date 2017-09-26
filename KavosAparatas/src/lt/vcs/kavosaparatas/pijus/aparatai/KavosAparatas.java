@@ -1,5 +1,8 @@
 package lt.vcs.kavosaparatas.pijus.aparatai;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import lt.vcs.kavosaparatas.common.CoffeeCup;
 import lt.vcs.kavosaparatas.common.CoffeeMashine;
 import lt.vcs.kavosaparatas.common.Products;
@@ -10,24 +13,29 @@ import lt.vcs.kavosaparatas.pijus.puodeliai.LattePuodelis;
 import lt.vcs.kavosaparatas.pijus.puodeliai.MochaPuodelis;
 import lt.vcs.kavosaparatas.pijus.puodeliai.Puodelis;
 
-public class KavosAparatas2 implements CoffeeMashine {
+public class KavosAparatas implements CoffeeMashine {
 	Produktai p;
-
 	private int panaudojimuSkaicius;
-	// Konstanta
 	private static final int panaudotuSkaiciuRiba = 100;
+	Map<String, KavosPuodelis> puodeliai = new HashMap<String, KavosPuodelis>();
 
 	// Constructor
 
-	public KavosAparatas2(int vandensKiekis, int cukrausKiekis, int pupeliuKiekis) {
+	public KavosAparatas(int vandensKiekis, int cukrausKiekis, int pupeliuKiekis) {
 		p = new Produktai(vandensKiekis, cukrausKiekis, pupeliuKiekis);
+		puodeliai.put("Mocha", new MochaPuodelis());
+		puodeliai.put("late", new LattePuodelis());
+		puodeliai.put("juoda", new JuodaKavaPuodelis());
 	}
 
-	public KavosAparatas2() {
-
+	public KavosAparatas() {
+		puodeliai.put("Mocha", new MochaPuodelis());
+		puodeliai.put("late", new LattePuodelis());
+		puodeliai.put("juoda", new JuodaKavaPuodelis());
 	}
 
 	// Kavos gaminimas ir kita
+
 	public KavosPuodelis gaminkKava(String kavosTipas) {
 		KavosPuodelis puodelis = null;
 		switch (kavosTipas) {
@@ -48,7 +56,12 @@ public class KavosAparatas2 implements CoffeeMashine {
 			gaminkKava(puodelis);
 
 		return puodelis;
+	}
 
+	private void gaminkKava(KavosPuodelis puodelis) {
+		Produktai produktai = puodelis.getProduktai();
+		gaminkKava(produktai.getVandensKiekis(), produktai.getCukrausKiekis(), produktai.getPupeliuKiekis());
+		puodelis.setKavaPagaminta(true);
 	}
 
 	/*
@@ -98,10 +111,20 @@ public class KavosAparatas2 implements CoffeeMashine {
 	 * panaudojimuSkaicius++; System.out.println("skanios kavos"); return mocha; } }
 	 * return kp; }
 	 */
-	private void gaminkKava(KavosPuodelis puodelis) {
-		Produktai produktai = puodelis.getProduktai();
-		gaminkKava(produktai.getVandensKiekis(), produktai.getCukrausKiekis(), produktai.getPupeliuKiekis());
-		puodelis.setKavaPagaminta(true);
+
+	// sitas metodas gamina pagal mapa
+	public void gaminkKavaJeiYra(String kavosTipas) {
+		kavosTipas = kavosTipas.toLowerCase();
+		if (puodeliai.equals(kavosTipas)) {
+			gaminkKava(puodeliai.get(kavosTipas));
+
+			// Produktai produktai = puodelis.getProduktai();
+			// gaminkKava(produktai.getVandensKiekis(), produktai.getCukrausKiekis(),
+			// produktai.getPupeliuKiekis());
+			// puodelis.setKavaPagaminta(true);
+		} else {
+			System.out.println("nera tokios kavos");
+		}
 	}
 
 	private void gaminkKava(int vandensKiekis, int cukrausKiekis, int pupeliuKiekis) {
@@ -112,6 +135,14 @@ public class KavosAparatas2 implements CoffeeMashine {
 			panaudojimuSkaicius++;
 			System.out.println("skanios kavos");
 		}
+	}
+
+	public void pridekPuodeli(String s, KavosPuodelis puodelis) {
+		puodeliai.put(s, puodelis);
+	}
+
+	public void pasalinkkPuodeli(String s) {
+		puodeliai.remove(s);
 	}
 
 	private boolean arUzteks(int vandensKiekis, int cukrausKiekis, int pupeliuKiekis) {
@@ -188,6 +219,11 @@ public class KavosAparatas2 implements CoffeeMashine {
 
 		System.out.println("panaudijumu liko " + (panaudotuSkaiciuRiba - panaudojimuSkaicius));
 	}
+	// Set/get
+
+	public void pridekPuodeliuSarasa(Map<String, KavosPuodelis> puodeliai) {
+		this.puodeliai = puodeliai;
+	}
 
 	public void getProduktkaiKopija(Produktai produktai) {
 		this.p = produktai;
@@ -206,8 +242,8 @@ public class KavosAparatas2 implements CoffeeMashine {
 	}
 
 	@Override
-	public Products getProduktaiKopija() {
-		// TODO Auto-generated method stub
+	public Products getProduktaiKopija() { // neturi reiksmes
+
 		return null;
 	}
 
