@@ -10,16 +10,16 @@ public class CollectionPvz {
 	public static void main(String[] args) {
 
 
-		Map <Integer, Map<String,String>> m = new HashMap<Integer, String>();
+		Map <Integer, String> m = new HashMap<Integer, String>();
 		
-		m.put(5, "tekstas".hashCode());
+		m.put(5, "tekstas");
 		m.put(9, "");
 		
 		m.put(99, "kazkoks test tekstas");
 		
 	
 		
-		for(String s : m.values()){
+	/*	for(String s : m.values()){
 			System.out.println(s);
 		}
 		
@@ -29,6 +29,17 @@ public class CollectionPvz {
 		
 		for(Map.Entry<Integer, String> e : m.entrySet()){
 			System.out.println(e.getKey() + "->" + e.getValue());
+		}*/
+		
+		Object [] array1 = m.entrySet().toArray();
+		
+		
+		
+		
+		//Map.Entry<Integer, String> [] mas =(Map.Entry<Integer, String> []) m.entrySet().toArray();
+		
+		for(int i = 0; i < array1.length; i++){
+			System.out.println(array1[i].getClass());
 		}
 		
 		
