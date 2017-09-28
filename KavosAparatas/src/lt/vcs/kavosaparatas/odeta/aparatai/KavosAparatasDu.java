@@ -1,5 +1,10 @@
 package lt.vcs.kavosaparatas.odeta.aparatai;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import lt.vcs.kavosaparatas.common.CoffeeCup;
 import lt.vcs.kavosaparatas.common.CoffeeMashine;
 import lt.vcs.kavosaparatas.odeta.kavospuodeliai.CapuccinoKavosPuodelis;
@@ -21,7 +26,24 @@ public class KavosAparatasDu implements CoffeeMashine {
 	// cia kad reikia visu triju produktu vienu metu, kad galiu tureti kitiems
 	// produktam default value
 	private static final int DEFAULT_PRODUCT_VALUE = 50;
-
+	
+	public Map<String, KavosPuodelis> kavosPuodeliuRusys = new HashMap<String, KavosPuodelis>();
+	
+	public void pridekPuodeli(String puodelioPavadinimas, KavosPuodelis puodelis) {
+		kavosPuodeliuRusys.put(puodelioPavadinimas, puodelis);
+		
+	}
+	
+	public void pasalinkPuodeli(String puodelioPavadinimas) {
+		kavosPuodeliuRusys.remove(puodelioPavadinimas);
+		
+	}
+	
+	public void pridekPuodeliuSarasa (ArrayList<KavosPuodelis> pridedamasPuodeliuListas) {
+		kavosPuodeliuRusys.put(pridedamasPuodeliuListas);
+		
+	}
+	
 	//konstruktorius, kuris priima produktu kiekisu
 	
 	public KavosAparatasDu(int cukrausKiekis, int kavosPupeliuKiekis, int vandensKiekis) {
