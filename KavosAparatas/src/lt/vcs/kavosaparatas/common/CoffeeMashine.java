@@ -1,10 +1,10 @@
 package lt.vcs.kavosaparatas.common;
 
-import lt.vcs.kavosaparatas.andrius.puodeliai.KavosPuodelis;
-import lt.vcs.kavosaparatas.andrius.resursai.Produktai;
+import lt.vcs.kavosaparatas.common.exceptions.NesvarusAparatas;
+import lt.vcs.kavosaparatas.common.exceptions.TrukstaProduktu;
 
 public interface CoffeeMashine {
-	public CoffeeCup gaminkKava(String kavosTipas);
+	public CoffeeCup gaminkKava(String kavosTipas) throws NesvarusAparatas, TrukstaProduktu;
 
 	public void ismurzinkAparata();
 
