@@ -1,13 +1,21 @@
 package lt.vcs.kavosaparatas.lina.aparatai;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import lt.vcs.kavosaparatas.common.CoffeeMashine;
 import lt.vcs.kavosaparatas.lina.Kavos.JuodaKava;
 import lt.vcs.kavosaparatas.lina.Kavos.KavaSuPienu;
 import lt.vcs.kavosaparatas.lina.Kavos.Latte;
+import lt.vcs.kavosaparatas.lina.klaidos.NeraTokioTipoKavos;
+import lt.vcs.kavosaparatas.lina.klaidos.ReikiaValytiAparata;
+import lt.vcs.kavosaparatas.lina.klaidos.TrukstaProduktu;
+//import lt.vcs.kavosaparatas.lina.klaidos.Klaida;
 import lt.vcs.kavosaparatas.lina.produkcija.Produktai;
 import lt.vcs.kavosaparatas.lina.puodelis.KavosPuodelis;
 
-public class KavosAparatas implements CoffeeMashine{
+
+public class KavosAparatas implements CoffeeMashine {
 
 	private Produktai produktai;
 	private int panaudojimukiekis;
@@ -15,6 +23,13 @@ public class KavosAparatas implements CoffeeMashine{
 	public static final String LATTE = "latte";
 	public static final String KAVASUPIENU = "kava su pienu";
 	public static final String JUODAKAVA = "juoda kava";
+	private Set<String> kavosRusys = new HashSet<String>();
+
+	{
+		kavosRusys.add(KAVASUPIENU);
+		kavosRusys.add(LATTE);
+		kavosRusys.add(JUODAKAVA);
+	}
 
 	// Konstruktoriai
 	public KavosAparatas() {
@@ -36,6 +51,10 @@ public class KavosAparatas implements CoffeeMashine{
 
 	// metodai
 
+	public void pridekKavosRusi(String kavosRusis) {
+		this.kavosRusys.add(kavosRusis);
+	}
+
 	public void papildykProduktus(int cukrauskiekis, int kavospupeliukiekis, int vandenskiekis) {
 		produktai.setCukrausKiekis(cukrauskiekis + produktai.getCukrausKiekis());
 		produktai.setVandensKiekis(vandenskiekis + produktai.getVandensKiekis());
@@ -44,10 +63,6 @@ public class KavosAparatas implements CoffeeMashine{
 
 	public void sakykProduktuBusena() {
 		this.produktai.atspausdinkProduktus();
-		// System.out.println("Cukraus kiekis: " + produktai.getCukrausKiekis());
-		// System.out.println("Vandens kiekis: " + produktai.getVandensKiekis());
-		// System.out.println("Pupeliu kiekis: " + produktai.getKavosPupeliuKiekis());
-		// System.out.println("Pieno kiekis: " + produktai.getPienoKiekis());
 	}
 
 	public void sakykAparatoBusena() {
@@ -55,36 +70,37 @@ public class KavosAparatas implements CoffeeMashine{
 		System.out.println("Liko panaudojimui kartu iki plovimo: " + (this.riba - this.panaudojimukiekis));
 	}
 
-	public KavosPuodelis gaminkKava(String kavosTipas) {
+	public KavosPuodelis gaminkKava(String kavosTipas) throws NeraTokioTipoKavos, ReikiaValytiAparata, TrukstaProduktu {
 		KavosPuodelis puodelis = null;
-		switch (kavosTipas) {
-		case LATTE:
-			puodelis = new Latte();
-			break;
 
-		case JUODAKAVA:
-			puodelis = new JuodaKava();
-			break;
+		if (kavosRusys.contains(kavosTipas)) {
 
-		case KAVASUPIENU:
-			puodelis = new KavaSuPienu();
-			break;
-		default:
-			System.out.println("Pasirinkote neegzistuojanti kavos tipa!");
-		}
+			switch (kavosTipas) {
+			case LATTE:
+				puodelis = new Latte();
+				break;
 
-		if (puodelis != null)
+			case JUODAKAVA:
+				puodelis = new JuodaKava();
+				break;
+
+			case KAVASUPIENU:
+				puodelis = new KavaSuPienu();
+				break;
+			}
 			gaminkKava(puodelis);
-
+		} else {
+			throw new NeraTokioTipoKavos();
+		}
 		return puodelis;
 	}
 
-	private void gaminkKava(KavosPuodelis puodelis) {
+	private void gaminkKava(KavosPuodelis puodelis) throws ReikiaValytiAparata, TrukstaProduktu {
 		Produktai produktai = puodelis.getProduktai();
 		gaminkKava(produktai.getVandensKiekis(), produktai.getCukrausKiekis(), produktai.getKavosPupeliuKiekis());
 	}
 
-	private void gaminkKava(int vandensKiekis, int cukrausKiekis, int pupeliuKiekis) {
+	private void gaminkKava(int vandensKiekis, int cukrausKiekis, int pupeliuKiekis) throws ReikiaValytiAparata, TrukstaProduktu {
 		if (arAparatasPasiruoses(vandensKiekis, cukrausKiekis, pupeliuKiekis)) {
 			produktai.setCukrausKiekis(produktai.getCukrausKiekis() - cukrausKiekis);
 			produktai.setKavosPupeliuKiekis(produktai.getKavosPupeliuKiekis() - pupeliuKiekis);
@@ -94,21 +110,24 @@ public class KavosAparatas implements CoffeeMashine{
 		}
 	}
 
-	public boolean arAparatasPasiruoses(int cukrauskiekis, int kavospupeliukiekis, int vandenskiekis) {
-		if (produktai.getCukrausKiekis() - cukrauskiekis > 0
-				&& produktai.getKavosPupeliuKiekis() - kavospupeliukiekis > 0
-				&& produktai.getVandensKiekis() - vandenskiekis > 0 && this.panaudojimukiekis < this.riba) {
+	public boolean arAparatasPasiruoses(int cukrauskiekis, int kavospupeliukiekis, int vandenskiekis) throws ReikiaValytiAparata, TrukstaProduktu {
+		if (this.panaudojimukiekis>=this.riba) {
+			throw new ReikiaValytiAparata();
+		}
+		
+		if (produktai.getCukrausKiekis() < cukrauskiekis
+				|| produktai.getKavosPupeliuKiekis() < kavospupeliukiekis
+				|| produktai.getVandensKiekis() < vandenskiekis) {
+			throw new TrukstaProduktu();
+		}
+		return true;
+	}
+
+	public boolean arAparatasPasiruoses() {
+		if (this.panaudojimukiekis >= this.riba) {
 			return true;
 		}
-		System.out.println("Produktu kiekis yra nepakankamas!");
 		return false;
-	}
-	
-	public boolean arAparatasPasiruoses() {
-			if(arAparatasPasiruoses(produktai.getCukrausKiekis(), produktai.getKavosPupeliuKiekis(), produktai.getVandensKiekis())) {
-				return true;
-			}
-			return false;
 	}
 
 	public void atlikPlovima() {
@@ -127,15 +146,15 @@ public class KavosAparatas implements CoffeeMashine{
 		produktai.setKavosPupeliuKiekis(kavospupeliukiekis);
 		produktai.setVandensKiekis(vandenskiekis);
 	}
-	
+
 	public void papildykVandens(int vandenskiekis) {
 		produktai.setVandensKiekis(vandenskiekis);
 	}
-	
+
 	public void papildykCukraus(int cukrauskiekis) {
 		produktai.setCukrausKiekis(cukrauskiekis);
 	}
-	
+
 	public void papildykPupeliu(int pupeliukiekis) {
 		produktai.setKavosPupeliuKiekis(pupeliukiekis);
 	}
