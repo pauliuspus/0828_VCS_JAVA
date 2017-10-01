@@ -6,6 +6,7 @@ import java.util.Scanner;
 import lt.vcs.kavosaparatas.common.CoffeeCup;
 import lt.vcs.kavosaparatas.common.CoffeeMashine;
 import lt.vcs.kavosaparatas.common.Products;
+import lt.vcs.kavosaparatas.manvydas.exceptions.ReikiaPlauti;
 import lt.vcs.kavosaparatas.manvydas.kavospuodeliai.DvigubaEspresso;
 import lt.vcs.kavosaparatas.manvydas.kavospuodeliai.Espresso;
 import lt.vcs.kavosaparatas.manvydas.kavospuodeliai.JuodaKava;
@@ -15,6 +16,9 @@ import lt.vcs.kavosaparatas.manvydas.resursai.Produktai;
 
 public class KavosAparatas implements CoffeeMashine {
 
+	//Testas cia
+	
+	
 	// Konstanta, kuri galioja visiems aparatams
 	private static final int PANAUDOJIMU_SK_PRIES_PLOVIMA = 2;
 
@@ -66,9 +70,16 @@ public class KavosAparatas implements CoffeeMashine {
 		System.out.println("Sukurta aparatu: " + aparatuSkaitliukas);
 		return aparatuSkaitliukas;
 	}
-
+	
 	@Override
 	public KavosPuodelis gaminkKava(String kavosTipas) {
+		
+		/*if (PANAUDOJIMU_SK_PRIES_PLOVIMA - this.panaudojimuSkaicius <= 0) {
+			throw new ReikiaPlauti();
+		}*/
+			
+		
+		
 		KavosPuodelis kavosPuodelis = null;
 		Scanner s = new Scanner(System.in);
 		kavosTipas = kavosTipas.toUpperCase();
@@ -112,6 +123,8 @@ public class KavosAparatas implements CoffeeMashine {
 			System.out.println("Aparatas nesvarus! Inicijuojamas plovimas...");
 			atlikPlovima();
 		}
+		
+		
 
 		switch (kavosTipas) {
 		case "JUODA":
@@ -132,8 +145,10 @@ public class KavosAparatas implements CoffeeMashine {
 			perskaiciuokProduktus(kavosPuodelis);
 			System.out.println(kavosPuodelis.toString());
 		}
+		
 
 		return kavosPuodelis;
+		
 	}
 	
 	private void gaminkKava(KavosPuodelis kavosPavadinimas) {
