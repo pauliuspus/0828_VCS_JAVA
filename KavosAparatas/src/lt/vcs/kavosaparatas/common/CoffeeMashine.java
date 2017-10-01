@@ -1,8 +1,5 @@
 package lt.vcs.kavosaparatas.common;
 
-import lt.vcs.kavosaparatas.andrius.puodeliai.KavosPuodelis;
-import lt.vcs.kavosaparatas.andrius.resursai.Produktai;
-
 public interface CoffeeMashine {
 	public CoffeeCup gaminkKava(String kavosTipas);
 
