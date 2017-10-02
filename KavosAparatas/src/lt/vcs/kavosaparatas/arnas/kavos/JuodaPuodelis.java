@@ -1,4 +1,6 @@
-package lt.vcs.kavosaparatas.arnas.puodeliai;
+package lt.vcs.kavosaparatas.arnas.kavos;
+
+import lt.vcs.kavosaparatas.arnas.puodeliai.KavosPuodelis;
 
 public class JuodaPuodelis extends KavosPuodelis {
 

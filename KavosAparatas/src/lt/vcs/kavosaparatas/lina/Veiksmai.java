@@ -41,7 +41,7 @@ public class Veiksmai {
 			System.out.println("");
 			
 			if (i%2 == 0) {
-				kavosAparatuMasyvas[i].gaminkKava(KavosAparatas.LATTE);
+				//kavosAparatuMasyvas[i].gaminkKava(KavosAparatas.LATTE);
 			}
 			
 			kavosAparatuMasyvas[i].sakykAparatoBusena();

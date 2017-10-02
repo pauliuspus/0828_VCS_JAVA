@@ -3,7 +3,7 @@ package lt.vcs.kavosaparatas.lina.puodelis;
 import lt.vcs.kavosaparatas.common.CoffeeCup;
 import lt.vcs.kavosaparatas.lina.produkcija.Produktai;
 
-public class KavosPuodelis extends Puodelis implements CoffeeCup {
+public abstract class KavosPuodelis extends Puodelis implements CoffeeCup {
 	private Produktai produktai;
 	private String kavosPavadinimas;
 	private boolean arPagaminta;
