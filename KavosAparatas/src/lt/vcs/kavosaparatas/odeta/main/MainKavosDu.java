@@ -1,7 +1,12 @@
 package lt.vcs.kavosaparatas.odeta.main;
 
+import lt.vcs.kavosaparatas.common.exceptions.TrukstaProduktu;
 import lt.vcs.kavosaparatas.odeta.aparatai.KavosAparatasDu;
+import lt.vcs.kavosaparatas.odeta.kavospuodeliai.JuodosKavosPuodelis;
+import lt.vcs.kavosaparatas.odeta.kavospuodeliai.LatteKavosPuodelis;
 import lt.vcs.kavosaparatas.odeta.produktai.Produktai;
+import lt.vcs.kavosaparatas.odeta.puodeliai.KavosPuodelis;
+import lt.vcs.kavosaparatas.odeta.puodeliai.Puodelis;
 import lt.vcs.kavosaparatas.odeta.servisai.KavosAparatuServisas;
 
 public class MainKavosDu {
@@ -17,6 +22,10 @@ public class MainKavosDu {
 		aparatas.setProduktai(p);
 		
 		aparatas.gaminkKava("juoda");
+		
+		
+		
+		///// KODEL META KLAIDA:   aparatas.gaminkKava(LatteKavosPuodelis);
 		
 		
 		//System.out.println(p.getCukrausKiekis());
@@ -35,6 +44,25 @@ public class MainKavosDu {
 
 	kac.sakykKiekBuvoSukurtaAparatu();
 		
+	while(true) {
+		try {
+			aparatas.gaminkKava();
+		}catch(TrukstaProduktu e) {
+			System.out.println("Truksta produktu, kavos pagaminti negalime" + e.getStackTrace());
+		}
+	}
+	
+	
+
+
+	/*while(true) {
+		try {
+			aparatas.gaminkKava(puodelis);
+		}catch(TrukstaProduktu e) {
+			System.out.println("Truksta produktu, kavos pagaminti negalime" + e.getStackTrace());
+		}
+	}*/
+	
 		
 	
 		//kavosAparatasDu.gaminkKava("juoda");

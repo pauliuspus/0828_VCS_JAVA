@@ -6,9 +6,9 @@ import lt.vcs.kavosaparatas.odeta.produktai.Produktai;
 
 public class KavosPuodelis extends Puodelis implements CoffeeCup {
 	
-	private Produktai puodelioProduktai;
+	protected Produktai puodelioProduktai;
 	
-	private String kavosPavadinimas;
+	protected String kavosPavadinimas;
 	
 
 	// default, kad kava yra nepagaminta:
@@ -21,7 +21,12 @@ public class KavosPuodelis extends Puodelis implements CoffeeCup {
 	
 	}
 
+	public KavosPuodelis(String kava,int cukrausKiekis, int kavosPupeliuKiekis, int vandensKiekis) {
+		this.kavosPavadinimas = kava;
+		this.puodelioProduktai = new Produktai(cukrausKiekis, kavosPupeliuKiekis, vandensKiekis);
+	}
 	
+
 	@Override
 	public boolean isKavaPagaminta() {
 		

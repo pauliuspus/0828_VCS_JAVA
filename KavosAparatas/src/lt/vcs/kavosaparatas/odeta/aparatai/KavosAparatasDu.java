@@ -7,6 +7,7 @@ import java.util.Map;
 
 import lt.vcs.kavosaparatas.common.CoffeeCup;
 import lt.vcs.kavosaparatas.common.CoffeeMashine;
+import lt.vcs.kavosaparatas.common.exceptions.TrukstaProduktu;
 import lt.vcs.kavosaparatas.odeta.kavospuodeliai.CapuccinoKavosPuodelis;
 import lt.vcs.kavosaparatas.odeta.kavospuodeliai.JuodosKavosPuodelis;
 import lt.vcs.kavosaparatas.odeta.kavospuodeliai.LatteKavosPuodelis;
@@ -39,10 +40,12 @@ public class KavosAparatasDu implements CoffeeMashine {
 		
 	}
 	
-	public void pridekPuodeliuSarasa (ArrayList<KavosPuodelis> pridedamasPuodeliuListas) {
+	//Kaip prideti sarasa puodeliu??????????????????????
+	
+	/*public void pridekPuodeliuSarasa (ArrayList<KavosPuodelis> pridedamasPuodeliuListas) {
 		kavosPuodeliuRusys.put(pridedamasPuodeliuListas);
 		
-	}
+	}*/
 	
 	//konstruktorius, kuris priima produktu kiekisu
 	
@@ -83,7 +86,16 @@ public class KavosAparatasDu implements CoffeeMashine {
 		Produktai produktai = puodelis.getProduktai();
 		gaminkKava(produktai.getCukrausKiekis(), produktai.getKavosPupeliuKiekis(), produktai.getVandensKiekis());
 		puodelis.setKavaPagaminta(true);
+	
+		
 	}
+	
+	public void gaminkKava() throws TrukstaProduktu {
+	if (!arAparatasPasiruoses()) {
+		throw new TrukstaProduktu("Truksta produktu, kavos gaminti negalime");
+	}
+	}
+	
 	
 	//ar gerai?
 	
