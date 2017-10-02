@@ -1,35 +1,18 @@
 package lt.vcs.kavosaparatas.lina.aparatai;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import lt.vcs.kavosaparatas.common.CoffeeMashine;
-import lt.vcs.kavosaparatas.lina.Kavos.JuodaKava;
-import lt.vcs.kavosaparatas.lina.Kavos.KavaSuPienu;
-import lt.vcs.kavosaparatas.lina.Kavos.Latte;
+import lt.vcs.kavosaparatas.common.exceptions.NesvarusAparatas;
+import lt.vcs.kavosaparatas.common.exceptions.TrukstaProduktu;
+import lt.vcs.kavosaparatas.lina.enumai.KavosPuodeliai;
 import lt.vcs.kavosaparatas.lina.klaidos.NeraTokioTipoKavos;
-import lt.vcs.kavosaparatas.lina.klaidos.ReikiaValytiAparata;
-import lt.vcs.kavosaparatas.lina.klaidos.TrukstaProduktu;
-//import lt.vcs.kavosaparatas.lina.klaidos.Klaida;
 import lt.vcs.kavosaparatas.lina.produkcija.Produktai;
 import lt.vcs.kavosaparatas.lina.puodelis.KavosPuodelis;
-
 
 public class KavosAparatas implements CoffeeMashine {
 
 	private Produktai produktai;
 	private int panaudojimukiekis;
 	private int riba = 2;
-	public static final String LATTE = "latte";
-	public static final String KAVASUPIENU = "kava su pienu";
-	public static final String JUODAKAVA = "juoda kava";
-	private Set<String> kavosRusys = new HashSet<String>();
-
-	{
-		kavosRusys.add(KAVASUPIENU);
-		kavosRusys.add(LATTE);
-		kavosRusys.add(JUODAKAVA);
-	}
 
 	// Konstruktoriai
 	public KavosAparatas() {
@@ -51,10 +34,6 @@ public class KavosAparatas implements CoffeeMashine {
 
 	// metodai
 
-	public void pridekKavosRusi(String kavosRusis) {
-		this.kavosRusys.add(kavosRusis);
-	}
-
 	public void papildykProduktus(int cukrauskiekis, int kavospupeliukiekis, int vandenskiekis) {
 		produktai.setCukrausKiekis(cukrauskiekis + produktai.getCukrausKiekis());
 		produktai.setVandensKiekis(vandenskiekis + produktai.getVandensKiekis());
@@ -70,55 +49,42 @@ public class KavosAparatas implements CoffeeMashine {
 		System.out.println("Liko panaudojimui kartu iki plovimo: " + (this.riba - this.panaudojimukiekis));
 	}
 
-	public KavosPuodelis gaminkKava(String kavosTipas) throws NeraTokioTipoKavos, ReikiaValytiAparata, TrukstaProduktu {
-		KavosPuodelis puodelis = null;
+	public KavosPuodelis gaminkKava(String kavosTipas) throws NesvarusAparatas, TrukstaProduktu {
 
-		if (kavosRusys.contains(kavosTipas)) {
+		KavosPuodeliai tipas = KavosPuodeliai.valueOf(kavosTipas);
 
-			switch (kavosTipas) {
-			case LATTE:
-				puodelis = new Latte();
-				break;
-
-			case JUODAKAVA:
-				puodelis = new JuodaKava();
-				break;
-
-			case KAVASUPIENU:
-				puodelis = new KavaSuPienu();
-				break;
-			}
-			gaminkKava(puodelis);
-		} else {
-			throw new NeraTokioTipoKavos();
-		}
+		KavosPuodelis puodelis = (KavosPuodelis) tipas.getKavosPuodelis();
+		gaminkKava(puodelis);
 		return puodelis;
 	}
 
-	private void gaminkKava(KavosPuodelis puodelis) throws ReikiaValytiAparata, TrukstaProduktu {
+	private void gaminkKava(KavosPuodelis puodelis) throws NesvarusAparatas, TrukstaProduktu {
 		Produktai produktai = puodelis.getProduktai();
 		gaminkKava(produktai.getVandensKiekis(), produktai.getCukrausKiekis(), produktai.getKavosPupeliuKiekis());
 	}
 
-	private void gaminkKava(int vandensKiekis, int cukrausKiekis, int pupeliuKiekis) throws ReikiaValytiAparata, TrukstaProduktu {
+	private void gaminkKava(int vandensKiekis, int cukrausKiekis, int pupeliuKiekis)
+			throws NesvarusAparatas, TrukstaProduktu {
 		if (arAparatasPasiruoses(vandensKiekis, cukrausKiekis, pupeliuKiekis)) {
 			produktai.setCukrausKiekis(produktai.getCukrausKiekis() - cukrausKiekis);
 			produktai.setKavosPupeliuKiekis(produktai.getKavosPupeliuKiekis() - pupeliuKiekis);
 			produktai.setVandensKiekis(produktai.getVandensKiekis() - vandensKiekis);
 			panaudojimukiekis++;
 			System.out.println("skanios kavos");
+		} else {
+			throw new TrukstaProduktu("Truksta produktu!");
 		}
+
 	}
 
-	public boolean arAparatasPasiruoses(int cukrauskiekis, int kavospupeliukiekis, int vandenskiekis) throws ReikiaValytiAparata, TrukstaProduktu {
-		if (this.panaudojimukiekis>=this.riba) {
-			throw new ReikiaValytiAparata();
+	public boolean arAparatasPasiruoses(int cukrauskiekis, int kavospupeliukiekis, int vandenskiekis) {
+		if (this.panaudojimukiekis >= this.riba) {
+			return false;
 		}
-		
-		if (produktai.getCukrausKiekis() < cukrauskiekis
-				|| produktai.getKavosPupeliuKiekis() < kavospupeliukiekis
+
+		if (produktai.getCukrausKiekis() < cukrauskiekis || produktai.getKavosPupeliuKiekis() < kavospupeliukiekis
 				|| produktai.getVandensKiekis() < vandenskiekis) {
-			throw new TrukstaProduktu();
+			return false;
 		}
 		return true;
 	}
