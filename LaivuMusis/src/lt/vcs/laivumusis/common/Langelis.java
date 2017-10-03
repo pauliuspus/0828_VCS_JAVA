@@ -9,5 +9,9 @@ public interface Langelis {
 	public boolean arSauta();
 	
 	public int sakykKiekKartuSauta();
+	
+	public String getX();
+
+	public int getY();
 
 }
