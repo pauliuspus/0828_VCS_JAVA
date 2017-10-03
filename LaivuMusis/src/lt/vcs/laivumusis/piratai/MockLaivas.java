@@ -7,6 +7,8 @@ import lt.vcs.laivumusis.common.Laivas;
 import lt.vcs.laivumusis.common.Langelis;
 
 public class MockLaivas implements Laivas {
+	
+	
 
 	@Override
 	public int getLaivoIlgis() {

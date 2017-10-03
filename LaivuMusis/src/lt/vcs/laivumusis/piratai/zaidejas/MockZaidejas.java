@@ -1,4 +1,4 @@
-package lt.vcs.laivumusis.piratai;
+package lt.vcs.laivumusis.piratai.zaidejas;
 
 import lt.vcs.laivumusis.common.Zaidejas;
 import lt.vcs.laivumusis.common.Zaidimas;
