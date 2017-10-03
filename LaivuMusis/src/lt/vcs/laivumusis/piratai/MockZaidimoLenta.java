@@ -15,7 +15,7 @@ public class MockZaidimoLenta implements ZaidimoLenta{
 	public Map<String, List<Langelis>> getLangeliai() {
 		System.out.println("Grazinu langelius");
 		Map<String, List<Langelis>> langeliai = new HashMap<String, List<Langelis>>();
-		return null;
+		return langeliai;
 	}
 
 	@Override
