@@ -16,8 +16,6 @@ import lt.vcs.kavosaparatas.manvydas.resursai.Produktai;
 
 public class KavosAparatas implements CoffeeMashine {
 
-	// Testas cia
-
 	// Konstanta, kuri galioja visiems aparatams
 	private static final int PANAUDOJIMU_SK_PRIES_PLOVIMA = 2;
 
@@ -154,7 +152,7 @@ public class KavosAparatas implements CoffeeMashine {
 				throw new TrukstaProduktu("Truktsta produktu");
 			}
 			break;
-
+			// TODO extend this method
 		default:
 			break;
 		}
