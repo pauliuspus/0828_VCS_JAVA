@@ -14,7 +14,8 @@ public class MockLangelis implements Langelis{
 	@Override
 	public Laivas getLaivas() {
 		// TODO Auto-generated method stub
-		return null;
+		System.out.println("Laivas langelyje");
+		return new MockLaivas();
 	}
 
 	@Override
