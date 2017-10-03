@@ -1,29 +1,43 @@
 package lt.vcs.laivumusis.USSENTERPRISE.zaidimoLenta;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import lt.vcs.laivumusis.common.Laivas;
+import lt.vcs.laivumusis.common.Langelis;
 
-		import javax.xml.stream.Location;
-
-public class ZaidimoLenta {
-
-	private Location[][] zaidimolenta;
-	private int taskai;
-
-	// Nesikeiciantys stulpeliu ir eiluciu skaicius
-	public static final int SK_EILUCIU = 10;
-	public static final int SK_STULPELIU = 10;
-
+public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 	public ZaidimoLenta() {
-		if (SK_EILUCIU > 11) {
-			throw new IllegalArgumentException ("ERROR SK EILUCIU NEGALI BUTI > 11");
+		Map<String, List<Integer>> lenta = new HashMap<String, List<Integer>>();
+		List<Integer> listas = new ArrayList<Integer>();
+		for (int a = 1; a <= 10; a++) {
+			listas.add(a);
 		}
-		zaidimolenta = new Location[SK_EILUCIU][SK_STULPELIU];
-
-		for (int eilute = 0; eilute < zaidimolenta.length; eilute++) {
-			for (int stulpelis = 0; stulpelis < zaidimolenta[eilute].length; stulpelis++) {
-
-
-			}
+		for (int i = 65; i <= 74; i++) {
+			lenta.put((char) i, listas);
 		}
+
 	}
+
+	@Override
+	public Map<String, List<Langelis>> getLangeliai() {
+		return null;
+	}
+
+	@Override
+	public List<Laivas> getLaivai() {
+		return null;
+	}
+
+	@Override
+	public void pridekLaiva(Laivas laivas) {
+	}
+
+	@Override
+	public boolean sauk(String x, int y) {
+		return false;
+	}
+
 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 import lt.vcs.laivumusis.common.Langelis;
 
-public class Laivas implements lt.vcs.laivumusis.common.Laivas{
+public class Laivas implements lt.vcs.laivumusis.common.Laivas {
 
 	// laivo kintamieji
 
@@ -19,7 +19,6 @@ public class Laivas implements lt.vcs.laivumusis.common.Laivas{
 	public static final int HORIZONTALI = 0;
 	public static final int VERTIKALI = 1;
 
-
 	// konstruktorius
 	public Laivas(int ilgis) {
 		this.ilgis = ilgis;
@@ -30,14 +29,14 @@ public class Laivas implements lt.vcs.laivumusis.common.Laivas{
 
 	// lokacija
 
-	public boolean arNustatytaVieta(){
+	public boolean arNustatytaVieta() {
 		if (eilute == -1 || stulpelis == -1)
 			return false;
 		else
 			return true;
 	}
 
-	public boolean arNustatytaKryptis(){
+	public boolean arNustatytaKryptis() {
 		if (kryptis == NENUSTATYTA)
 			return false;
 		else
@@ -53,34 +52,36 @@ public class Laivas implements lt.vcs.laivumusis.common.Laivas{
 
 	// laivo krypties nustatymas
 	public void setKryptis(int kryptis) {
-		if (kryptis != NENUSTATYTA && kryptis != HORIZONTALI && kryptis != VERTIKALI )
-			throw new IllegalArgumentException ("Netinkama kryptis. turi buti -1, 0 arba 1");
+		if (kryptis != NENUSTATYTA && kryptis != HORIZONTALI && kryptis != VERTIKALI)
+			throw new IllegalArgumentException("Netinkama kryptis. turi buti -1, 0 arba 1");
 		this.kryptis = kryptis;
 
 	}
 
 	// eiles getteris
 
-	public int getEilute(){
+	public int getEilute() {
 		return eilute;
 	}
 	// stulpelio getteris
 
-	public int getStulpelis(){
+	public int getStulpelis() {
 		return stulpelis;
 	}
 
 	// laivo ilgio geteris
 
-	public int getIlgis(){
+	public int getIlgis() {
 		return ilgis;
 	}
-	//krypties getteris
-	public int getKryptis(){
+
+	// krypties getteris
+	public int getKryptis() {
 		return kryptis;
 	}
+
 	// metodas gauti string reiksme is krypties
-	private String kryptisToString(){
+	private String kryptisToString() {
 		if (kryptis == NENUSTATYTA)
 			return "NENUSTATYTA";
 		else if (kryptis == HORIZONTALI)
@@ -89,27 +90,24 @@ public class Laivas implements lt.vcs.laivumusis.common.Laivas{
 			return "VERTIKALI";
 	}
 
-	//iStringa laivo suma
-	public String toString(){
-		return "Laivas: "+ getEilute () + ", " + getStulpelis () + "ilgio" + getIlgis () + "kryptimi " + kryptisToString ();
+	// iStringa laivo suma
+	public String toString() {
+		return "Laivas: " + getEilute() + ", " + getStulpelis() + "ilgio" + getIlgis() + "kryptimi "
+				+ kryptisToString();
 	}
 
 	@Override
 	public int getLaivoIlgis() {
-		// TODO Auto-generated method stub
-		return 0;
+		return ilgis;
 	}
 
 	@Override
 	public boolean arNusautas() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public List<Langelis> getLaivoKoordinates() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }
-
