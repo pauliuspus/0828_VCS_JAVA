@@ -1,7 +1,7 @@
 package lt.vcs.kavosaparatas.lina.puodelis;
 
 
-public class Puodelis {
+public abstract class Puodelis {
 	private int puodelioTalpa = 5;
 
 	public Puodelis() {

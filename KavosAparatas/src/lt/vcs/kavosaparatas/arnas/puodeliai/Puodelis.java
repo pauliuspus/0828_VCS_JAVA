@@ -1,6 +1,6 @@
 package lt.vcs.kavosaparatas.arnas.puodeliai;
 
-public class Puodelis {
+public abstract class Puodelis {
 
 	int maksimaliRiba;
 	

@@ -4,25 +4,35 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import lt.vcs.kavosaparatas.arnas.kavos.BeCukrausPuodelis;
+import lt.vcs.kavosaparatas.arnas.kavos.JuodaPuodelis;
+import lt.vcs.kavosaparatas.arnas.kavos.PraskiestaPuodelis;
+import lt.vcs.kavosaparatas.arnas.kavos.PuodeliaiEnum;
 import lt.vcs.kavosaparatas.arnas.produktai.Produktai;
-import lt.vcs.kavosaparatas.arnas.puodeliai.BeCukrausPuodelis;
-import lt.vcs.kavosaparatas.arnas.puodeliai.JuodaPuodelis;
 import lt.vcs.kavosaparatas.arnas.puodeliai.KavosPuodelis;
-import lt.vcs.kavosaparatas.arnas.puodeliai.PraskiestaPuodelis;
 import lt.vcs.kavosaparatas.common.CoffeeCup;
 import lt.vcs.kavosaparatas.common.CoffeeMashine;
+import lt.vcs.kavosaparatas.common.exceptions.NesvarusAparatas;
+import lt.vcs.kavosaparatas.common.exceptions.TrukstaProduktu;
 
 public class Kava implements CoffeeMashine {
 
 	private int panaudojimuSkaicius;
 	private static int panaudojimoSkaiciausRiba = 10;
 	private static int kavosAparatuSkaicius;
-	public Map<String, KavosPuodelis> kavosPuodelioRusis = new HashMap<String, KavosPuodelis>();
+	private Map<String, KavosPuodelis> kavosPuodelioRusis = new HashMap<String, KavosPuodelis>();
 
 	private Produktai produktai;
 
 	public Kava(int cukrus, int kava, int vanduo) {
+		
 		produktai = new Produktai(cukrus, kava, vanduo);
+		kavosAparatuSkaicius++;
+	}
+	
+	public Kava(int cukrus, int kava, int vanduo,Map<String, KavosPuodelis> puodeliuSarasas ) {
+		produktai = new Produktai(cukrus, kava, vanduo);
+		pridekPuodeliuSarasa(puodeliuSarasas);
 		kavosAparatuSkaicius++;
 	}
 
@@ -77,75 +87,57 @@ public class Kava implements CoffeeMashine {
 	}
 
 	public boolean arAparatasPasiruoses() {
-		boolean arParuosta = false;
-		if (arUztenkaProduktu() && (panaudojimuSkaicius < panaudojimoSkaiciausRiba)) {
-			System.out.println("Pasiruosta naudotis");
-			arParuosta = true;
-		}
-		if (produktai.getCukrausKiekis() < 10) {
-			System.out.println("Prasau papildyti cukru");
-			return arParuosta;
-		}
-		if (produktai.getKavosPupeles() < 80) {
-			System.out.println("Prasau papildyti kavos pupeliu");
-			return arParuosta;
-		}
-		if (produktai.getVandensKiekis() < 400) {
-			System.out.println("Prasau papildyti vandens");
-			return arParuosta;
+		boolean arParuosta = true;
+		if (produktai.getKavosPupeles() - 80 < 0 || produktai.getCukrausKiekis() - 10 < 0
+				|| produktai.getVandensKiekis() - 400 < 0) {
+			arParuosta = false;
 		}
 		if (panaudojimuSkaicius >= panaudojimoSkaiciausRiba) {
-			System.out.println("prasau isplaut aparata");
-			return arParuosta;
+			arParuosta = false;
 		}
 		return arParuosta;
 
 	}
 
-	public KavosPuodelis gaminkKava(String kavosTipas) {
+	public final KavosPuodelis gaminkKava(String kavosTipas) throws NesvarusAparatas, TrukstaProduktu {
 
-		String pasirinkimas = kavosTipas.toUpperCase();
-		KavosPuodelis kavosPuodelis = null;
+		PuodeliaiEnum puodelis = PuodeliaiEnum.valueOf(kavosTipas.toUpperCase());
+		KavosPuodelis kavosPuodelis = (KavosPuodelis) puodelis.getPuodelis();
 
-		switch (pasirinkimas) {
-		case "JUODA":
-			kavosPuodelis = new JuodaPuodelis();
-			break;
-		case "BE CUKRAUS":
-			kavosPuodelis = new BeCukrausPuodelis();
-			break;
-		case "PRASKIESTA":
-			kavosPuodelis = new PraskiestaPuodelis();
-			break;
-		default:
-			System.out.println("neteisingai ivedet pasirinkima, iveskite is naujo");
-			break;
+		if (kavosPuodelis != null) {
+			if (arAparatasPasiruoses()) {
+				gamink(kavosPuodelis);
+			} else {
+				sakyKoTruksta();
+			}
 		}
-
-		if (kavosPuodelis != null)
-			gamink(kavosPuodelis);
-
 		return kavosPuodelis;
 	}
 
-	// Minimalus produktu kiekis yra kiekis reikalingas bent 1 karta pagaminti bet
-	// kuria kava.
-	private boolean arUztenkaProduktu() {
-		if (produktai.getKavosPupeles() - 80 < 0 || produktai.getCukrausKiekis() - 10 < 0
-				|| produktai.getVandensKiekis() - 400 < 0) {
-			return false;
+	private void sakyKoTruksta() throws NesvarusAparatas, TrukstaProduktu {
+
+		if (produktai.getCukrausKiekis() < 10) {
+			throw new TrukstaProduktu("Truksta cukraus, prasau papildyti");
+
 		}
-		return true;
+		if (produktai.getKavosPupeles() < 80) {
+			throw new TrukstaProduktu("Truksta kavos, prasau papildyti");
+
+		}
+		if (produktai.getVandensKiekis() < 400) {
+			throw new TrukstaProduktu("Truksta vandens, prasau papildyti");
+		}
+		if (panaudojimuSkaicius >= panaudojimoSkaiciausRiba) {
+			throw new NesvarusAparatas("Prasau isplauti aparata");
+		}
 	}
 
-	private void gamink(KavosPuodelis kavosPuodelis) {
-		if (arUztenkaProduktu()) {
-			Produktai produktai = kavosPuodelis.getProduktai();
-			gaminkKava(produktai.getCukrausKiekis(), produktai.getKavosPupeles(), produktai.getVandensKiekis());
-			kavosPuodelis.setKavaPagaminta(true);
-			System.out.println("Skanaus!");
-		} else
-			System.out.println("Papildykite produktu");
+	private void gamink(KavosPuodelis kavosPuodelis) throws NesvarusAparatas, TrukstaProduktu {
+
+		Produktai produktai = kavosPuodelis.getProduktai();
+		gaminkKava(produktai.getCukrausKiekis(), produktai.getKavosPupeles(), produktai.getVandensKiekis());
+		kavosPuodelis.setKavaPagaminta(true);
+		System.out.println("Skanaus!");
 
 	}
 
@@ -171,15 +163,20 @@ public class Kava implements CoffeeMashine {
 	public void pridekPuodeliuSarasa(Map<String, KavosPuodelis> sarasas) {
 		kavosPuodelioRusis.putAll(sarasas);
 	}
-	
-	public void gaminkKavaJeiYra(String kavosPavadinimas) {
+
+	public void gaminkKavaJeiYra(String kavosPavadinimas) throws NesvarusAparatas, TrukstaProduktu {
 		if (kavosPuodelioRusis.containsKey(kavosPavadinimas.toLowerCase())) {
 			KavosPuodelis puodelioKopija = kavosPuodelioRusis.get(kavosPavadinimas);
-			gamink(puodelioKopija);
-		}else {
+			if (arAparatasPasiruoses()) {
+				gamink(puodelioKopija);
+			} else {
+				sakyKoTruksta();
+			}
+
+		} else {
 			System.out.println("Tokios kavos neturime");
 		}
-		
+
 	}
 
 	public int getPanaudojimuSkaicius() {
