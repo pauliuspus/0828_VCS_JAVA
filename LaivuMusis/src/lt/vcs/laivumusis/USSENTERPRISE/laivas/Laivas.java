@@ -1,8 +1,10 @@
 package lt.vcs.laivumusis.USSENTERPRISE.laivas;
 
+import java.util.List;
 
+import lt.vcs.laivumusis.common.Langelis;
 
-public class Laivas {
+public class Laivas implements lt.vcs.laivumusis.common.Laivas{
 
 	// laivo kintamieji
 
@@ -90,6 +92,24 @@ public class Laivas {
 	//iStringa laivo suma
 	public String toString(){
 		return "Laivas: "+ getEilute () + ", " + getStulpelis () + "ilgio" + getIlgis () + "kryptimi " + kryptisToString ();
+	}
+
+	@Override
+	public int getLaivoIlgis() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean arNusautas() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<Langelis> getLaivoKoordinates() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
 
