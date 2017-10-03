@@ -4,11 +4,14 @@ import lt.vcs.laivumusis.common.Laivas;
 import lt.vcs.laivumusis.common.Langelis;
 
 public class MockLangelis implements Langelis{
-	static int sautaKartu ;
+	int sautaKartu ;
+	boolean arPasautasLangelis;
+
 	@Override
 	public void sauk() {
-		System.out.println("Saunu!");
-		
+		sautaKartu++;
+		arPasautasLangelis = true;
+		System.out.println("Pasautas langelis!");		
 	}
 
 	@Override
@@ -21,15 +24,11 @@ public class MockLangelis implements Langelis{
 	@Override
 	public boolean arSauta() {
 		// Ar buvo sauta i si langeli
-		if (sautaKartu >0) {
-			return true;
-		}
-		return false;
+		return arPasautasLangelis;
 	}
 
 	@Override
 	public int sakykKiekKartuSauta() {
-		sautaKartu++;
 		System.out.println("I si langeli sauta kartu: "+sautaKartu);
 		return sautaKartu;
 	}
