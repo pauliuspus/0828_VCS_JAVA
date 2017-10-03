@@ -1,5 +1,7 @@
 package lt.vcs.laivumusis.piratai;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,13 +14,15 @@ public class MockZaidimoLenta implements ZaidimoLenta{
 	@Override
 	public Map<String, List<Langelis>> getLangeliai() {
 		System.out.println("Grazinu langelius");
+		Map<String, List<Langelis>> langeliai = new HashMap<String, List<Langelis>>();
 		return null;
 	}
 
 	@Override
 	public List<Laivas> getLaivai() {
 		System.out.println("Grazinu laivus");
-		return null;
+		List<Laivas> laivai = new ArrayList<Laivas>();
+		return laivai;
 	}
 
 	@Override
