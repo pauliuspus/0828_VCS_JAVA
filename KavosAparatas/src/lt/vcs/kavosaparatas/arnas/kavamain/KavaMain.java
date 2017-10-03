@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import lt.vcs.kavosaparatas.arnas.aparatoaptarnavimas.AparatoAptarnavimas;
+import lt.vcs.kavosaparatas.arnas.kavos.PuodeliaiEnum;
 import lt.vcs.kavosaparatas.arnas.kavosaparatas.Kava;
 import lt.vcs.kavosaparatas.arnas.puodeliai.KavosPuodelis;
 import lt.vcs.kavosaparatas.common.exceptions.NesvarusAparatas;
@@ -13,16 +14,34 @@ public class KavaMain {
 
 	public static void main(String[] args) {
 		
-		Kava naujas = new Kava(20,80, 400);
+		
+		
+		/*Kava naujas = new Kava(20,80, 400);
 		try {
 		naujas.gaminkKava("Juoda");
 		
 		}catch(TrukstaProduktu e){
 			System.out.println(e.getMessage());
 		}catch(NesvarusAparatas e) {
-		System.out.println(e.getMessage());}
+		System.out.println(e.getMessage());}*/
 		
+		Map<String, KavosPuodelis> sarasas = new HashMap<String, KavosPuodelis>();
 		
+		sarasas.put("Pilka", new KavosPuodelis("Pilka", 20, 20, 30));
+		sarasas.put("raudona", new KavosPuodelis("raudona", 20, 20, 30));
+		sarasas.put("zalia", new KavosPuodelis("zalia", 20, 20, 30));
+		
+		Kava naujas2 = new Kava(80, 80, 400, sarasas);
+		
+		for(String a: sarasas.keySet())
+		System.out.println(a);
+		try {
+			naujas2.gaminkKavaJeiYra("Pilka");
+		} catch (NesvarusAparatas e) {
+			e.printStackTrace();
+		} catch (TrukstaProduktu e) {
+			e.printStackTrace();
+		}
 		
 		/*naujas.ismurzinkAparata();
 		try {

@@ -40,7 +40,6 @@ public class KavosAparatasDu implements CoffeeMashine {
 		
 	}
 	
-	//Kaip prideti sarasa puodeliu??????????????????????
 	
 	/*public void pridekPuodeliuSarasa (ArrayList<KavosPuodelis> pridedamasPuodeliuListas) {
 		kavosPuodeliuRusys.put(pridedamasPuodeliuListas);
@@ -97,9 +96,12 @@ public class KavosAparatasDu implements CoffeeMashine {
 	}
 	
 	
-	//ar gerai?
 	
-	public void gaminkKavaKitaip(String kavosTipas) {
+	
+	public void gaminkKavaKitaip(String kavosTipas)throws TrukstaProduktu {
+		if (!arAparatasPasiruoses()) {
+			throw new TrukstaProduktu("Truksta produktu, kavos gaminti negalime");
+		}
 		switch (kavosTipas) {
 		case "juoda":
 			gaminkKava(1, 2, 3);
