@@ -20,7 +20,7 @@ public class Kava implements CoffeeMashine {
 	private int panaudojimuSkaicius;
 	private static int panaudojimoSkaiciausRiba = 10;
 	private static int kavosAparatuSkaicius;
-	public Map<String, KavosPuodelis> kavosPuodelioRusis = new HashMap<String, KavosPuodelis>();
+	private Map<String, KavosPuodelis> kavosPuodelioRusis = new HashMap<String, KavosPuodelis>();
 
 	private Produktai produktai;
 
