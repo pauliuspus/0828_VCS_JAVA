@@ -28,4 +28,10 @@ public class MockLaivas implements Laivas {
 		return langelis;
 	}
 
+	@Override
+	public void setKordinates(List<Langelis> langeliai) {
+		System.out.println("Koordinates pasetintos");
+		
+	}
+
 }

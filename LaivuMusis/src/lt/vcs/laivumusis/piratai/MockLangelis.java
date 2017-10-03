@@ -4,8 +4,17 @@ import lt.vcs.laivumusis.common.Laivas;
 import lt.vcs.laivumusis.common.Langelis;
 
 public class MockLangelis implements Langelis{
+	
+	String x;
+	int y;
+	
 	int sautaKartu ;
 	boolean arPasautasLangelis;
+	
+	public MockLangelis(String x , int y ) {
+		this.x = x;
+		this.y = y;
+	}
 
 	@Override
 	public void sauk() {
@@ -31,6 +40,16 @@ public class MockLangelis implements Langelis{
 	public int sakykKiekKartuSauta() {
 		System.out.println("I si langeli sauta kartu: "+sautaKartu);
 		return sautaKartu;
+	}
+
+	@Override
+	public String getX() {
+		return this.x;
+	}
+
+	@Override
+	public int getY() {
+		return this.y;
 	}
 
 }

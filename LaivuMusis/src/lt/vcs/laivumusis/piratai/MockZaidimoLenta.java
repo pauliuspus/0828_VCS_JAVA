@@ -10,6 +10,49 @@ import lt.vcs.laivumusis.common.Langelis;
 import lt.vcs.laivumusis.common.ZaidimoLenta;
 
 public class MockZaidimoLenta implements ZaidimoLenta{
+	
+	int ilgis;
+	int plotis;
+	private static final String abecele = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	
+		
+	
+	
+	public MockZaidimoLenta(int ilgis, int plotis ) {
+		String lentosPlotis;
+		Map<String, List<Langelis>> zaidimoLenta = new HashMap<String, List<Langelis>>();
+		
+		for (int i =0; i<plotis;i++) {
+			String stulpelis = "" + abecele.charAt(i);
+			List<Langelis> listas = new ArrayList<Langelis>();
+			for(int sk = 1; sk<=ilgis;sk++) {
+				listas.add(new MockLangelis(stulpelis, sk));
+				System.out.println(stulpelis + sk);
+			}
+			
+		}
+		
+		
+		
+		
+		/*List<MockLangelis> langeliuListas = new ArrayList<MockLangelis>{}
+		for (int i = 0; i<ilgis*plotis)
+			
+			
+			
+		for (int i =0; i<plotis;i++) {
+			for (int sk = 1; sk<=ilgis;sk++) {
+				String a = "" + abecele.charAt(i);
+				zaidimoLenta.put(a+(sk), new MockLangelis(a, sk));
+			}
+			
+			
+			lentosPlotis = lentosPlotis + abecele.charat
+		}
+		List 
+		
+		Map<String, List<Langelis>> zaidimoLenta = new HashMap<String, List<Langelis>*/
+	}
 
 	@Override
 	public Map<String, List<Langelis>> getLangeliai() {

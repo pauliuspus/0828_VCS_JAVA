@@ -54,8 +54,8 @@ public class MockZaidimas implements Zaidimas {
 
 	@Override
 	public ZaidimoLenta duokZaidimoLenta(String zaidejoId) {
-		ZaidimoLenta zaidimoLenta = new MockZaidimoLenta();
-		return zaidimoLenta;
+		ZaidimoLenta zaidimoLentaKopija = new MockZaidimoLenta(10,10);
+		return zaidimoLentaKopija;
 	}
 
 }
