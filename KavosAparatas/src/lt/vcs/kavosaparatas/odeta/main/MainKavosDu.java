@@ -20,9 +20,7 @@ public class MainKavosDu {
 		KavosAparatasDu aparatas =kac.sukurVienaKavosAparata();
 		
 		aparatas.setProduktai(p);
-		
-		aparatas.gaminkKava("juoda");
-		
+	
 		
 		
 		///// KODEL META KLAIDA:   aparatas.gaminkKava(LatteKavosPuodelis);
@@ -52,6 +50,15 @@ public class MainKavosDu {
 		}
 	}
 	
+	//aparatas.gaminkKavaKitaip(kavosTipas);
+	
+	/*while(true) {
+		try {
+			aparatas.gaminkKavaKitaip("juoda");
+		}catch(TrukstaProduktu e) {
+			System.out.println("Truksta produktu, kavos pagaminti negalime" + e.getStackTrace());
+		}
+	}*/
 	
 
 
