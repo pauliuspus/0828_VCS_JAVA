@@ -86,6 +86,7 @@ public class Kava implements CoffeeMashine {
 		kiekLikoIkiPlovimo();
 	}
 
+	//Minimalus produktu kiekis yra minimalus kiekis reikalingas pagaminti bet kuri kavos puodeli
 	public boolean arAparatasPasiruoses() {
 		boolean arParuosta = true;
 		if (produktai.getKavosPupeles() - 80 < 0 || produktai.getCukrausKiekis() - 10 < 0
