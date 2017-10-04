@@ -19,7 +19,7 @@ public class MockZaidimoLenta implements ZaidimoLenta{
 	
 	
 	public MockZaidimoLenta(int ilgis, int plotis ) {
-		String lentosPlotis;
+		//String lentosPlotis;
 		Map<String, List<Langelis>> zaidimoLenta = new HashMap<String, List<Langelis>>();
 		
 		for (int i =0; i<plotis;i++) {
