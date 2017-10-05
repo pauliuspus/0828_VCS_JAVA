@@ -15,6 +15,7 @@ public class MockZaidimoLenta implements ZaidimoLenta {
 	int plotis;
 	private static final String abecele = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	Map<String, List<Langelis>> zaidimoLenta = new HashMap<String, List<Langelis>>();
+	List<Laivas> laivai = new ArrayList<Laivas>();
 
 	public MockZaidimoLenta(int ilgis, int plotis) {
 
@@ -38,9 +39,10 @@ public class MockZaidimoLenta implements ZaidimoLenta {
 
 	@Override
 	public List<Laivas> getLaivai() {
-		System.out.println("Grazinu laivus");
-		List<Laivas> laivai = new ArrayList<Laivas>();
-		return laivai;
+		
+		
+		
+		return this.laivai;
 	}
 
 	@Override

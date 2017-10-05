@@ -7,31 +7,33 @@ import lt.vcs.laivumusis.common.Laivas;
 import lt.vcs.laivumusis.common.Langelis;
 
 public class MockLaivas implements Laivas {
+	int laivoIlgis;
+	boolean arNusautas;
+	List<Langelis> laivoKoordinates = new ArrayList<Langelis>();
+
 	
-	
+	public MockLaivas(int laivoIlgis) {
+		this.laivoIlgis = laivoIlgis;
+	}
 
 	@Override
 	public int getLaivoIlgis() {
-		// TODO Auto-generated method stub
-		return 4;
+		return laivoIlgis;
 	}
 
 	@Override
 	public boolean arNusautas() {
-		// TODO Auto-generated method stub
-		return true;
+		return arNusautas;
 	}
 
 	@Override
 	public List<Langelis> getLaivoKoordinates() {
-		List<Langelis> langelis = new ArrayList<Langelis>();
-		return langelis;
+		return laivoKoordinates;
 	}
 
 	@Override
 	public void setKordinates(List<Langelis> langeliai) {
-		System.out.println("Koordinates pasetintos");
-		
+		//TODO patikrinti, kad koordinates eitu is eiles ir nebutu uz zaidimo lentos ribu
+		this.laivoKoordinates = langeliai;
 	}
-
 }
