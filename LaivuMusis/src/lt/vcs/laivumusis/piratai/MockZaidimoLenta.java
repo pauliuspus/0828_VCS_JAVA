@@ -9,49 +9,26 @@ import lt.vcs.laivumusis.common.Laivas;
 import lt.vcs.laivumusis.common.Langelis;
 import lt.vcs.laivumusis.common.ZaidimoLenta;
 
-public class MockZaidimoLenta implements ZaidimoLenta{
-	
+public class MockZaidimoLenta implements ZaidimoLenta {
+
 	int ilgis;
 	int plotis;
 	private static final String abecele = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	
-		
-	
-	
-	public MockZaidimoLenta(int ilgis, int plotis ) {
-		//String lentosPlotis;
+
+	public MockZaidimoLenta(int ilgis, int plotis) {
 		Map<String, List<Langelis>> zaidimoLenta = new HashMap<String, List<Langelis>>();
-		
-		for (int i =0; i<plotis;i++) {
+
+		/*TODO Kodel mes sukuriam Map, kur kiekvienam key priskiriam Langeliu List?
+		Kodel ne kiekvienam key priskirti langelio objekta?*/
+
+		for (int i = 0; i < plotis; i++) {
 			String stulpelis = "" + abecele.charAt(i);
 			List<Langelis> listas = new ArrayList<Langelis>();
-			for(int sk = 1; sk<=ilgis;sk++) {
+			for (int sk = 1; sk <= ilgis; sk++) {
 				listas.add(new MockLangelis(stulpelis, sk));
-				System.out.println(stulpelis + sk);
 			}
-			
+
 		}
-		
-		
-		
-		
-		/*List<MockLangelis> langeliuListas = new ArrayList<MockLangelis>{}
-		for (int i = 0; i<ilgis*plotis)
-			
-			
-			
-		for (int i =0; i<plotis;i++) {
-			for (int sk = 1; sk<=ilgis;sk++) {
-				String a = "" + abecele.charAt(i);
-				zaidimoLenta.put(a+(sk), new MockLangelis(a, sk));
-			}
-			
-			
-			lentosPlotis = lentosPlotis + abecele.charat
-		}
-		List 
-		
-		Map<String, List<Langelis>> zaidimoLenta = new HashMap<String, List<Langelis>*/
 	}
 
 	@Override
@@ -71,7 +48,7 @@ public class MockZaidimoLenta implements ZaidimoLenta{
 	@Override
 	public void pridekLaiva(Laivas laivas) {
 		System.out.println("Laivas pridetas: " + laivas);
-		
+
 	}
 
 	@Override
