@@ -11,9 +11,6 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 
 	// reikia pagalvot ar mums to reikia , gal mum static mapa reikia susikurti
 
-	public ZaidimoLenta() {
-	}
-
 	public Map<String, List<Langelis>> zaidimoLentele = new HashMap<String, List<Langelis>>();
 	public List<Langelis> langas = new ArrayList<Langelis>();
 
@@ -24,11 +21,6 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 		for (char kordinateY = 'A'; kordinateY <= 'J'; kordinateY++) {
 			zaidimoLentele.put(String.valueOf(kordinateY), langas);
 		}
-	}
-
-	@Override
-	public Map<String, List<Langelis>> getLangeliai() {
-		return null;
 	}
 
 	@Override
@@ -43,6 +35,12 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 	@Override
 	public boolean sauk(String x, int y) {
 		return false;
+	}
+
+	@Override
+	public Map<String, List<lt.vcs.laivumusis.common.Langelis>> getLangeliai() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
