@@ -9,14 +9,13 @@ import lt.vcs.laivumusis.common.ZaidimoLenta;
 public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 	// mainas
 	public static void main(String[] args) {
-		
 
 	}
 
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -28,12 +27,12 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 	@Override
 	public void skaiciuokStatistika() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public Busena tikrinkBusena(String zaidejoId) {
-		
+
 		return null;
 	}
 
@@ -45,7 +44,7 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 
 	@Override
 	public boolean sauk(String x, int y, String zaidejoId) {
-		// TODO Auto-generated method stub
+
 		return false;
 	}
 
