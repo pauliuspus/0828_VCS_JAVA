@@ -40,7 +40,7 @@ public class MockZaidimoLenta implements ZaidimoLenta {
 	@Override
 	public List<Laivas> getLaivai() {
 		
-		
+		MockZaidimas.duokLaivus("zaidejoId");
 		
 		return this.laivai;
 	}
