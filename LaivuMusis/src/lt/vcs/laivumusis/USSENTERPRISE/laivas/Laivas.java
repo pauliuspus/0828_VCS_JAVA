@@ -11,9 +11,8 @@ public class Laivas implements lt.vcs.laivumusis.common.Laivas {
 	private int laivoIlgis;
 	List<Laivas> laivuListas = new ArrayList<Laivas>();
 
-	public Laivas(int laivoIlgis) { // konstruktorius kad nustatyti laivo dydi ir mes ji naudosime
-									// switch metode kuris pasakys laivo varda ir sukurs to dydzio
-		this.laivoIlgis = laivoIlgis; // laiva
+	public Laivas(int laivoIlgis) {
+		this.laivoIlgis = laivoIlgis;
 		this.masyvasX = new String[laivoIlgis];
 		this.masyvasY = new int[laivoIlgis];
 	}
