@@ -16,6 +16,9 @@ public class Laivas implements lt.vcs.laivumusis.common.Laivas {
 		this.laivoIlgis = laivoIlgis; // laiva
 		this.masyvasX = new String[laivoIlgis];
 		this.masyvasY = new int[laivoIlgis];
+
+
+
 	}
 
 	@Override
@@ -27,6 +30,7 @@ public class Laivas implements lt.vcs.laivumusis.common.Laivas {
 	public int getLaivoIlgis() {
 		return laivoIlgis;
 	}
+
 
 	@Override
 	public boolean arNusautas() {// turi grazinti laivo busena liste ar jo visos kordinates true
