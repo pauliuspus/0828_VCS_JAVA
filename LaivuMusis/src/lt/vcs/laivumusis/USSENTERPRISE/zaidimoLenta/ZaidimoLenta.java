@@ -10,6 +10,7 @@ import lt.vcs.laivumusis.common.*;
 
 public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 
+<<<<<<< HEAD
 	// reikia pagalvot ar mums to reikia , gal mum static mapa reikia susikurti
 =======
 import java.util.Set;
@@ -48,11 +49,14 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 	    
 	}
 >>>>>>> Stashed changes
+=======
+	public List<Laivas> laivuListas = new ArrayList<Laivas>();
+>>>>>>> 6f1ab23a93b49a674a06d43a7533a4cab3c45420
 
 	public Map<String, List<Langelis>> zaidimoLentele = new HashMap<String, List<Langelis>>();
 	public List<Langelis> langas = new ArrayList<Langelis>();
 
-	private void lentosKurimas() {
+	public void lentosKurimas() {
 		for (int kordinateY = 1; kordinateY <= 10; kordinateY++) {
 			langas.add(new Langelis(kordinateY));
 		}
@@ -63,11 +67,12 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 
 	@Override
 	public List<Laivas> getLaivai() {
-		return null;
+		return laivuListas;
 	}
 
 	@Override
 	public void pridekLaiva(Laivas laivas) {
+		laivuListas.add(laivas);
 	}
 
 	@Override
@@ -77,7 +82,6 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 
 	@Override
 	public Map<String, List<lt.vcs.laivumusis.common.Langelis>> getLangeliai() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
