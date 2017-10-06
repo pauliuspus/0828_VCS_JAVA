@@ -20,81 +20,43 @@ public class Langelis implements lt.vcs.laivumusis.common.Langelis {
 	public Langelis(String x, Integer y) {
 		this.x = x;
 		this.y = y;
-}
+	}
 
-// kiekvienas langelis turi buti zaidimo lentos bendrame mape
-@Override
+	// kiekvienas langelis turi buti zaidimo lentos bendrame mape
+	@Override
 	public void sauk() { // turim langeli padaryti nusauta ir pradeti skaiciuoti jo suviu skaiciu,
 		langelioBusena = true;
 		suviuSkaicius++;
-
-import java.util.Scanner;
-
-import lt.vcs.laivumusis.common.Laivas;
-
-public class Langelis implements lt.vcs.laivumusis.common.Langelis {
-
-	private int suviuSkaicius;
-	private String x;
-	private int y;
-	boolean arSaut;
-
-	@Override
-	public void sauk() {
-
-		Scanner sc = new Scanner(System.in);
-
-		System.out.print("Eilute: ");
-		x = sc.nextLine();
-
-		System.out.print("Stulpelis: ");
-		y = sc.nextInt();
 
 	}
 
 	@Override
 	public Laivas getLaivas() {
-
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean arSauta() {
-
+		// TODO Auto-generated method stub
 		return langelioBusena;
-=======
-		return arSaut;
-
 	}
 
 	@Override
 	public int sakykKiekKartuSauta() {
-		return suviuSkaicius;
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
-
-
-	public String getX() { // pagal ideja turim grazinti is zaidimo lentos x o poto Y
-
-		
-		return null;
-
 	public String getX() {
+		// TODO Auto-generated method stub
 		return x;
-
-		return x;
-
 	}
 
 	@Override
 	public int getY() {
-
-		return 0;
-
+		// TODO Auto-generated method stub
 		return y;
-		return y;
-
 	}
-
 }
