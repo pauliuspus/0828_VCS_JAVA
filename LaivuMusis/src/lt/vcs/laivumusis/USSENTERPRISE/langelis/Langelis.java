@@ -8,20 +8,20 @@ public class Langelis implements lt.vcs.laivumusis.common.Langelis {
 	private boolean langelioBusena;
 	private String x;
 	private int y;
+
 	public Langelis(Integer y) {
 		this.y = y;
 	}
+
 	public Langelis(String x) {
 		this.x = x;
 	}
-	
-	
-	
+
 	public Langelis(String x, Integer y) {
 		this.x = x;
 		this.y = y;
 	}
-	
+
 	// kiekvienas langelis turi buti zaidimo lentos bendrame mape
 	@Override
 	public void sauk() { // turim langeli padaryti nusauta ir pradeti skaiciuoti jo suviu skaiciu,
@@ -30,8 +30,8 @@ public class Langelis implements lt.vcs.laivumusis.common.Langelis {
 	}
 
 	@Override
-	public Laivas getLaivas() { // kreipiames i laiva kalse
-		
+	public Laivas getLaivas() {
+
 		return null;
 	}
 
@@ -47,14 +47,12 @@ public class Langelis implements lt.vcs.laivumusis.common.Langelis {
 
 	@Override
 	public String getX() { // pagal ideja turim grazinti is zaidimo lentos x o poto Y
-		
-		return null;
+		return x;
 	}
 
 	@Override
 	public int getY() {
-
-		return 0;
+		return y;
 	}
 
 }
