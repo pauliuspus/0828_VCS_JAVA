@@ -4,12 +4,50 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+<<<<<<< Updated upstream
 import lt.vcs.laivumusis.USSENTERPRISE.langelis.Langelis;
 import lt.vcs.laivumusis.common.*;
 
 public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 
 	// reikia pagalvot ar mums to reikia , gal mum static mapa reikia susikurti
+=======
+import java.util.Set;
+
+import lt.vcs.laivumusis.common.Laivas;
+import lt.vcs.laivumusis.common.Langelis;
+
+public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
+	
+	Map<String, List<Integer>> lenta = new HashMap<String, List<Integer>>();
+	List<Integer> listas = new ArrayList<Integer>();
+	
+	public ZaidimoLenta() {
+		
+		
+		for (int rows = 1; rows <= 10; rows++)
+			listas.add(rows);
+		
+		
+			
+	    for ( char column = 'A'; column <= 'J'; column++) 
+	    		lenta.put(String.valueOf(column), listas);
+				
+		
+	    
+	    for(String set : lenta.keySet()) {
+	    		System.out.print(set+ " ");
+	    		System.out.println();
+	    		for(Integer i : lenta.get(set)) {
+	    			System.out.println(i);
+	    		}
+	    		
+		}
+	
+	    
+	    
+	}
+>>>>>>> Stashed changes
 
 	public Map<String, List<Langelis>> zaidimoLentele = new HashMap<String, List<Langelis>>();
 	public List<Langelis> langas = new ArrayList<Langelis>();
