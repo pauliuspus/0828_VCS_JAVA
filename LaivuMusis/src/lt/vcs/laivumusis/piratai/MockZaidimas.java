@@ -6,6 +6,7 @@ import java.util.Random;
 
 import lt.vcs.laivumusis.common.Busena;
 import lt.vcs.laivumusis.common.Laivas;
+import lt.vcs.laivumusis.common.Langelis;
 import lt.vcs.laivumusis.common.Zaidimas;
 import lt.vcs.laivumusis.common.ZaidimoLenta;
 
@@ -14,11 +15,53 @@ public class MockZaidimas implements Zaidimas {
 	private static int zaidejuSkaicius;
 	private String zaidejoId1;
 	private String zaidejoId2;
+	private MockZaidimoLenta zaidimoLenta1;
+	private MockZaidimoLenta zaidimoLenta2;
+	private List<Laivas> laivai1;
+	private List<Laivas> laivai2;
+	private int lentosIlgis = 10;
+	private int lentosPlotis = 10;
 	
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public MockZaidimas() {
+		//TODO Pakoreguoti, kad grazesnis kodas butu
+		this.zaidimoLenta1 = new MockZaidimoLenta(lentosIlgis,lentosPlotis);
+		this.zaidimoLenta2 = new MockZaidimoLenta(lentosIlgis,lentosPlotis);
+		this.laivai1 = new ArrayList<Laivas>();
+		this.laivai1.add(new MockLaivas(4));
+		this.laivai1.add(new MockLaivas(3));
+		this.laivai1.add(new MockLaivas(3));
+		this.laivai1.add(new MockLaivas(2));
+		this.laivai1.add(new MockLaivas(2));
+		this.laivai1.add(new MockLaivas(2));
+		this.laivai1.add(new MockLaivas(1));
+		this.laivai1.add(new MockLaivas(1));
+		this.laivai1.add(new MockLaivas(1));
+		this.laivai1.add(new MockLaivas(1));
+		
+		this.laivai2 = new ArrayList<Laivas>();
+		this.laivai2.add(new MockLaivas(4));
+		this.laivai2.add(new MockLaivas(3));
+		this.laivai2.add(new MockLaivas(3));
+		this.laivai2.add(new MockLaivas(2));
+		this.laivai2.add(new MockLaivas(2));
+		this.laivai2.add(new MockLaivas(2));
+		this.laivai2.add(new MockLaivas(1));
+		this.laivai2.add(new MockLaivas(1));
+		this.laivai2.add(new MockLaivas(1));
+		this.laivai2.add(new MockLaivas(1));
+
+	}
+	
+	public MockZaidimas(int lentosIlgis, int lentosPlotis ) {
+		this.lentosIlgis = lentosIlgis ;
+		this.lentosPlotis = lentosPlotis ;
+		//TODO - parasyti konstruktoriu, kuris priima laivu kieki ir ilgius ir dar patikrina ar tilps
 	}
 
 	@Override
@@ -50,34 +93,56 @@ public class MockZaidimas implements Zaidimas {
 		
 		if (zaidejoId1 != null) {
 			
-			this.zaidejoId2 ="2";
+			this.zaidejoId2 = "zaidejoId2"+new Random().nextInt(100);
 			return this.zaidejoId2;
 		} 
-		return this.zaidejoId1 = "1";
+		return this.zaidejoId1 = "zaidejoId1"+new Random().nextInt(100);
 	}
 	
 	
-	
-	public String getZaidejoId() {
-		return zaidejoId;
-	}
-
 	@Override
 	public boolean sauk(String x, int y, String zaidejoId) {
+		//zaidejo ID tas kuris sauna
+		if (zaidejoId == this.zaidejoId1) {
+			return this.zaidimoLenta2.getLangeliai().get(x).get(y-1).sauk();
+		}
 		return true;
 	}
 
 	@Override
 	public List<Laivas> duokLaivus(String zaidejoId) {
+		//zaidimas tikrina kad nelankstyti laivu
 		
-		List<Laivas> laivai = new ArrayList<Laivas>();
-		return laivai;
+	
+		if (zaidejoId == this.zaidejoId1) {
+			return this.laivai1;
+		}
+		if (zaidejoId == this.zaidejoId2) {
+			return this.laivai2;
+		}
+		System.out.println("Toks zaidejas nedalyvauja zaidime!");
+		return null;
 	}
 
 	@Override
 	public ZaidimoLenta duokZaidimoLenta(String zaidejoId) {
-		ZaidimoLenta zaidimoLentaKopija = new MockZaidimoLenta(10,10);
-		return zaidimoLentaKopija;
+		//atiduoti lentos kopija zaidejui
+		return new MockZaidimoLenta(lentosIlgis,lentosPlotis);
+	}
+
+	@Override
+	public void pridekLaiva(Laivas laivas, String zaidejoId) {
+		if (zaidejoId = this.zaidejoId1) {
+			for (int i = 0; i < laivai1.size();i++) {
+				int laivoIlgis = laivai1.get(i).getLaivoIlgis() ;
+				List<Langelis> langeliai = new ArrayList(laivoIlgis);
+				
+		//TODO ste koordinates kiekvienam laivui, t.y. list koordinaciu
+				
+			}
+		
+		}
+		
 	}
 
 }

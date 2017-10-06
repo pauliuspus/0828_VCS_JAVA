@@ -25,7 +25,8 @@ public class MockLangelis implements Langelis{
 
 	@Override
 	public Laivas getLaivas() {
-		// TODO Auto-generated method stub
+		
+		// Parodo kurio laivo dalis yra sitas langelis, grazina visa laiva, nesvarbu i kuria dali sauni
 		System.out.println("Laivas langelyje");
 		return new MockLaivas();
 	}
