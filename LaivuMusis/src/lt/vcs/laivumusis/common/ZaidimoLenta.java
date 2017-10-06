@@ -9,8 +9,6 @@ public interface ZaidimoLenta {
 	
 	public List<Laivas> getLaivai();
 	
-	public void pridekLaiva(Laivas laivas);
-	
 	public boolean sauk(String x, int y);
 
 }
