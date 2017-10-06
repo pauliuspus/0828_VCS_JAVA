@@ -14,7 +14,7 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		System.out.println ("trata");
 
 	}
 
@@ -42,7 +42,12 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 		return null;
 	}
 
-	@Override
+    @Override
+    public void pridekLaiva(Laivas laivas, String zaidejoId) {
+        
+    }
+
+    @Override
 	public boolean sauk(String x, int y, String zaidejoId) {
 
 		return false;

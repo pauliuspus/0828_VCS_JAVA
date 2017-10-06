@@ -1,17 +1,12 @@
 package lt.vcs.laivumusis.USSENTERPRISE;
 
-import lt.vcs.laivumusis.USSENTERPRISE.zaidimoLenta.ZaidimoLenta;
+import lt.vcs.laivumusis.USSENTERPRISE.zaidimas.Zaidimas;
 
 public class Main {
 
 	public static void main(String[] args) {
-<<<<<<< Updated upstream
-		// TODO Auto-generated method stub
-		Object s2 = new Object();
-=======
-		new ZaidimoLenta();
-
->>>>>>> Stashed changes
+		Zaidimas zaidimas = new Zaidimas ();
+		zaidimas.run ();
 	}
 
 }
