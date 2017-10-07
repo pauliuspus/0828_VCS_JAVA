@@ -37,7 +37,7 @@ public class Langelis implements lt.vcs.laivumusis.common.Langelis {
 	}
 
 	@Override
-	public boolean arSauta() {
+	public boolean arSauta() { // grazina ar laivas pasautas
 		// TODO Auto-generated method stub
 		return langelioBusena;
 	}

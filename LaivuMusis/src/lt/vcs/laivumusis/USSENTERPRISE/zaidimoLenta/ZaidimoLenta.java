@@ -30,9 +30,7 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 			for (Integer i : lenta.get(set)) {
 				System.out.println(i);
 			}
-
 		}
-
 	}
 
 	public List<Laivas> laivuListas = new ArrayList<Laivas>();
@@ -43,7 +41,6 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 	Laivas naikintojas = new Laivas(2);
 
 	private void laivuSudejimasILista() {
-		pridekLaiva(lektuvnesis);
 
 	}
 
@@ -65,19 +62,13 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 	}
 
 	@Override
-	public boolean sauk(String x, int y) {
+	public boolean sauk(String x, int y) { // pasako ar pataike i laiva
 		return false;
 	}
 
 	@Override
 	public Map<String, List<lt.vcs.laivumusis.common.Langelis>> getLangeliai() {
 		return this.zaidimoLentele;
-	}
-
-	@Override
-	public void pridekLaiva(lt.vcs.laivumusis.common.Laivas laivas) {
-		// TODO Auto-generated method stub
-
 	}
 
 }

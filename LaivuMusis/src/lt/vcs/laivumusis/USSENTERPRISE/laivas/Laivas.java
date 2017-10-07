@@ -21,7 +21,7 @@ public class Laivas implements lt.vcs.laivumusis.common.Laivas {
 	@Override
 	public void setKordinates(List<Langelis> langeliai) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -41,7 +41,5 @@ public class Laivas implements lt.vcs.laivumusis.common.Laivas {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	
 
 }
