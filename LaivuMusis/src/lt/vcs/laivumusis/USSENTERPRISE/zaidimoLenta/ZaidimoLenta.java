@@ -15,11 +15,13 @@ import java.util.Set;
 public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 	// laivu listas
 	public List<lt.vcs.laivumusis.common.Laivas> laivuListas = new ArrayList<lt.vcs.laivumusis.common.Laivas>();
+
 	Laivas lektuvnesis = new Laivas(5);
 	Laivas kovinisLaivas = new Laivas(4);
 	Laivas kruizeris = new Laivas(3);
 	Laivas povandeninis = new Laivas(3);
 	Laivas naikintojas = new Laivas(2);
+
 	// mapas
 	public Map<String, List<lt.vcs.laivumusis.common.Langelis>> zaidimoLentele = new HashMap<String, List<lt.vcs.laivumusis.common.Langelis>>();
 	public List<lt.vcs.laivumusis.common.Langelis> langas = new ArrayList<lt.vcs.laivumusis.common.Langelis>();

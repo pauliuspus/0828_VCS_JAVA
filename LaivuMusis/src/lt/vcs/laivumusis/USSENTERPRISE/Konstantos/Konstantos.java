@@ -25,7 +25,5 @@ public class Konstantos {
 	public static final String LAIVAS_PATAIKYTA = "P";
 	public static final String LAIVAS_NEPATAIKYTA = "N";*/
 
-	// public static final char[] ZAIDIMO_LENTOS_RAIDES = {'A', 'B', 'C', 'D', 'E',
-	// 'F', 'G', 'H', 'I', 'J'};
-	// public static final int LENTOS_DYDIS = 10;
+
 }
