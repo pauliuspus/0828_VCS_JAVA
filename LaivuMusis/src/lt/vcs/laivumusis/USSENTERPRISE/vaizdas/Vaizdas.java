@@ -9,7 +9,7 @@ public class Vaizdas implements lt.vcs.laivumusis.common.Vaizdas {
 
 	@Override
 	public void pieskVaizda() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

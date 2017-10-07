@@ -9,9 +9,12 @@ public class Laivas implements lt.vcs.laivumusis.common.Laivas {
 	private String[] masyvasX;
 	private int[] masyvasY;
 	private int laivoIlgis;
-	List<Laivas> laivuListas = new ArrayList<Laivas>();
+	private int laivogyvybes;
+
+	List<Langelis> laivoLangeliaiKordinates = new ArrayList<Langelis>(); // kiekviena karatia kai saunu i laiva as jam nuimu gyvybes ir taip paziuriu kada jis us nusautas.
 
 	public Laivas(int laivoIlgis) {
+		this.laivogyvybes = laivoIlgis;
 		this.laivoIlgis = laivoIlgis;
 		this.masyvasX = new String[laivoIlgis];
 		this.masyvasY = new int[laivoIlgis];
@@ -20,26 +23,23 @@ public class Laivas implements lt.vcs.laivumusis.common.Laivas {
 
 	@Override
 	public void setKordinates(List<Langelis> langeliai) {
-		// TODO Auto-generated method stub
-
+		laivoLangeliaiKordinates = langeliai;
 	}
 
 	@Override
 	public int getLaivoIlgis() {
-		// TODO Auto-generated method stub
-		return 0;
+		return laivoIlgis;
 	}
 
 	@Override
 	public boolean arNusautas() {
-		// TODO Auto-generated method stub
+
 		return false;
 	}
 
 	@Override
 	public List<Langelis> getLaivoKoordinates() {
-		// TODO Auto-generated method stub
-		return null;
+		return laivoLangeliaiKordinates;
 	}
 
 }

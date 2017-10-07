@@ -8,7 +8,7 @@ public class Langelis implements lt.vcs.laivumusis.common.Langelis {
 	private boolean langelioBusena;
 	private String x;
 	private int y;
-
+	private boolean arLaivoDalisPasauta;
 	public Langelis(Integer y) {
 		this.y = y;
 	}
@@ -35,28 +35,26 @@ public class Langelis implements lt.vcs.laivumusis.common.Langelis {
 		
 		return null;
 	}
+	
+	
 
 	@Override
-	public boolean arSauta() { // grazina ar laivas pasautas
-		// TODO Auto-generated method stub
+	public boolean arSauta() {
 		return langelioBusena;
 	}
 
 	@Override
 	public int sakykKiekKartuSauta() {
-		// TODO Auto-generated method stub
 		return suviuSkaicius;
 	}
 
 	@Override
 	public String getX() {
-		// TODO Auto-generated method stub
 		return x;
 	}
 
 	@Override
 	public int getY() {
-		// TODO Auto-generated method stub
 		return y;
 	}
 }
