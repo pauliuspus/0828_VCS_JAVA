@@ -13,37 +13,15 @@ import java.util.Set;
 
 public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 
-	Map<String, List<Integer>> lenta = new HashMap<String, List<Integer>>();
-	List<Integer> listas = new ArrayList<Integer>();
-
-	public ZaidimoLenta() {
-
-		for (int rows = 1; rows <= 10; rows++)
-			listas.add(rows);
-
-		for (char column = 'A'; column <= 'J'; column++)
-			lenta.put(String.valueOf(column), listas);
-
-		for (String set : lenta.keySet()) {
-			System.out.print(set + " ");
-			System.out.println();
-			for (Integer i : lenta.get(set)) {
-				System.out.println(i);
-			}
-		}
-	}
-
 	public List<Laivas> laivuListas = new ArrayList<Laivas>();
 	Laivas lektuvnesis = new Laivas(5);
 	Laivas kovinisLaivas = new Laivas(4);
 	Laivas kruizeris = new Laivas(3);
 	Laivas povandeninis = new Laivas(3);
 	Laivas naikintojas = new Laivas(2);
-
-	private void laivuSudejimasILista() {
-
-	}
-
+	
+	
+	// mapas
 	public Map<String, List<lt.vcs.laivumusis.common.Langelis>> zaidimoLentele = new HashMap<String, List<lt.vcs.laivumusis.common.Langelis>>();
 	public List<lt.vcs.laivumusis.common.Langelis> langas = new ArrayList<lt.vcs.laivumusis.common.Langelis>();
 
@@ -63,6 +41,8 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 
 	@Override
 	public boolean sauk(String x, int y) { // pasako ar pataike i laiva
+		zaidimoLentele.get(x).get(y).sauk();
+		
 		return false;
 	}
 

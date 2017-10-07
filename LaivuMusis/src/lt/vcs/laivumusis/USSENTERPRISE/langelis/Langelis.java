@@ -32,7 +32,7 @@ public class Langelis implements lt.vcs.laivumusis.common.Langelis {
 
 	@Override
 	public Laivas getLaivas() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
@@ -45,7 +45,7 @@ public class Langelis implements lt.vcs.laivumusis.common.Langelis {
 	@Override
 	public int sakykKiekKartuSauta() {
 		// TODO Auto-generated method stub
-		return 0;
+		return suviuSkaicius;
 	}
 
 	@Override
