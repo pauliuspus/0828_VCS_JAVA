@@ -13,6 +13,7 @@ import java.util.Set;
 
 public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 
+
 	public List<Laivas> laivuListas = new ArrayList<Laivas>();
 	Laivas lektuvnesis = new Laivas(5);
 	Laivas kovinisLaivas = new Laivas(4);
@@ -20,7 +21,11 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 	Laivas povandeninis = new Laivas(3);
 	Laivas naikintojas = new Laivas(2);
 	
-	
+	private HashMap<String, Integer> koordinates;
+	// perduosim zaidejui nauja hasmapa kuris bus koordinates = new hashmap<string string>();
+
+
+
 	// mapas
 	public Map<String, List<lt.vcs.laivumusis.common.Langelis>> zaidimoLentele = new HashMap<String, List<lt.vcs.laivumusis.common.Langelis>>();
 	public List<lt.vcs.laivumusis.common.Langelis> langas = new ArrayList<lt.vcs.laivumusis.common.Langelis>();
@@ -33,6 +38,8 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 			zaidimoLentele.put(String.valueOf(kordinateY), langas);
 		}
 	}
+
+
 
 	@Override
 	public List<lt.vcs.laivumusis.common.Laivas> getLaivai() {
@@ -50,5 +57,6 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 	public Map<String, List<lt.vcs.laivumusis.common.Langelis>> getLangeliai() {
 		return this.zaidimoLentele;
 	}
+
 
 }
