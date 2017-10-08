@@ -14,7 +14,7 @@ import java.util.Set;
 
 public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 	// laivu listas
-	public List<lt.vcs.laivumusis.common.Laivas> laivuListas = new ArrayList<lt.vcs.laivumusis.common.Laivas>();
+	List<lt.vcs.laivumusis.common.Laivas> laivuListas = new ArrayList<lt.vcs.laivumusis.common.Laivas>();
 
 	Laivas lektuvnesis = new Laivas(5);
 	Laivas kovinisLaivas = new Laivas(4);
@@ -44,8 +44,8 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 		for (int kordinateY = 1; kordinateY <= 10; kordinateY++) {
 			langas.add(new Langelis(kordinateY));
 		}
-		for (char kordinateY = 'A'; kordinateY <= 'J'; kordinateY++) {
-			zaidimoLentele.put(String.valueOf(kordinateY), langas);
+		for (char kordinateX = 'A'; kordinateX <= 'J'; kordinateX++) {
+			zaidimoLentele.put(String.valueOf(kordinateX), langas);
 		}
 	}
 
@@ -55,7 +55,8 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 	}
 
 	@Override
-	public boolean sauk(String x, int y) { // pasako ar pataike i laiva
+	public boolean sauk(String x, int y) { // pasako ar pataike i laiva ir patikrina dar ar langelis turi savyje laiva
+											// jei taip jis eina i ta laiva ir is jo jau sauna i savo langeli
 		zaidimoLentele.get(x).get(y).sauk();
 
 		return false;
