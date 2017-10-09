@@ -16,11 +16,11 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 	// laivu listas
 	List<lt.vcs.laivumusis.common.Laivas> laivuListas = new ArrayList<lt.vcs.laivumusis.common.Laivas>();
 
-	Laivas lektuvnesis = new Laivas(5);
-	Laivas kovinisLaivas = new Laivas(4);
-	Laivas kruizeris = new Laivas(3);
-	Laivas povandeninis = new Laivas(3);
-	Laivas naikintojas = new Laivas(2);
+	Laivas lektuvnesis = new Laivas(5, "lektuvnesis");
+	Laivas kovinisLaivas = new Laivas(4, "krovininis");
+	Laivas kruizeris = new Laivas(3, "kruizeris");
+	Laivas povandeninis = new Laivas(3, "povandeninis");
+	Laivas naikintojas = new Laivas(2, "naikintojas");
 
 	// mapas
 	public Map<String, List<lt.vcs.laivumusis.common.Langelis>> zaidimoLentele = new HashMap<String, List<lt.vcs.laivumusis.common.Langelis>>();
@@ -30,9 +30,11 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 	public ZaidimoLenta() {
 		laivuListoKurimas();
 		lentosKurimas();
+
 	}
 
-	public void laivuListoKurimas() {
+	public void laivuListoKurimas() {// cia turetu sitas buti zaidimo klaseje oooo sitoje kalseje turi buti laivai
+										// kruie yra jau padeti langeliuose
 		laivuListas.add(lektuvnesis);
 		laivuListas.add(kovinisLaivas);
 		laivuListas.add(kruizeris);
@@ -67,4 +69,19 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 		return this.zaidimoLentele;
 	}
 
+	
+	// bandom atkurti zemelapi
+	public static void main(String[] args) {
+		ZaidimoLenta lenta = new ZaidimoLenta();
+		for (char kordinateX = 'A'; kordinateX <= 'J'; kordinateX++) {
+			System.out.print(" "+kordinateX);
+			
+		}
+		System.out.println("");
+		for (int kordinateY = 1; kordinateY <= 10; kordinateY++) {
+			System.out.println(kordinateY);
+			for(int a= 1; a<= 10; a++)
+				System.out.print(" #");
+		}
+	}
 }

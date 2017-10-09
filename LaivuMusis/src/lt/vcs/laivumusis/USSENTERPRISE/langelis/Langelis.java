@@ -8,11 +8,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Langelis implements lt.vcs.laivumusis.common.Langelis {
+
 	private int suviuSkaicius; // naudojam nustatyti kiek kartu sauta i viena langeli
 	private boolean langelioBusena;
 	private String x;
 	private int y;
 	private boolean arLaivoDalisPasauta;
+	private String laivopavadinimas;
+	private boolean arLaivasYraLangelyje;
+	Laivas langelioLaivas;
+	
 
 	// Konstruktoiai
 	public Langelis(Integer y) {
@@ -23,11 +28,6 @@ public class Langelis implements lt.vcs.laivumusis.common.Langelis {
 		this.x = x;
 	}
 
-	public Langelis(String x, Integer y) {
-		this.x = x;
-		this.y = y;
-	}
-
 	// INTERFEICU IGIVENDINIMAS
 	// kiekvienas langelis turi buti zaidimo lentos bendrame mape
 	@Override
@@ -36,11 +36,18 @@ public class Langelis implements lt.vcs.laivumusis.common.Langelis {
 		suviuSkaicius++;
 
 	}
-
+	
+	public void laivoIrasymasILangeli(String laivoPavadinimas) {
+		arLaivasYraLangelyje = true;
+		this.laivopavadinimas = laivoPavadinimas;
+	}
+	public void setLaivaLangeliui(lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas laivas) {
+		this.langelioLaivas = laivas;
+	}
 	@Override
 	public Laivas getLaivas() {
-
-		return null;
+		
+		return langelioLaivas;
 	}
 
 	@Override
@@ -51,6 +58,7 @@ public class Langelis implements lt.vcs.laivumusis.common.Langelis {
 	@Override
 	public int sakykKiekKartuSauta() {
 		return suviuSkaicius;
+		
 	}
 
 	@Override
