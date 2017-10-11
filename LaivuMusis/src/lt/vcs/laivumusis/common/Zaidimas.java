@@ -7,18 +7,20 @@ public interface Zaidimas extends Runnable {
 
 	// TODO paslepti nuo zaideju
 	public List<ZaidimoLenta> getLentos();
-
+	//4fun
 	public void skaiciuokStatistika();
-
+	//zaidejai klausineja ka jiems daryti
 	public Busena tikrinkBusena(String zaidejoId);
-
+	// grazina unikalu zaidejo id kitu operaciju kvietimui
 	public String registruokZaideja();
 
+	// prideda zaidejo laiva, patalpina ant zemelapio
+	// ir pasidaro laivo bei langeliu kopijas
 	public void pridekLaiva(Laivas laivas, String zaidejoId);
-
+	// grazina true if pataike i laiva
 	public boolean sauk(String x, int y, String zaidejoId);
-
+	//duoda zaidekio laivus, DUOTI KOPIJAS
 	public List<Laivas> duokLaivus(String zaidejoId);
-
+	//duoda  zaidejui lenta, DUOTI KOPIJA
 	public ZaidimoLenta duokZaidimoLenta(String zaidejoId);
 }

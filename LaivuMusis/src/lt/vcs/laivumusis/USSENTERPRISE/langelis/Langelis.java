@@ -40,6 +40,9 @@ public class Langelis implements lt.vcs.laivumusis.common.Langelis {
 		suviuSkaicius++;
 
 	}
+	public String grazinkPilnaKoordinate(){
+		return (x + y);
+	}
 
 	public void laivoIrasymasILangeli(String laivoPavadinimas) {
 		arLaivasYraLangelyje = true;
