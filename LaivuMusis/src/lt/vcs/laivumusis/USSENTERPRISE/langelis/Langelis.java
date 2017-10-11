@@ -17,7 +17,7 @@ public class Langelis implements lt.vcs.laivumusis.common.Langelis {
 	private String laivopavadinimas;
 	private boolean arLaivasYraLangelyje;
 	Laivas langelioLaivas;
-	
+	private String langelioVaizdaviamasZemelapyje = "#";
 
 	// Konstruktoiai
 	public Langelis(Integer y) {
@@ -36,17 +36,19 @@ public class Langelis implements lt.vcs.laivumusis.common.Langelis {
 		suviuSkaicius++;
 
 	}
-	
+
 	public void laivoIrasymasILangeli(String laivoPavadinimas) {
 		arLaivasYraLangelyje = true;
 		this.laivopavadinimas = laivoPavadinimas;
 	}
+
 	public void setLaivaLangeliui(lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas laivas) {
 		this.langelioLaivas = laivas;
 	}
+
 	@Override
 	public Laivas getLaivas() {
-		
+
 		return langelioLaivas;
 	}
 
@@ -58,7 +60,7 @@ public class Langelis implements lt.vcs.laivumusis.common.Langelis {
 	@Override
 	public int sakykKiekKartuSauta() {
 		return suviuSkaicius;
-		
+
 	}
 
 	@Override
@@ -69,5 +71,21 @@ public class Langelis implements lt.vcs.laivumusis.common.Langelis {
 	@Override
 	public int getY() {
 		return y;
+	}
+
+	public String getlangelioVaizdaviamasZemelapyje() {
+		return langelioVaizdaviamasZemelapyje;
+	}
+
+	public void setLangelioVaizdavimasTuriLaiva() {
+		this.langelioVaizdaviamasZemelapyje = "O";
+	}
+
+	public void setLangelioVaizdavimasPasautasLaivas() {
+		this.langelioVaizdaviamasZemelapyje = "X";
+	}
+
+	public void setLangelioVaizdavimasPasautaJura() {
+
 	}
 }

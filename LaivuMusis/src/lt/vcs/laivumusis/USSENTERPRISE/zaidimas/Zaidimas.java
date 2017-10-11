@@ -6,6 +6,7 @@ import java.util.List;
 import lt.vcs.laivumusis.common.Busena;
 import lt.vcs.laivumusis.common.Laivas;
 import lt.vcs.laivumusis.common.ZaidimoLenta;
+import lt.vcs.laivumusis.USSENTERPRISE.laivas.*;
 
 public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 	// mainas
@@ -13,12 +14,19 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 	public static final int LENTOS_DYDIS = 10;
 
 	List<lt.vcs.laivumusis.common.Laivas> laivuListas = new ArrayList<lt.vcs.laivumusis.common.Laivas>();
-	/*
-	 * Laivas lektuvnesis = new Laivas(5, "lektuvnesis"); Laivas kovinisLaivas = new
-	 * Laivas(4, "krovininis"); Laivas kruizeris = new Laivas(3, "kruizeris");
-	 * Laivas povandeninis = new Laivas(3, "povandeninis"); Laivas naikintojas = new
-	 * Laivas(2, "naikintojas");
-	 */
+
+	Laivas lektuvnesis = new lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas(5, "lektuvnesis");
+	Laivas kovinisLaivas = new lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas(4, "krovininis");
+	Laivas kruizeris = new lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas(3, "kruizeris");
+	Laivas povandeninis = new lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas(3, "povandeninis");
+	Laivas naikintojas = new lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas(2, "naikintojas");
+	public void laivuDejimasILista() {
+		laivuListas.add(lektuvnesis);
+		laivuListas.add(kovinisLaivas);
+		laivuListas.add(kruizeris);
+		laivuListas.add(povandeninis);
+		laivuListas.add(naikintojas);
+		}
 
 	@Override
 	public void run() {
