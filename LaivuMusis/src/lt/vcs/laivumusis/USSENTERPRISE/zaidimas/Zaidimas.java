@@ -2,7 +2,9 @@ package lt.vcs.laivumusis.USSENTERPRISE.zaidimas;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
+import lt.vcs.laivumusis.USSENTERPRISE.zaidejas.Zaidejas;
 import lt.vcs.laivumusis.common.Busena;
 import lt.vcs.laivumusis.common.Laivas;
 import lt.vcs.laivumusis.common.ZaidimoLenta;
@@ -13,12 +15,23 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 	public static final int LENTOS_DYDIS = 10;
 
 	List<lt.vcs.laivumusis.common.Laivas> laivuListas = new ArrayList<lt.vcs.laivumusis.common.Laivas>();
-	/*
-	 * Laivas lektuvnesis = new Laivas(5, "lektuvnesis"); Laivas kovinisLaivas = new
-	 * Laivas(4, "krovininis"); Laivas kruizeris = new Laivas(3, "kruizeris");
-	 * Laivas povandeninis = new Laivas(3, "povandeninis"); Laivas naikintojas = new
-	 * Laivas(2, "naikintojas");
-	 */
+	
+	String zaidejoId;
+	Busena registracija = Busena.Registracija;
+	Busena dalinamesLaivus = Busena.DalinemesLaivus;
+	Busena dalinamesZemelapius = Busena.DalinamesZemelapius;
+	Busena rikiuojamLaivus = Busena.RikiuojamLaivus;
+	Busena tavoEile = Busena.TavoEile;
+	Busena priesiEile = Busena.PriesininkoEile;
+	Busena tuLaimejai = Busena.TuLaimejai;
+	Busena priesasLaimejo = Busena.PriesasLaimejo;
+	
+	
+	public Zaidimas() {
+		
+		
+	}
+	
 
 	@Override
 	public void run() {
@@ -40,14 +53,23 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 
 	@Override
 	public Busena tikrinkBusena(String zaidejoId) {
-
+		
+		
+		
+		
+		
 		return null;
 	}
 
 	@Override
 	public String registruokZaideja() {
-		// prideda nauja zaideja pagal jo
-		return null;
+		
+		System.out.println("Registruok zaideja");
+		Scanner zaid = new Scanner(System.in);
+		zaidejoId = zaid.nextLine();
+		System.out.println("Zaidejas uzregistruotas");
+		return zaidejoId;
+	
 	}
 
 	@Override
