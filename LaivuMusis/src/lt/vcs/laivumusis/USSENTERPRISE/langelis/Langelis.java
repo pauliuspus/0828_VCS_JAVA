@@ -27,6 +27,10 @@ public class Langelis implements lt.vcs.laivumusis.common.Langelis {
 	public Langelis(String x) {
 		this.x = x;
 	}
+	
+	public Langelis(String x, Integer y) {
+		
+	}
 
 	// INTERFEICU IGIVENDINIMAS
 	// kiekvienas langelis turi buti zaidimo lentos bendrame mape
@@ -86,6 +90,6 @@ public class Langelis implements lt.vcs.laivumusis.common.Langelis {
 	}
 
 	public void setLangelioVaizdavimasPasautaJura() {
-
+		this.langelioVaizdaviamasZemelapyje = "+";
 	}
 }

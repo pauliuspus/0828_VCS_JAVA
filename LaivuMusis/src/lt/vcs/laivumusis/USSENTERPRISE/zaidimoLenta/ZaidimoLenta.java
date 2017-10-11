@@ -49,21 +49,5 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 		return this.zaidimoLentele;
 	}
 
-	// sukelti ir sugalvoti kaip tai atrodys zemelapyje
-	// bandom atkurti zemelapi
-
-	public static void main(String[] args) {
-		ZaidimoLenta lenta = new ZaidimoLenta();
-		for (char kordinateX = 'A'; kordinateX <= 'J'; kordinateX++) {
-			System.out.print(" " + kordinateX);
-
-		}
-		System.out.println("");
-		for (int kordinateY = 1; kordinateY <= 10; kordinateY++) {
-			System.out.println(kordinateY);
-			for (int a = 1; a <= 10; a++)
-				System.out.print(" #");
-		}
-	}
 
 }

@@ -15,17 +15,17 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 
 	List<lt.vcs.laivumusis.common.Laivas> laivuListas = new ArrayList<lt.vcs.laivumusis.common.Laivas>();
 
-	Laivas lektuvnesis = new lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas(5, "lektuvnesis");
-	Laivas kovinisLaivas = new lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas(4, "krovininis");
-	Laivas kruizeris = new lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas(3, "kruizeris");
-	Laivas povandeninis = new lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas(3, "povandeninis");
-	Laivas naikintojas = new lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas(2, "naikintojas");
+	Laivas laivasVienas = new lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas(1, "laivasVienas");
+	Laivas laivasDu = new lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas(2, "krovininis");
+	Laivas laivasTrys = new lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas(3, "kruizeris");
+	Laivas LaivasKeturi = new lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas(4, "povandeninis");
+	Laivas LaivasPenki = new lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas(5, "naikintojas");
 	public void laivuDejimasILista() {
-		laivuListas.add(lektuvnesis);
-		laivuListas.add(kovinisLaivas);
-		laivuListas.add(kruizeris);
-		laivuListas.add(povandeninis);
-		laivuListas.add(naikintojas);
+		laivuListas.add(laivasVienas);
+		laivuListas.add(laivasDu);
+		laivuListas.add(laivasTrys);
+		laivuListas.add(LaivasKeturi);
+		laivuListas.add(LaivasPenki);
 		}
 
 	@Override
@@ -57,10 +57,18 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 		// prideda nauja zaideja pagal jo
 		return null;
 	}
-
+// ideti laiva i zaidimo laiva , zaidejo lenteles kopijoje
 	@Override
 	public void pridekLaiva(Laivas laivas, String zaidejoId) {
-		// ideti laiva i zaidimo laiva , zaidejo lenteles kopijoje
+		// I mapa ideti laiva
+		// Laivui duoti jo langelius
+		// langeliams priskirti laiva
+		
+		
+		
+		
+		
+		
 	}
 
 	@Override
