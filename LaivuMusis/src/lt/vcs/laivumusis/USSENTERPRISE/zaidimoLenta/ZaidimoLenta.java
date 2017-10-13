@@ -38,6 +38,7 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 		for (char kordinateX = 'A'; kordinateX <= 'J'; kordinateX++) {
 			for (int kordinateY = 1; kordinateY <= 10; kordinateY++) {
 				zaidimoLentele.put(String.valueOf(kordinateX), kopijosAtidavimas());
+				
 				// zaidimoLentele.put(String.valueOf(kordinateX),
 				// kopijosAtidavimas().get(kordinateY).); // kopija
 			}

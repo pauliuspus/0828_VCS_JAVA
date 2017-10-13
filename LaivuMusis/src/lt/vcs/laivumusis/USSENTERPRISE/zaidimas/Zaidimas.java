@@ -21,7 +21,7 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 	Laivas LaivasKeturi = new lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas(4, "LaivasKeturi");
 	Laivas LaivasPenki = new lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas(5, "LaivasPenki");
 
-	public void laivuDejimasILista() {
+	public void laivuDejimasILista() { // ?
 		laivuListas.add(laivasVienas);
 		laivuListas.add(laivasDu);
 		laivuListas.add(laivasTrys);

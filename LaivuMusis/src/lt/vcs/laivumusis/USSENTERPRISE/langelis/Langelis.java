@@ -13,9 +13,6 @@ public class Langelis implements lt.vcs.laivumusis.common.Langelis {
 	private boolean langelioBusena;
 	private String x;
 	private int y;
-	private boolean arLaivoDalisPasauta;
-	private String laivopavadinimas;
-	private boolean arLaivasYraLangelyje;
 	Laivas langelioLaivas;
 	private String langelioVaizdaviamasZemelapyje = " #";
 
@@ -36,11 +33,6 @@ public class Langelis implements lt.vcs.laivumusis.common.Langelis {
 
 	public String grazinkPilnaKoordinate() {
 		return (x + y);
-	}
-
-	public void laivoIrasymasILangeli(String laivoPavadinimas) {
-		arLaivasYraLangelyje = true;
-		this.laivopavadinimas = laivoPavadinimas;
 	}
 
 	public void setLaivaLangeliui(lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas laivas) {

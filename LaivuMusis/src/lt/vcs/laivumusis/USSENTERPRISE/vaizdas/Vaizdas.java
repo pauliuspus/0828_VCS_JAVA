@@ -6,10 +6,10 @@ import java.util.List;
 import lt.vcs.laivumusis.USSENTERPRISE.zaidimoLenta.ZaidimoLenta;
 
 public class Vaizdas implements lt.vcs.laivumusis.common.Vaizdas {
-	Map<String, List<lt.vcs.laivumusis.common.Langelis>> piesimasMapas;
+	Map<String, List<lt.vcs.laivumusis.common.Langelis>> mapasKuriPiesim;
 
 	public Vaizdas(Map<String, List<lt.vcs.laivumusis.common.Langelis>> mapasKuriPiesim) {
-		piesimasMapas = mapasKuriPiesim;
+		this.mapasKuriPiesim = mapasKuriPiesim;
 	}
 
 	@Override
@@ -24,11 +24,10 @@ public class Vaizdas implements lt.vcs.laivumusis.common.Vaizdas {
 			System.out.print(" " + kordinateY);
 			for (int a = 1; a <= 10; a++)
 				for (char kordinateX = 'A'; kordinateX <= 'J'; kordinateX++) {
-					System.out.print(piesimasMapas.get(kordinateX).get(a));
+					System.out.print(mapasKuriPiesim.get(kordinateX).get(a));
 
 				}
 
-			
 			System.out.println();
 
 		}
