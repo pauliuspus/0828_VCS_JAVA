@@ -15,30 +15,43 @@ import java.util.Set;
 public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 	// mapas
 	public Map<String, List<lt.vcs.laivumusis.common.Langelis>> zaidimoLentele = new HashMap<String, List<lt.vcs.laivumusis.common.Langelis>>();
-	public List<lt.vcs.laivumusis.common.Langelis> langas = new ArrayList<lt.vcs.laivumusis.common.Langelis>();
+	// public List<lt.vcs.laivumusis.common.Langelis> langas = new
+	// ArrayList<lt.vcs.laivumusis.common.Langelis>();
 
 	// konstruktorius
 	public ZaidimoLenta() {
 		lentosKurimas();
 	}
 
-	public void lentosKurimas() {
+	private List<lt.vcs.laivumusis.common.Langelis> kopijosAtidavimas() {
+		List<lt.vcs.laivumusis.common.Langelis> langas = new ArrayList<lt.vcs.laivumusis.common.Langelis>();
 		for (int kordinateY = 1; kordinateY <= 10; kordinateY++) {
 			langas.add(new Langelis(kordinateY));
 		}
+		return langas;
+	}
+
+	public void lentosKurimas() {
+		// for (int kordinateY = 1; kordinateY <= 10; kordinateY++) {
+		// langas.add(new Langelis(kordinateY));
+		// }
 		for (char kordinateX = 'A'; kordinateX <= 'J'; kordinateX++) {
-			zaidimoLentele.put(String.valueOf(kordinateX), langas);
+			for (int kordinateY = 1; kordinateY <= 10; kordinateY++) {
+				zaidimoLentele.put(String.valueOf(kordinateX), kopijosAtidavimas());
+				
+				// zaidimoLentele.put(String.valueOf(kordinateX),
+				// kopijosAtidavimas().get(kordinateY).); // kopija
+			}
 		}
 	}
 
 	@Override
-	public List<lt.vcs.laivumusis.common.Laivas> getLaivai() { // reikia grazinti lista laivu kurie yra padeti jau mape
+	public List<lt.vcs.laivumusis.common.Laivas> getLaivai() {
 		return null;
 	}
 
 	@Override
-	public boolean sauk(String x, int y) { // pasako ar pataike i laiva ir patikrina dar ar langelis turi savyje laiva
-											// jei taip jis eina i ta laiva ir is jo jau sauna i savo langeli
+	public boolean sauk(String x, int y) {
 		zaidimoLentele.get(x).get(y).sauk();
 
 		return false;
@@ -48,6 +61,5 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 	public Map<String, List<lt.vcs.laivumusis.common.Langelis>> getLangeliai() {
 		return this.zaidimoLentele;
 	}
-
 
 }

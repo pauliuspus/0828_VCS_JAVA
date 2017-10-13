@@ -6,14 +6,14 @@ import java.util.List;
 import lt.vcs.laivumusis.USSENTERPRISE.zaidimoLenta.ZaidimoLenta;
 
 public class Vaizdas implements lt.vcs.laivumusis.common.Vaizdas {
+	Map<String, List<lt.vcs.laivumusis.common.Langelis>> mapasKuriPiesim;
 
 	public Vaizdas(Map<String, List<lt.vcs.laivumusis.common.Langelis>> mapasKuriPiesim) {
-
+		this.mapasKuriPiesim = mapasKuriPiesim;
 	}
 
 	@Override
 	public void pieskVaizda() {
-		ZaidimoLenta lenta = new ZaidimoLenta();
 		System.out.print("  ");
 		for (char kordinateX = 'A'; kordinateX <= 'J'; kordinateX++) {
 			System.out.print(" " + kordinateX);
@@ -23,7 +23,11 @@ public class Vaizdas implements lt.vcs.laivumusis.common.Vaizdas {
 		for (int kordinateY = 1; kordinateY <= 9; kordinateY++) {
 			System.out.print(" " + kordinateY);
 			for (int a = 1; a <= 10; a++)
-				System.out.print(" #");
+				for (char kordinateX = 'A'; kordinateX <= 'J'; kordinateX++) {
+					System.out.print(mapasKuriPiesim.get(kordinateX).get(a));
+
+				}
+
 			System.out.println();
 
 		}
@@ -44,8 +48,9 @@ public class Vaizdas implements lt.vcs.laivumusis.common.Vaizdas {
 	}
 
 	public static void main(String[] args) {
-//		Vaizdas vaizdas = new Vaizdas();
-//		vaizdas.pieskVaizda();
+		ZaidimoLenta lenta = new ZaidimoLenta();
+		Vaizdas vaizdas = new Vaizdas(lenta.zaidimoLentele);
+		vaizdas.pieskVaizda();
 	}
 
 }

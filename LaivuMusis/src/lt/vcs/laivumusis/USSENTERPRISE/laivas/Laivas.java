@@ -12,27 +12,27 @@ public class Laivas implements lt.vcs.laivumusis.common.Laivas {
 	private int laivogyvybes;
 	private String laivoPavadinimas;
 
-	public List<Langelis> laivoLangeliaiKordinates = new ArrayList<Langelis>(); // kiekviena karatia kai saunu i laiva
-																				// as jam
-	// nuimu gyvybes ir taip paziuriu kada jis
-	// us nusautas.
+	public List<Langelis> laivoKordinates = new ArrayList<Langelis>();
 
-	public Laivas(int laivoIlgis, String laivoPavadinimas ) {
+	public Laivas(int laivoIlgis, String laivoPavadinimas) {
 		this.laivogyvybes = laivoIlgis;
 		this.laivoIlgis = laivoIlgis;
 		this.laivoPavadinimas = laivoPavadinimas;
 	}
 
+<<<<<<< HEAD
 	public Laivas() {
 		
 	}
 
 
+=======
+>>>>>>> bb250921630207f79d9bba700bcebdaa03d51205
 	@Override
-	public void setKordinates(List<Langelis> langeliai) { // zaidime turesime sukurdi metoda kuris padarys lista
+	public void setKordinates(List<Langelis> langeliai) {
 		if (langeliai.size() > laivoIlgis)
-			System.out.println("Perilgas Laivas");			
-		laivoLangeliaiKordinates = langeliai;
+			System.out.println("Perilgas Laivas");
+		laivoKordinates = langeliai;
 	}
 
 	@Override
@@ -49,9 +49,7 @@ public class Laivas implements lt.vcs.laivumusis.common.Laivas {
 
 	@Override
 	public List<Langelis> getLaivoKoordinates() {
-		return laivoLangeliaiKordinates;
+		return laivoKordinates;
 	}
-	
-	
 
 }

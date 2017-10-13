@@ -17,15 +17,9 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 
 	List<lt.vcs.laivumusis.common.Laivas> laivuListas = new ArrayList<lt.vcs.laivumusis.common.Laivas>();
 
-	
-	
 	Laivas laivasVienas = new lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas(1, "laivasVienas");
-	Laivas laivasDu = new lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas(2, "krovininis");
-	Laivas laivasTrys = new lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas(3, "kruizeris");
-	Laivas LaivasKeturi = new lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas(4, "povandeninis");
-	Laivas LaivasPenki = new lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas(5, "naikintojas");
 	
-	
+
 	String zaidejoId;
 	Busena registracija = Busena.Registracija;
 	Busena dalinamesLaivus = Busena.DalinemesLaivus;
@@ -35,22 +29,24 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 	Busena priesiEile = Busena.PriesininkoEile;
 	Busena tuLaimejai = Busena.TuLaimejai;
 	Busena priesasLaimejo = Busena.PriesasLaimejo;
-	
-	
-	public Zaidimas() {
-		
-		
-	}
-	
 
-	
-	public void laivuDejimasILista() {
+	public Zaidimas() {
+
+	}
+
+
+	Laivas laivasDu = new lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas(2, "laivasDu");
+	Laivas laivasTrys = new lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas(3, "laivasTrys");
+	Laivas LaivasKeturi = new lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas(4, "LaivasKeturi");
+	Laivas LaivasPenki = new lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas(5, "LaivasPenki");
+
+	public void laivuDejimasILista() { // ?
 		laivuListas.add(laivasVienas);
 		laivuListas.add(laivasDu);
 		laivuListas.add(laivasTrys);
 		laivuListas.add(LaivasKeturi);
 		laivuListas.add(LaivasPenki);
-		}
+	}
 
 	@Override
 	public void run() {
@@ -72,48 +68,41 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 
 	@Override
 	public Busena tikrinkBusena(String zaidejoId) {
-		
-		
-		
-		
-		
+
 		return null;
 	}
 
 	@Override
 	public String registruokZaideja() {
-		
+
 		System.out.println("Registruok zaideja");
 		Scanner zaid = new Scanner(System.in);
 		zaidejoId = zaid.nextLine();
 		System.out.println("Zaidejas uzregistruotas");
 		return zaidejoId;
-	
+
 	}
-// ideti laiva i zaidimo laiva , zaidejo lenteles kopijoje
+
+	// ideti laiva i zaidimo laiva , zaidejo lenteles kopijoje
 	@Override
 	public void pridekLaiva(Laivas laivas, String zaidejoId) {
 		// I mapa ideti laiva
-		// Laivui duoti jo langelius
 		// langeliams priskirti laiva
-		
-		
-		
-		
-		
-		
+
 	}
 
 	@Override
 	public boolean sauk(String x, int y, String zaidejoId) {
-		// turi kviest metoda sauk kuris yra zaidimo lentoje
+
 		return false;
 	}
 
 	@Override
 	public List<Laivas> duokLaivus(String zaidejoId) {
+
 		laivuDejimasILista();
 		return laivuListas;
+
 	}
 
 	@Override
