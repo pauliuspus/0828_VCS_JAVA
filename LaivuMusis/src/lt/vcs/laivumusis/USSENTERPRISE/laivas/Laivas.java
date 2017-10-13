@@ -20,14 +20,10 @@ public class Laivas implements lt.vcs.laivumusis.common.Laivas {
 		this.laivoPavadinimas = laivoPavadinimas;
 	}
 
-<<<<<<< HEAD
 	public Laivas() {
-		
+
 	}
 
-
-=======
->>>>>>> bb250921630207f79d9bba700bcebdaa03d51205
 	@Override
 	public void setKordinates(List<Langelis> langeliai) {
 		if (langeliai.size() > laivoIlgis)
