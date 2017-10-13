@@ -23,6 +23,9 @@ public class Laivas implements lt.vcs.laivumusis.common.Laivas {
 		this.laivoPavadinimas = laivoPavadinimas;
 	}
 
+	public Laivas() {
+		
+	}
 
 
 	@Override
