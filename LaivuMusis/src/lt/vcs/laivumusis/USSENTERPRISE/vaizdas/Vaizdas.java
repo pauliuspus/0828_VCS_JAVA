@@ -18,23 +18,16 @@ public class Vaizdas implements lt.vcs.laivumusis.common.Vaizdas {
 		System.out.print("  ");
 		for (char kordinateX = 'A'; kordinateX <= 'J'; kordinateX++) {
 			System.out.print(" " + kordinateX);
-
 		}
 		System.out.println();
-		for (int kordinateY = 1; kordinateY <= 9; kordinateY++) {
+		for (int kordinateY = 1; kordinateY <= 10; kordinateY++) {
 			System.out.print(" " + kordinateY);
 			for (String kordinateX : abecele) {
 				System.out.print(((lt.vcs.laivumusis.USSENTERPRISE.langelis.Langelis) mapasKuriPiesim.get(kordinateX)
-						.get(kordinateY)).getlangelioVaizdaviamasZemelapyje());
+						.get(kordinateY - 1)).getlangelioVaizdaviamasZemelapyje());
 			}
-
 			System.out.println();
-
 		}
-		System.out.print(10);
-		for (int a = 1; a <= 10; a++)
-			System.out.print(" #");
-
 	}
 
 	@Override
@@ -51,7 +44,7 @@ public class Vaizdas implements lt.vcs.laivumusis.common.Vaizdas {
 		ZaidimoLenta lenta = new ZaidimoLenta();
 		Vaizdas vaizdas = new Vaizdas(lenta.zaidimoLentele);
 		vaizdas.pieskVaizda();
-		
+
 	}
 
 }

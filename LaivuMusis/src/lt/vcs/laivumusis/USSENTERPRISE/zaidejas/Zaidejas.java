@@ -28,7 +28,8 @@ public class Zaidejas implements lt.vcs.laivumusis.common.Zaidejas {
 
 	@Override
 	public void run() {
-
+		zaidejasId =zaidimas.registruokZaideja();
+		System.out.println(zaidejasId);
 		while (true) {
 			switch (zaidimas.tikrinkBusena(zaidejasId)) {
 			case Registracija:
@@ -41,10 +42,10 @@ public class Zaidejas implements lt.vcs.laivumusis.common.Zaidejas {
 				this.zaidimas.duokZaidimoLenta(zaidejasId);
 				break;
 			case RikiuojamLaivus:
-				// this.zaidimas.pridekLaiva(, zaidejasId);
+				zaidejauPridekLaivus();
 				break;
 			case TavoEile:
-				// this.zaidimas.sauk('A', 10, zaidejasId);
+				zaidejauSauk();
 				break;
 			case PriesininkoEile:
 
@@ -60,7 +61,14 @@ public class Zaidejas implements lt.vcs.laivumusis.common.Zaidejas {
 		}
 
 	}
-
+	
+	public void zaidejauSauk() {
+		String x = laivoScaneris.nextLine();
+		int y = laivoScaneris.nextInt();
+		zaidimas.sauk(x, y, zaidejasId);
+	}
+	
+	
 	// patikrinti ar laivas gerai sudetas
 	public void zaidejauPridekLaivus() {
 		List<Laivas> laivuListas = this.zaidimas.duokLaivus(zaidejasId);

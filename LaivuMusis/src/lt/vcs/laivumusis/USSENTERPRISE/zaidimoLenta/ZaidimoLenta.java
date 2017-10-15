@@ -15,8 +15,6 @@ import java.util.Set;
 public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 	// mapas
 	public Map<String, List<lt.vcs.laivumusis.common.Langelis>> zaidimoLentele = new HashMap<String, List<lt.vcs.laivumusis.common.Langelis>>();
-	// public List<lt.vcs.laivumusis.common.Langelis> langas = new
-	// ArrayList<lt.vcs.laivumusis.common.Langelis>();
 
 	String[] abecele = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
 
@@ -34,17 +32,6 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 	}
 
 	public void lentosKurimas() {
-		// for (int kordinateY = 1; kordinateY <= 10; kordinateY++) {
-		// langas.add(new Langelis(kordinateY));
-		// }
-		// for (char kordinateX = 'A'; kordinateX <= 'J'; kordinateX++) {
-		// // for (int kordinateY = 1; kordinateY <= 10; kordinateY++) {
-		// zaidimoLentele.put(String.valueOf(kordinateX), kopijosAtidavimas());
-		//
-		// // zaidimoLentele.put(String.valueOf(kordinateX),
-		// // kopijosAtidavimas().get(kordinateY).); // kopija
-		// // }
-		// }
 		for (String a : abecele) {
 			zaidimoLentele.put(a, kopijosAtidavimas());
 		}
@@ -59,8 +46,7 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 	@Override
 	public boolean sauk(String x, int y) {
 		zaidimoLentele.get(x).get(y).sauk();
-
-		return false;
+		return ((lt.vcs.laivumusis.USSENTERPRISE.langelis.Langelis) zaidimoLentele.get(x).get(y)).arLaivoDalisPasauta();
 	}
 
 	@Override

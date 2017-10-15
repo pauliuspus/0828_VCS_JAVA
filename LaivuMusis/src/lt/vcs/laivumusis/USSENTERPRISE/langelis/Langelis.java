@@ -15,6 +15,8 @@ public class Langelis implements lt.vcs.laivumusis.common.Langelis {
 	private int y;
 	Laivas langelioLaivas;
 	private String langelioVaizdaviamasZemelapyje = " #";
+	private boolean arLaivoDalisPasauta = false;
+	private boolean arLangelisTuriLaiva = false;
 
 	public Langelis(Integer y) {
 		this.y = y;
@@ -23,25 +25,35 @@ public class Langelis implements lt.vcs.laivumusis.common.Langelis {
 	public Langelis(String x) {
 		this.x = x;
 	}
-	
+
 	public Langelis(String x, Integer y) {
 		this(x);
 		this.y = y;
+	}
+
+	public boolean arLaivoDalisPasauta() {
+		return arLaivoDalisPasauta;
 	}
 
 	@Override
 	public void sauk() {
 		langelioBusena = true;
 		suviuSkaicius++;
-
+		if (arLangelisTuriLaiva == true) {
+			langelioVaizdaviamasZemelapyje = " X";
+			arLaivoDalisPasauta = true;
+		} else
+			langelioVaizdaviamasZemelapyje = " +";
 	}
 
-	public String grazinkPilnaKoordinate() {
-		return (x + y);
+	public void setLaivoDalisPasauta() {
+		arLaivoDalisPasauta = true;
 	}
 
-	public void setLaivaLangeliui(lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas laivas) {
+	public void setLaivaLangeliui(lt.vcs.laivumusis.common.Laivas laivas) {
 		this.langelioLaivas = laivas;
+		langelioVaizdaviamasZemelapyje = " O";
+		arLangelisTuriLaiva = true;
 	}
 
 	public void setX(String x) {
@@ -79,15 +91,4 @@ public class Langelis implements lt.vcs.laivumusis.common.Langelis {
 		return langelioVaizdaviamasZemelapyje;
 	}
 
-	public void setLangelioVaizdavimasTuriLaiva() {
-		this.langelioVaizdaviamasZemelapyje = "O";
-	}
-
-	public void setLangelioVaizdavimasPasautasLaivas() {
-		this.langelioVaizdaviamasZemelapyje = "X";
-	}
-
-	public void setLangelioVaizdavimasPasautaJura() {
-		this.langelioVaizdaviamasZemelapyje = "+";
-	}
 }
