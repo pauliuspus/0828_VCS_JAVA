@@ -1,5 +1,6 @@
 package lt.vcs.laivumusis.USSENTERPRISE.zaidimas;
 
+import java.nio.channels.Pipe.SinkChannel;
 import java.util.ArrayList;
 import lt.vcs.laivumusis.USSENTERPRISE.zaidimoLenta.ZaidimoLenta;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.Scanner;
 import lt.vcs.laivumusis.USSENTERPRISE.zaidejas.Zaidejas;
 import lt.vcs.laivumusis.common.Busena;
 import lt.vcs.laivumusis.common.Laivas;
+import lt.vcs.laivumusis.common.LaivuPridejimoKlaida;
 import lt.vcs.laivumusis.common.Langelis;
 import lt.vcs.laivumusis.USSENTERPRISE.laivas.*;
 
@@ -20,8 +22,8 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 	private String zaidejoId1;
 	private String zaidejoId2;
 	private int zaidejuSkaicius;
-	private List<Laivas> laivai1;
-	private List<Laivas> laivai2;
+	private List<Laivas> laivai1 = new ArrayList<Laivas>();
+	private List<Laivas> laivai2 = new ArrayList<Laivas>();
 	private ZaidimoLenta lenta1 = new ZaidimoLenta();
 	private ZaidimoLenta lenta2 = new ZaidimoLenta();
 	Busena registracija = Busena.Registracija;
@@ -78,28 +80,28 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 	}
 
 	@Override
-	public String registruokZaideja() {// +
+	public synchronized String registruokZaideja(String zaidejoId) {// +
 		if (zaidejuSkaicius >= 2) {
-			System.out.println("zaidejau uzregistruoti");
-			return null;
+			System.out.println("zaidejai uzregistruoti");
+			return " ";
 		}
 		if (zaidejoId1 == null) {
 			System.out.println("Pirmas zaidejas uzregistruotas");
-			this.zaidejoId1 = "" + new Random().nextInt(99);
+			zaidejoId1 = zaidejoId;
 			return zaidejoId1;
 		}
-		if (zaidejoId2 == null) {
-			this.zaidejoId2 = "" + new Random().nextInt(99);
+		if (zaidejoId2 == null && zaidejoId != zaidejoId1) {
+			System.out.println("Antras zaidejas uzregistruotas");
+			zaidejoId2 = zaidejoId;
 			return zaidejoId2;
 		}
-		return null;
+		return " ";
 
 	}
 
 	@Override
-	public void pridekLaiva(Laivas laivas, String zaidejoId) {// +???
-		// I mapa ideti laiva
-		// langeliams priskirti laiva
+	public void pridekLaiva(Laivas laivas, String zaidejoId) throws LaivuPridejimoKlaida {// padaryti patikrinima ar
+																							// laivai dedami gerai
 		if (zaidejoId != zaidejoId1 & zaidejoId != zaidejoId2) {
 			System.out.println("Nera tokio zaidejo");
 		}

@@ -15,7 +15,7 @@ import java.util.Set;
 public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 	// mapas
 	public Map<String, List<lt.vcs.laivumusis.common.Langelis>> zaidimoLentele = new HashMap<String, List<lt.vcs.laivumusis.common.Langelis>>();
-
+	private List<lt.vcs.laivumusis.common.Laivas> laivuListas = new ArrayList<lt.vcs.laivumusis.common.Laivas>();//sukurti idejimo metoda
 	String[] abecele = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
 
 	// konstruktorius

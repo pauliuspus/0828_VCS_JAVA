@@ -41,9 +41,6 @@ public class Vaizdas implements lt.vcs.laivumusis.common.Vaizdas {
 	}
 
 	public static void main(String[] args) {
-		ZaidimoLenta lenta = new ZaidimoLenta();
-		Vaizdas vaizdas = new Vaizdas(lenta.zaidimoLentele);
-		vaizdas.pieskVaizda();
 
 	}
 
