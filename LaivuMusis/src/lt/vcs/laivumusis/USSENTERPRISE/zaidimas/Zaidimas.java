@@ -1,5 +1,6 @@
 package lt.vcs.laivumusis.USSENTERPRISE.zaidimas;
 
+import java.lang.reflect.Array;
 import java.nio.channels.Pipe.SinkChannel;
 import java.util.ArrayList;
 import lt.vcs.laivumusis.USSENTERPRISE.zaidimoLenta.ZaidimoLenta;
@@ -132,15 +133,6 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 		if (laivas.getLaivoKoordinates() == null) {
 			new LaivuPridejimoKlaida("Laivui nepriskirtos kordinates!");
 		}
-		// reikia dar paziureti ar laivas nera iskreiptos formos
-		if (zaidejoId == zaidejoId1) {
-			List<Langelis> tikrinamosKordinates = laivas.getLaivoKoordinates();
-			// begam per zaidejo mapa patikrindami ar galima toje vietoje deti laiva, o tai
-			// reiskia patikrinam tuo paciu ar nera
-			// aplinkui tas vietas kitu laivu
-			
-			
-		}
 
 		// jau dedame laivus
 		Laivas laivelis;
@@ -230,6 +222,72 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 		}
 
 		return lentosKopija;
+	}
+
+	private boolean tikrinaArGalimaIdetiLaiva(Laivas laivas) {
+		// reikia dar paziureti ar laivas nera iskreiptos formos
+		if (zaidejoId == zaidejoId1) {
+			List<Langelis> tikrinamosKordinates = laivas.getLaivoKoordinates();
+			// begam per zaidejo mapa patikrindami ar galima toje vietoje deti laiva, o tai
+			// reiskia patikrinam tuo paciu ar nera
+			// aplinkui tas vietas kitu laivu
+			for (int i = 0; i < tikrinamosKordinates.size(); i++) {
+				String x = tikrinamosKordinates.get(i).getX();
+				int y = tikrinamosKordinates.get(i).getY();
+				int raidesVieta;
+				// ieskojau raides vietos masyve
+				for (int j = 0; j < abecele.length; j++) {
+					if (abecele[i].equals(x)) {
+						raidesVieta = i;
+					}
+				}
+				// pradedu tikrinti langelius if sakiniai patikrina ar langeliai nera prie
+				// krastu
+				if (raidesVieta > 0 && raidesVieta < 9) {
+					for (int k = raidesVieta - 1; k <= raidesVieta + 1; k++) {
+						String raide = abecele[k];
+						if (y > 1 && y < 10) {
+							for (int o = y - 1; y <= y + 1; y++) {
+								Laivas arLangelisTuriLaiva = lenta1.zaidimoLentele.get(raide).get(y - 1).getLaivas();// nepamirsi
+																														// -1
+								if (arLangelisTuriLaiva == null) {
+									return true;
+								} else
+									return false;
+							}
+						}
+						if (y == 1) {
+							for (int o = y; y <= y + 1; y++) {
+								Laivas arLangelisTuriLaiva = lenta1.zaidimoLentele.get(raide).get(y - 1).getLaivas();// nepamirsi
+																														// -1
+								if (arLangelisTuriLaiva == null) {
+									return true;
+								} else
+									return false;
+							}
+						}
+						if (y == 10) {
+							for (int o = y - 1; y <= y; y++) {
+								Laivas arLangelisTuriLaiva = lenta1.zaidimoLentele.get(raide).get(y - 1).getLaivas();// nepamirsi
+																														// -1
+								if (arLangelisTuriLaiva == null) {
+									return true;
+								} else
+									return false;
+							}
+						}
+					}
+				}
+				if (raidesVieta == 0) {
+
+				}
+				if (raidesVieta == 9) {
+
+				}
+
+			}
+
+		}
 	}
 
 }

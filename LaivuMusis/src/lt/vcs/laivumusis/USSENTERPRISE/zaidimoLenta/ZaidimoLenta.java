@@ -11,11 +11,14 @@ import lt.vcs.laivumusis.USSENTERPRISE.Konstantos.Konstantos;
 import lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas;
 
 import java.util.Set;
+import java.util.TreeMap;
 
 public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 	// mapas
-	public Map<String, List<lt.vcs.laivumusis.common.Langelis>> zaidimoLentele = new HashMap<String, List<lt.vcs.laivumusis.common.Langelis>>();
-	private List<lt.vcs.laivumusis.common.Laivas> laivuListas = new ArrayList<lt.vcs.laivumusis.common.Laivas>();//sukurti idejimo metoda
+	public Map<String, List<lt.vcs.laivumusis.common.Langelis>> zaidimoLentele = new TreeMap<String, List<lt.vcs.laivumusis.common.Langelis>>();
+	private List<lt.vcs.laivumusis.common.Laivas> laivuListas = new ArrayList<lt.vcs.laivumusis.common.Laivas>();// sukurti
+																													// idejimo
+																													// metoda
 	String[] abecele = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
 
 	// konstruktorius
@@ -26,7 +29,10 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 	private List<lt.vcs.laivumusis.common.Langelis> kopijosAtidavimas() {
 		List<lt.vcs.laivumusis.common.Langelis> langas = new ArrayList<lt.vcs.laivumusis.common.Langelis>();
 		for (int kordinateY = 1; kordinateY <= 10; kordinateY++) {
-			langas.add(new Langelis(kordinateY));
+			for (String a : abecele) {
+				langas.add(new Langelis(a, kordinateY));
+			}
+
 		}
 		return langas;
 	}

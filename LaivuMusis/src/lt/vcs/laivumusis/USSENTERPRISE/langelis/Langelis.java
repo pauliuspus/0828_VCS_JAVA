@@ -34,6 +34,9 @@ public class Langelis implements lt.vcs.laivumusis.common.Langelis {
 	public boolean arLaivoDalisPasauta() {
 		return arLaivoDalisPasauta;
 	}
+	public boolean arLangelisTuriLaiva() {
+		return arLangelisTuriLaiva;
+	}
 
 	@Override
 	public void sauk() {
