@@ -1,25 +1,24 @@
 package lt.vcs.laivumusis.USSENTERPRISE.zaidejas;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import lt.vcs.laivumusis.common.Busena;
+
 import lt.vcs.laivumusis.common.Laivas;
 import lt.vcs.laivumusis.common.Langelis;
+import lt.vcs.laivumusis.common.Zaidejas;
 import lt.vcs.laivumusis.common.Zaidimas;
 
-public class Zaidejas implements lt.vcs.laivumusis.common.Zaidejas {
-
+public class pijausZaidejas implements Zaidejas {
 	Scanner laivoScaneris = new Scanner(System.in);
 
 	private Zaidimas zaidimas;
 	private String zaidejasId = "Krabas";
 
-	public Zaidejas() {
+	public pijausZaidejas() {
 
 	}
 
-	public Zaidejas(Zaidimas zaidimas) {
+	public pijausZaidejas(Zaidimas zaidimas) {
 		this.zaidimas = zaidimas;
 	}
 
@@ -82,10 +81,9 @@ public class Zaidejas implements lt.vcs.laivumusis.common.Zaidejas {
 			try {
 				this.zaidimas.pridekLaiva(laivelis, zaidejasId);
 			} catch (Exception e) {
-				
+
 			}
-			
-			
+
 		}
 	}
 
