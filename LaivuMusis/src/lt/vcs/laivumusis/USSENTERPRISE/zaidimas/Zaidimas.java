@@ -18,7 +18,7 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 
 	private List<lt.vcs.laivumusis.common.Laivas> laivuListas = new ArrayList<lt.vcs.laivumusis.common.Laivas>();
 	private List<lt.vcs.laivumusis.common.ZaidimoLenta> zaidejuLentos = new ArrayList<lt.vcs.laivumusis.common.ZaidimoLenta>();
-
+	String[] abecele = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
 	private String zaidejoId1;
 	private String zaidejoId2;
 	static private int zaidejuSkaicius;
@@ -138,7 +138,8 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 			// begam per zaidejo mapa patikrindami ar galima toje vietoje deti laiva, o tai
 			// reiskia patikrinam tuo paciu ar nera
 			// aplinkui tas vietas kitu laivu
-
+			
+			
 		}
 
 		// jau dedame laivus
