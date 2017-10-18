@@ -16,12 +16,14 @@ import lt.vcs.laivumusis.common.Laivas;
 import lt.vcs.laivumusis.common.LaivuPridejimoKlaida;
 import lt.vcs.laivumusis.common.Langelis;
 import lt.vcs.laivumusis.USSENTERPRISE.laivas.*;
+import lt.vcs.laivumusis.USSENTERPRISE.vaizdas.Vaizdas;
 
 public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 
 	private List<lt.vcs.laivumusis.common.Laivas> laivuListas = new ArrayList<lt.vcs.laivumusis.common.Laivas>();
 	private List<lt.vcs.laivumusis.common.ZaidimoLenta> zaidejuLentos = new ArrayList<lt.vcs.laivumusis.common.ZaidimoLenta>();
 	String[] abecele = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
+
 	private String zaidejoId1;
 	private String zaidejoId2;
 	static private int zaidejuSkaicius;
@@ -29,6 +31,8 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 	private List<Laivas> laivai2 = new ArrayList<Laivas>();
 	private ZaidimoLenta lenta1 = new ZaidimoLenta();
 	private ZaidimoLenta lenta2 = new ZaidimoLenta();
+	Vaizdas pirmoZaidejoVaizdas = new Vaizdas(lenta1.zaidimoLentele);
+	Vaizdas antrojoZaidejoVaizdas = new Vaizdas(lenta2.zaidimoLentele);
 	// zaidejas 1
 	Busena registracijaZaidejas1 = Busena.Registracija;
 	Busena dalinamesLaivusZaidejas1 = Busena.DalinemesLaivus;
@@ -62,6 +66,7 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 		laivuDejimasILista(laivai2);
 		einanciojiBusenaZaidejo1 = registracijaZaidejas1;
 		einanciojiBusenaZaidejo2 = registracijaZaidejas2;
+
 	}
 
 	public void laivuDejimasILista(List<Laivas> a) { // ?
@@ -113,12 +118,14 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 			System.out.println("Pirmas zaidejas uzregistruotas");
 			zaidejoId1 = zaidejoId;
 			zaidejuSkaicius++;
+			pirmoZaidejoVaizdas.pieskVaizda();
 			return true;
 		}
 		if (zaidejoId2 == "" && zaidejoId != zaidejoId1) {
 			System.out.println("Antras zaidejas uzregistruotas");
 			zaidejoId2 = zaidejoId;
 			zaidejuSkaicius++;
+			antrojoZaidejoVaizdas.pieskVaizda();
 			return true;
 		}
 		return false;
@@ -127,7 +134,7 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 	// po kiekvieno zaidejo ejimo pieseme nauja vaizda
 
 	@Override
-	public void pridekLaiva(Laivas laivas, String zaidejoId) throws LaivuPridejimoKlaida {
+	public void pridekLaiva(Laivas laivas, String zaidejoId) throws LaivuPridejimoKlaida { // truksta vieno patirkinimo
 		if (zaidejoId != zaidejoId1 & zaidejoId != zaidejoId2) {
 			System.out.println("Nera tokio zaidejo");
 		}
@@ -143,6 +150,7 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 		}
 		if (arLaivasGaliButPridetas == false) {
 			throw new LaivuPridejimoKlaida("Laivo su siomis kordinatemis negalima peideti, bandykite is naujo");
+
 		}
 
 		// jau dedame laivus
@@ -159,8 +167,11 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 				((lt.vcs.laivumusis.USSENTERPRISE.langelis.Langelis) lenta1.zaidimoLentele.get(x).get(y - 1))
 						.setLaivaLangeliui(laivelis);
 				einanciojiBusenaZaidejo1 = tavoEileZaidejas1;
+				pirmoZaidejoVaizdas.atnaujinkVaizda();
+
 			}
 			laivai1.get(laivoIlgis - 1).setKordinates(laivoLangeliukopija);
+
 		}
 
 		// 2 zaidejas
@@ -173,6 +184,7 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 				((lt.vcs.laivumusis.USSENTERPRISE.langelis.Langelis) lenta2.zaidimoLentele.get(x).get(y - 1))
 						.setLaivaLangeliui(laivelis);
 				einanciojiBusenaZaidejo2 = tavoEileZaidejas2;
+				antrojoZaidejoVaizdas.atnaujinkVaizda();
 			}
 			laivai2.get(laivoIlgis - 1).setKordinates(laivoLangeliukopija);
 		}
@@ -189,12 +201,28 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 			boolean arPataike = lenta1.sauk(x, y);
 			einanciojiBusenaZaidejo1 = priesiEileZaidejas1;
 			einanciojiBusenaZaidejo2 = tavoEileZaidejas2;
+			pirmoZaidejoVaizdas.atnaujinkVaizda();
+			if (arPataike = true) {
+				if (lenta1.getLentosGyvybes() == 0) {
+					einanciojiBusenaZaidejo1 = tuLaimejaiZaidejas1;
+					einanciojiBusenaZaidejo2 = priesasLaimejoZaidejas2;
+					System.out.println("tu laimejai");
+				}
+			}
 			return arPataike;
 		} else {
 			lenta2.sauk(x, y);
 			boolean arPataike = lenta2.sauk(x, y);
 			einanciojiBusenaZaidejo1 = tavoEileZaidejas1;
 			einanciojiBusenaZaidejo2 = priesiEileZaidejas2;
+			antrojoZaidejoVaizdas.atnaujinkVaizda();
+			if (arPataike = true) {
+				if (lenta2.getLentosGyvybes() == 0) {
+					einanciojiBusenaZaidejo1 = priesasLaimejoZaidejas1;
+					einanciojiBusenaZaidejo2 = tuLaimejaiZaidejas2;
+					System.out.println("tu laimejai");
+				}
+			}
 			return arPataike;
 		}
 	}

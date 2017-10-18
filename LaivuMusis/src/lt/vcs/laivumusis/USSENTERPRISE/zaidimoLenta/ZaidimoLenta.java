@@ -18,6 +18,7 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 	public Map<String, List<lt.vcs.laivumusis.common.Langelis>> zaidimoLentele = new TreeMap<String, List<lt.vcs.laivumusis.common.Langelis>>();
 	private List<lt.vcs.laivumusis.common.Laivas> laivuListas = new ArrayList<lt.vcs.laivumusis.common.Laivas>();
 	String[] abecele = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
+	int bendrosGyvyes = 15;
 
 	// konstruktorius
 	public ZaidimoLenta() {
@@ -40,8 +41,12 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 			zaidimoLentele.put(a, kopijosAtidavimas());
 		}
 	}
-	
-	public void laivoPridejimasILista (Laivas laivas) {
+
+	public int getLentosGyvybes() {
+		return bendrosGyvyes;
+	}
+
+	public void laivoPridejimasILista(Laivas laivas) {
 		laivuListas.add(laivas);
 	}
 
@@ -53,7 +58,12 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 	@Override
 	public boolean sauk(String x, int y) {
 		zaidimoLentele.get(x).get(y).sauk();
-		return ((lt.vcs.laivumusis.USSENTERPRISE.langelis.Langelis) zaidimoLentele.get(x).get(y)).arLaivoDalisPasauta();
+		boolean arPataike = ((lt.vcs.laivumusis.USSENTERPRISE.langelis.Langelis) zaidimoLentele.get(x).get(y))
+				.arLaivoDalisPasauta();
+		if (arPataike == true) {
+			bendrosGyvyes--;
+		}
+		return arPataike;
 	}
 
 	@Override

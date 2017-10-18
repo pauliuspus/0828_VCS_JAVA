@@ -2,12 +2,13 @@ package lt.vcs.laivumusis.USSENTERPRISE.vaizdas;
 
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.List;
 import lt.vcs.laivumusis.USSENTERPRISE.zaidimoLenta.ZaidimoLenta;
 
 public class Vaizdas implements lt.vcs.laivumusis.common.Vaizdas {
 	String[] abecele = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
-	Map<String, List<lt.vcs.laivumusis.common.Langelis>> mapasKuriPiesim;
+	Map<String, List<lt.vcs.laivumusis.common.Langelis>> mapasKuriPiesim = new TreeMap<String, List<lt.vcs.laivumusis.common.Langelis>>();
 
 	public Vaizdas(Map<String, List<lt.vcs.laivumusis.common.Langelis>> mapasKuriPiesim) {
 		this.mapasKuriPiesim = mapasKuriPiesim;
@@ -32,16 +33,13 @@ public class Vaizdas implements lt.vcs.laivumusis.common.Vaizdas {
 
 	@Override
 	public void atnaujinkVaizda() {
+		isvalyk();
 		pieskVaizda();
 	}
 
 	@Override
 	public void isvalyk() {
-
-	}
-
-	public static void main(String[] args) {
-
+		System.out.flush();
 	}
 
 }
