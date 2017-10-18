@@ -16,9 +16,7 @@ import java.util.TreeMap;
 public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 	// mapas
 	public Map<String, List<lt.vcs.laivumusis.common.Langelis>> zaidimoLentele = new TreeMap<String, List<lt.vcs.laivumusis.common.Langelis>>();
-	private List<lt.vcs.laivumusis.common.Laivas> laivuListas = new ArrayList<lt.vcs.laivumusis.common.Laivas>();// sukurti
-																													// idejimo
-																													// metoda
+	private List<lt.vcs.laivumusis.common.Laivas> laivuListas = new ArrayList<lt.vcs.laivumusis.common.Laivas>();
 	String[] abecele = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
 
 	// konstruktorius
@@ -41,7 +39,10 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 		for (String a : abecele) {
 			zaidimoLentele.put(a, kopijosAtidavimas());
 		}
-
+	}
+	
+	public void laivoPridejimasILista (Laivas laivas) {
+		laivuListas.add(laivas);
 	}
 
 	@Override

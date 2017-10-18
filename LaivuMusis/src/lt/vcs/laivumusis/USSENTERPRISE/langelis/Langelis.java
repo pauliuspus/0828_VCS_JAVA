@@ -27,7 +27,7 @@ public class Langelis implements lt.vcs.laivumusis.common.Langelis {
 	}
 
 	public Langelis(String x, Integer y) {
-		this(x);
+		this.x = x;
 		this.y = y;
 	}
 
