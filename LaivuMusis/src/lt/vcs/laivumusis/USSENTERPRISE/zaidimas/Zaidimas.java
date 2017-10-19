@@ -33,27 +33,7 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 	private ZaidimoLenta lenta2 = new ZaidimoLenta();
 	Vaizdas pirmoZaidejoVaizdas = new Vaizdas(lenta1.zaidimoLentele);
 	Vaizdas antrojoZaidejoVaizdas = new Vaizdas(lenta2.zaidimoLentele);
-	// zaidejas 1
-	Busena registracijaZaidejas1 = Busena.Registracija;
-	Busena dalinamesLaivusZaidejas1 = Busena.DalinemesLaivus;
-	Busena dalinamesZemelapiusZaidejas1 = Busena.DalinamesZemelapius;
-	Busena rikiuojamLaivusZaidejas1 = Busena.RikiuojamLaivus;
-	Busena tavoEileZaidejas1 = Busena.TavoEile;
-	Busena priesiEileZaidejas1 = Busena.PriesininkoEile;
-	Busena tuLaimejaiZaidejas1 = Busena.TuLaimejai;
-	Busena priesasLaimejoZaidejas1 = Busena.PriesasLaimejo;
-	// zaidejas 2
-	Busena registracijaZaidejas2 = Busena.Registracija;
-	Busena dalinamesLaivusZaidejas2 = Busena.DalinemesLaivus;
-	Busena dalinamesZemelapiusZaidejas2 = Busena.DalinamesZemelapius;
-	Busena rikiuojamLaivusZaidejas2 = Busena.RikiuojamLaivus;
-	Busena tavoEileZaidejas2 = Busena.TavoEile;
-	Busena priesiEileZaidejas2 = Busena.PriesininkoEile;
-	Busena tuLaimejaiZaidejas2 = Busena.TuLaimejai;
-	Busena priesasLaimejoZaidejas2 = Busena.PriesasLaimejo;
-	// einancioji
-	Busena einanciojiBusenaZaidejo1;
-	Busena einanciojiBusenaZaidejo2;
+	Busena einanciojiBusenaZaidejo = Busena.Registracija;
 
 	private Laivas laivasVienas = new lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas(1, "laivasVienas");
 	private Laivas laivasDu = new lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas(2, "laivasDu");
@@ -62,19 +42,18 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 	private Laivas LaivasPenki = new lt.vcs.laivumusis.USSENTERPRISE.laivas.Laivas(5, "LaivasPenki");
 
 	public Zaidimas() {
-		laivuDejimasILista(laivai1);
-		laivuDejimasILista(laivai2);
-		einanciojiBusenaZaidejo1 = registracijaZaidejas1;
-		einanciojiBusenaZaidejo2 = registracijaZaidejas2;
+		laivai1.add(laivasVienas);
+		laivai1.add(laivasDu);
+		laivai1.add(laivasTrys);
+		laivai1.add(LaivasKeturi);
+		laivai1.add(LaivasPenki);
 
-	}
+		laivai2.add(laivasVienas);
+		laivai2.add(laivasDu);
+		laivai2.add(laivasTrys);
+		laivai2.add(LaivasKeturi);
+		laivai2.add(LaivasPenki);
 
-	public void laivuDejimasILista(List<Laivas> a) { // ?
-		a.add(laivasVienas);
-		a.add(laivasDu);
-		a.add(laivasTrys);
-		a.add(LaivasKeturi);
-		a.add(LaivasPenki);
 	}
 
 	@Override
@@ -96,14 +75,9 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 	}
 
 	@Override
-	public Busena tikrinkBusena(String zaidejoId) {
+	public Busena tikrinkBusena(String zaidejoId) {// patikrink kieno eile
 
-		Busena busenacia = registracijaZaidejas1;
-		if (zaidejoId == zaidejoId1)
-			busenacia = einanciojiBusenaZaidejo1;
-		if (zaidejoId == zaidejoId2)
-			busenacia = einanciojiBusenaZaidejo2;
-		return busenacia;
+		return null;
 
 	}
 
@@ -118,13 +92,16 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 			System.out.println("Pirmas zaidejas uzregistruotas");
 			zaidejoId1 = zaidejoId;
 			zaidejuSkaicius++;
+
 			pirmoZaidejoVaizdas.pieskVaizda();
+			System.out.println("pirmas zaidejas");
 			return true;
 		}
 		if (zaidejoId2 == null && zaidejoId != zaidejoId1) {
 			System.out.println("Antras zaidejas uzregistruotas");
 			zaidejoId2 = zaidejoId;
 			zaidejuSkaicius++;
+
 			antrojoZaidejoVaizdas.pieskVaizda();
 			return true;
 		}
@@ -136,24 +113,24 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 	@Override
 	public synchronized void pridekLaiva(Laivas laivas, String zaidejoId) throws LaivuPridejimoKlaida { // truksta vieno
 																										// patirkinimo
-		if (zaidejoId != zaidejoId1 & zaidejoId != zaidejoId2) {
-			System.out.println("Nera tokio zaidejo");
-
-		}
 		// tikrinam ar laivai dedami gerai
-		if (laivas.getLaivoKoordinates() == null) {
-			new LaivuPridejimoKlaida("Laivui nepriskirtos kordinates!");
+		if (laivas.getLaivoKoordinates() == null) {// +
+			System.out.println("kaka");
+			throw new LaivuPridejimoKlaida("Laivui nepriskirtos kordinates!");
 		}
-		boolean arLaivasGaliButPridetas;
-		arLaivasGaliButPridetas = tikrinaArGalimaIdetiLaiva(laivas, zaidejoId);
+		boolean arLaivasGaliButPridetas = true;
+		Laivas Laivukas = laivas;
+		arLaivasGaliButPridetas = tikrinaArGalimaIdetiLaiva(Laivukas, zaidejoId);
+
 		if (arLaivasGaliButPridetas == false) {
-			throw new LaivuPridejimoKlaida("Laivo su siomis kordinatemis negalima peideti, bandykite is naujo");
+			System.out.println("Klaida");
+			throw new LaivuPridejimoKlaida("Laivo su siomis kordinatemis negalima prideti, bandykite is naujo");
 
 		}
 
 		// jau dedame laivus
 		Laivas laivelis;
-
+		System.out.println("dedam laivus");
 		int laivoIlgis = laivas.getLaivoIlgis();
 		// 1 zaidejas
 		if (zaidejoId1 == zaidejoId) {
@@ -164,7 +141,7 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 				int y = laivoLangeliukopija.get(a).getY();
 				((lt.vcs.laivumusis.USSENTERPRISE.langelis.Langelis) lenta1.zaidimoLentele.get(x).get(y - 1))
 						.setLaivaLangeliui(laivelis);
-				einanciojiBusenaZaidejo1 = tavoEileZaidejas1;
+
 				pirmoZaidejoVaizdas.atnaujinkVaizda();
 				System.out.println("laivas pridetas");
 
@@ -182,7 +159,7 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 				int y = laivoLangeliukopija.get(a).getY();
 				((lt.vcs.laivumusis.USSENTERPRISE.langelis.Langelis) lenta2.zaidimoLentele.get(x).get(y - 1))
 						.setLaivaLangeliui(laivelis);
-				einanciojiBusenaZaidejo2 = tavoEileZaidejas2;
+
 				antrojoZaidejoVaizdas.atnaujinkVaizda();
 			}
 			laivai2.get(laivoIlgis - 1).setKordinates(laivoLangeliukopija);
@@ -196,29 +173,25 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 			return false;
 		}
 		if (zaidejoId == zaidejoId1) {
-			lenta1.sauk(x, y);
-			boolean arPataike = lenta1.sauk(x, y);
-			einanciojiBusenaZaidejo1 = priesiEileZaidejas1;
-			einanciojiBusenaZaidejo2 = tavoEileZaidejas2;
+
+			boolean arPataike = lenta2.sauk(x, y);
+
 			pirmoZaidejoVaizdas.atnaujinkVaizda();
 			if (arPataike = true) {
 				if (lenta1.getLentosGyvybes() == 0) {
-					einanciojiBusenaZaidejo1 = tuLaimejaiZaidejas1;
-					einanciojiBusenaZaidejo2 = priesasLaimejoZaidejas2;
+
 					System.out.println("tu laimejai");
 				}
 			}
 			return arPataike;
 		} else {
-			lenta2.sauk(x, y);
-			boolean arPataike = lenta2.sauk(x, y);
-			einanciojiBusenaZaidejo1 = tavoEileZaidejas1;
-			einanciojiBusenaZaidejo2 = priesiEileZaidejas2;
+
+			boolean arPataike = lenta1.sauk(x, y);
+
 			antrojoZaidejoVaizdas.atnaujinkVaizda();
 			if (arPataike = true) {
 				if (lenta2.getLentosGyvybes() == 0) {
-					einanciojiBusenaZaidejo1 = priesasLaimejoZaidejas1;
-					einanciojiBusenaZaidejo2 = tuLaimejaiZaidejas2;
+
 					System.out.println("tu laimejai");
 				}
 			}
@@ -229,16 +202,16 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 	public List<Laivas> duokLaivus(String zaidejoId) {// +
 
 		List<Laivas> laivukopija;
-		if (zaidejoId != zaidejoId1 & zaidejoId != zaidejoId2) {
-			System.out.println("Nera tokio zaidejo");
+		if (zaidejoId != zaidejoId1 && zaidejoId != zaidejoId2) {
+			System.out.println("Nera tokio zaidejo liavas");
 			return null;
 		} else if (zaidejoId == zaidejoId1) {
 			laivukopija = laivai1;
-			einanciojiBusenaZaidejo1 = dalinamesLaivusZaidejas1;
+
 			return laivukopija;
 		} else {
 			laivukopija = laivai2;
-			einanciojiBusenaZaidejo2 = dalinamesLaivusZaidejas2;
+
 		}
 		return laivukopija;
 	}
@@ -247,17 +220,17 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 	public ZaidimoLenta duokZaidimoLenta(String zaidejoId) {// +
 
 		ZaidimoLenta lentosKopija;
-		if (zaidejoId != zaidejoId1 || zaidejoId != zaidejoId2) {
-			System.out.println("Nera tokio zaidejo");
+		if (zaidejoId != zaidejoId1 && zaidejoId != zaidejoId2) {
+			System.out.println("Nera tokio zaidejo lenta");
 			return new ZaidimoLenta();
 		}
 		if (zaidejoId == zaidejoId1) {
 			lentosKopija = lenta1;
-			einanciojiBusenaZaidejo1 = rikiuojamLaivusZaidejas1;
+
 			return lentosKopija;
 		} else {
 			lentosKopija = lenta2;
-			einanciojiBusenaZaidejo2 = rikiuojamLaivusZaidejas2;
+
 		}
 
 		return lentosKopija;
@@ -275,10 +248,10 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 				String x = tikrinamosKordinates.get(i).getX();
 				int y = tikrinamosKordinates.get(i).getY();
 				int raidesVieta = 0;
-				// ieskojau raides vietos masyve
+				// ieskojau raides vietos masyve stringo
 				for (int j = 0; j < abecele.length; j++) {
-					if (abecele[i].equals(x)) {
-						raidesVieta = i;
+					if (abecele[j].equals(x)) {
+						raidesVieta = j;
 					}
 				}
 				// pradedu tikrinti langelius if sakiniai patikrina ar langeliai nera prie
@@ -289,8 +262,8 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 						String raide = abecele[k];
 						// skaicius ne prie krasto
 						if (y > 1 && y < 10) {
-							for (int o = y - 1; y <= y + 1; y++) {
-								Laivas arLangelisTuriLaiva = lenta1.zaidimoLentele.get(raide).get(y - 1).getLaivas();// nepamirsi
+							for (int o = y - 1; o <= y + 1; o++) {
+								Laivas arLangelisTuriLaiva = lenta1.zaidimoLentele.get(raide).get(o - 1).getLaivas();// nepamirsi
 																														// -1
 								if (arLangelisTuriLaiva != null) {
 									return false;
@@ -300,8 +273,8 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 						}
 						// skaicius prie kairio krasto
 						if (y == 1) {
-							for (int o = y; y <= y + 1; y++) {
-								Laivas arLangelisTuriLaiva = lenta1.zaidimoLentele.get(raide).get(y - 1).getLaivas();// nepamirsi
+							for (int o = y; o <= y + 1; o++) {
+								Laivas arLangelisTuriLaiva = lenta1.zaidimoLentele.get(raide).get(o - 1).getLaivas();// nepamirsi
 																														// -1
 								if (arLangelisTuriLaiva != null) {
 									return false;
@@ -310,8 +283,8 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 						}
 						// skaicius prie desinio krasto
 						if (y == 10) {
-							for (int o = y - 1; y <= y; y++) {
-								Laivas arLangelisTuriLaiva = lenta1.zaidimoLentele.get(raide).get(y - 1).getLaivas();// nepamirsi
+							for (int o = y - 1; o <= y; o++) {
+								Laivas arLangelisTuriLaiva = lenta1.zaidimoLentele.get(raide).get(o - 1).getLaivas();// nepamirsi
 																														// -1
 								if (arLangelisTuriLaiva != null) {
 									return false;
@@ -326,8 +299,8 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 						String raidelis = abecele[n];
 						// skaicius ne prie krasto
 						if (y > 1 && y < 10) {
-							for (int o = y - 1; y <= y + 1; y++) {
-								Laivas arLangelisTuriLaiva = lenta1.zaidimoLentele.get(raidelis).get(y - 1).getLaivas();// nepamirsi
+							for (int o = y - 1; o <= y + 1; o++) {
+								Laivas arLangelisTuriLaiva = lenta1.zaidimoLentele.get(raidelis).get(o - 1).getLaivas();// nepamirsi
 																														// -1
 								if (arLangelisTuriLaiva != null) {
 									return false;
@@ -337,8 +310,8 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 						}
 						// skaicius prie kairio krasto
 						if (y == 1) {
-							for (int o = y; y <= y + 1; y++) {
-								Laivas arLangelisTuriLaiva = lenta1.zaidimoLentele.get(raidelis).get(y - 1).getLaivas();// nepamirsi
+							for (int o = y; o <= y + 1; o++) {
+								Laivas arLangelisTuriLaiva = lenta1.zaidimoLentele.get(raidelis).get(o - 1).getLaivas();// nepamirsi
 																														// -1
 								if (arLangelisTuriLaiva != null) {
 									return false;
@@ -347,8 +320,8 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 						}
 						// skaicius prie desinio krasto
 						if (y == 10) {
-							for (int o = y - 1; y <= y; y++) {
-								Laivas arLangelisTuriLaiva = lenta1.zaidimoLentele.get(raidelis).get(y - 1).getLaivas();// nepamirsi
+							for (int o = y - 1; o <= y; o++) {
+								Laivas arLangelisTuriLaiva = lenta1.zaidimoLentele.get(raidelis).get(o - 1).getLaivas();// nepamirsi
 																														// -1
 								if (arLangelisTuriLaiva != null) {
 									return false;
@@ -363,8 +336,8 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 						String raideliukas = abecele[m];
 						// skaicius ne prie krasto
 						if (y > 1 && y < 10) {
-							for (int o = y - 1; y <= y + 1; y++) {
-								Laivas arLangelisTuriLaiva = lenta1.zaidimoLentele.get(raideliukas).get(y - 1)
+							for (int o = y - 1; o <= y + 1; o++) {
+								Laivas arLangelisTuriLaiva = lenta1.zaidimoLentele.get(raideliukas).get(o - 1)
 										.getLaivas();// nepamirsi
 														// -1
 								if (arLangelisTuriLaiva != null) {
@@ -375,8 +348,8 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 						}
 						// skaicius prie kairio krasto
 						if (y == 1) {
-							for (int o = y; y <= y + 1; y++) {
-								Laivas arLangelisTuriLaiva = lenta1.zaidimoLentele.get(raideliukas).get(y - 1)
+							for (int o = y; o <= y + 1; o++) {
+								Laivas arLangelisTuriLaiva = lenta1.zaidimoLentele.get(raideliukas).get(o - 1)
 										.getLaivas();// nepamirsi
 														// -1
 								if (arLangelisTuriLaiva != null) {
@@ -386,8 +359,8 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 						}
 						// skaicius prie desinio krasto
 						if (y == 10) {
-							for (int o = y - 1; y <= y; y++) {
-								Laivas arLangelisTuriLaiva = lenta1.zaidimoLentele.get(raideliukas).get(y - 1)
+							for (int o = y - 1; o <= y; o++) {
+								Laivas arLangelisTuriLaiva = lenta1.zaidimoLentele.get(raideliukas).get(o - 1)
 										.getLaivas();// nepamirsi
 														// -1
 								if (arLangelisTuriLaiva != null) {
@@ -414,8 +387,8 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 				int raidesVieta = 0;
 				// ieskojau raides vietos masyve
 				for (int j = 0; j < abecele.length; j++) {
-					if (abecele[i].equals(x)) {
-						raidesVieta = i;
+					if (abecele[j].equals(x)) {
+						raidesVieta = j;
 					}
 				}
 				// pradedu tikrinti langelius if sakiniai patikrina ar langeliai nera prie
@@ -426,8 +399,8 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 						String raide = abecele[k];
 						// skaicius ne prie krasto
 						if (y > 1 && y < 10) {
-							for (int o = y - 1; y <= y + 1; y++) {
-								Laivas arLangelisTuriLaiva = lenta2.zaidimoLentele.get(raide).get(y - 1).getLaivas();// nepamirsi
+							for (int o = y - 1; o <= y + 1; o++) {
+								Laivas arLangelisTuriLaiva = lenta2.zaidimoLentele.get(raide).get(o - 1).getLaivas();// nepamirsi
 																														// -1
 								if (arLangelisTuriLaiva != null) {
 									return false;
@@ -437,8 +410,8 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 						}
 						// skaicius prie kairio krasto
 						if (y == 1) {
-							for (int o = y; y <= y + 1; y++) {
-								Laivas arLangelisTuriLaiva = lenta2.zaidimoLentele.get(raide).get(y - 1).getLaivas();// nepamirsi
+							for (int o = y; o <= y + 1; o++) {
+								Laivas arLangelisTuriLaiva = lenta2.zaidimoLentele.get(raide).get(o - 1).getLaivas();// nepamirsi
 																														// -1
 								if (arLangelisTuriLaiva != null) {
 									return false;
@@ -447,8 +420,8 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 						}
 						// skaicius prie desinio krasto
 						if (y == 10) {
-							for (int o = y - 1; y <= y; y++) {
-								Laivas arLangelisTuriLaiva = lenta2.zaidimoLentele.get(raide).get(y - 1).getLaivas();// nepamirsi
+							for (int o = y - 1; o <= y; o++) {
+								Laivas arLangelisTuriLaiva = lenta2.zaidimoLentele.get(raide).get(o - 1).getLaivas();// nepamirsi
 																														// -1
 								if (arLangelisTuriLaiva != null) {
 									return false;
@@ -463,8 +436,8 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 						String raidelis = abecele[n];
 						// skaicius ne prie krasto
 						if (y > 1 && y < 10) {
-							for (int o = y - 1; y <= y + 1; y++) {
-								Laivas arLangelisTuriLaiva = lenta2.zaidimoLentele.get(raidelis).get(y - 1).getLaivas();// nepamirsi
+							for (int o = y - 1; o <= y + 1; o++) {
+								Laivas arLangelisTuriLaiva = lenta2.zaidimoLentele.get(raidelis).get(o - 1).getLaivas();// nepamirsi
 																														// -1
 								if (arLangelisTuriLaiva != null) {
 									return false;
@@ -474,8 +447,8 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 						}
 						// skaicius prie kairio krasto
 						if (y == 1) {
-							for (int o = y; y <= y + 1; y++) {
-								Laivas arLangelisTuriLaiva = lenta2.zaidimoLentele.get(raidelis).get(y - 1).getLaivas();// nepamirsi
+							for (int o = y; o <= y + 1; o++) {
+								Laivas arLangelisTuriLaiva = lenta2.zaidimoLentele.get(raidelis).get(o - 1).getLaivas();// nepamirsi
 																														// -1
 								if (arLangelisTuriLaiva != null) {
 									return false;
@@ -484,8 +457,8 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 						}
 						// skaicius prie desinio krasto
 						if (y == 10) {
-							for (int o = y - 1; y <= y; y++) {
-								Laivas arLangelisTuriLaiva = lenta2.zaidimoLentele.get(raidelis).get(y - 1).getLaivas();// nepamirsi
+							for (int o = y - 1; o <= y; o++) {
+								Laivas arLangelisTuriLaiva = lenta2.zaidimoLentele.get(raidelis).get(o - 1).getLaivas();// nepamirsi
 																														// -1
 								if (arLangelisTuriLaiva != null) {
 									return false;
@@ -500,8 +473,8 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 						String raideliukas = abecele[m];
 						// skaicius ne prie krasto
 						if (y > 1 && y < 10) {
-							for (int o = y - 1; y <= y + 1; y++) {
-								Laivas arLangelisTuriLaiva = lenta2.zaidimoLentele.get(raideliukas).get(y - 1)
+							for (int o = y - 1; o <= y + 1; o++) {
+								Laivas arLangelisTuriLaiva = lenta2.zaidimoLentele.get(raideliukas).get(o - 1)
 										.getLaivas();// nepamirsi
 														// -1
 								if (arLangelisTuriLaiva != null) {
@@ -512,8 +485,8 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 						}
 						// skaicius prie kairio krasto
 						if (y == 1) {
-							for (int o = y; y <= y + 1; y++) {
-								Laivas arLangelisTuriLaiva = lenta2.zaidimoLentele.get(raideliukas).get(y - 1)
+							for (int o = y; o <= y + 1; o++) {
+								Laivas arLangelisTuriLaiva = lenta2.zaidimoLentele.get(raideliukas).get(o - 1)
 										.getLaivas();// nepamirsi
 														// -1
 								if (arLangelisTuriLaiva != null) {
@@ -523,8 +496,8 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 						}
 						// skaicius prie desinio krasto
 						if (y == 10) {
-							for (int o = y - 1; y <= y; y++) {
-								Laivas arLangelisTuriLaiva = lenta2.zaidimoLentele.get(raideliukas).get(y - 1)
+							for (int o = y - 1; o <= y; o++) {
+								Laivas arLangelisTuriLaiva = lenta2.zaidimoLentele.get(raideliukas).get(o - 1)
 										.getLaivas();// nepamirsi
 														// -1
 								if (arLangelisTuriLaiva != null) {

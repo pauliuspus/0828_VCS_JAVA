@@ -33,7 +33,7 @@ public class pijausZaidejas implements Zaidejas {
 			List<Laivas> at = zaidimas.duokLaivus(zaidejasId);
 			zaidimas.duokZaidimoLenta(zaidejasId);
 			zaidejauPridekLaivus();
-			zaidimas.sauk("A", 1, zaidejasId);
+			// zaidimas.sauk("A", 1, zaidejasId);
 		} else
 			System.out.println("la");
 		// while (true) {
@@ -97,28 +97,34 @@ public class pijausZaidejas implements Zaidejas {
 		// }
 		//
 		// }
-		int listoIlgis = laivuListas.size();
+		
 		Laivas laivelis = laivuListas.get(0);
 		List<Langelis> laivuLangeliai = laivelis.getLaivoKoordinates();
 		laivuLangeliai.add(new lt.vcs.laivumusis.USSENTERPRISE.langelis.Langelis("A", 1));
-		laivelis.setKordinates(laivuLangeliai);
+		//laivelis.setKordinates(laivuLangeliai);
+		// try {
+		// this.zaidimas.pridekLaiva(laivelis, zaidejasId);
+		// } catch (Exception e) {
+		// System.out.println(e.getMessage());
+		// }
 		try {
 			this.zaidimas.pridekLaiva(laivelis, zaidejasId);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		// Laivas laiveliukas = laivuListas.get(1);
-		// List<Langelis> laivuLangeliai1 = laivelis.getLaivoKoordinates();
-		// laivuLangeliai1.add(new
-		// lt.vcs.laivumusis.USSENTERPRISE.langelis.Langelis("B", 4));
-		// laivuLangeliai1.add(new
-		// lt.vcs.laivumusis.USSENTERPRISE.langelis.Langelis("C", 4));
-		// laiveliukas.setKordinates(laivuLangeliai1);
-		// try {
-		// this.zaidimas.pridekLaiva(laiveliukas, zaidejasId);
-		// } catch (Exception e) {
-		//
-		// }
+		System.out.println("dedam antra laiva");
+		Laivas laiveliukas = laivuListas.get(1);
+		List<Langelis> laivuLangeliai1 = laiveliukas.getLaivoKoordinates();
+		laivuLangeliai1.add(new lt.vcs.laivumusis.USSENTERPRISE.langelis.Langelis("C", 4));
+		laivuLangeliai1.add(new lt.vcs.laivumusis.USSENTERPRISE.langelis.Langelis("D", 4));
+		
+		laiveliukas.setKordinates(laivuLangeliai1);// klaida
+		
+		try {
+			this.zaidimas.pridekLaiva(laiveliukas, zaidejasId);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	public String getZaidejas() {
