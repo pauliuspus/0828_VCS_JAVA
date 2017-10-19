@@ -98,7 +98,7 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 	@Override
 	public Busena tikrinkBusena(String zaidejoId) {
 
-		Busena busenacia = null;
+		Busena busenacia = registracijaZaidejas1;
 		if (zaidejoId == zaidejoId1)
 			busenacia = einanciojiBusenaZaidejo1;
 		if (zaidejoId == zaidejoId2)
@@ -114,14 +114,14 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 			System.out.println("zaidejai uzregistruoti");
 			return false;
 		}
-		if (zaidejoId1 == "") {
+		if (zaidejoId1 == null) {
 			System.out.println("Pirmas zaidejas uzregistruotas");
 			zaidejoId1 = zaidejoId;
 			zaidejuSkaicius++;
 			pirmoZaidejoVaizdas.pieskVaizda();
 			return true;
 		}
-		if (zaidejoId2 == "" && zaidejoId != zaidejoId1) {
+		if (zaidejoId2 == null && zaidejoId != zaidejoId1) {
 			System.out.println("Antras zaidejas uzregistruotas");
 			zaidejoId2 = zaidejoId;
 			zaidejuSkaicius++;
@@ -134,20 +134,18 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 	// po kiekvieno zaidejo ejimo pieseme nauja vaizda
 
 	@Override
-	public void pridekLaiva(Laivas laivas, String zaidejoId) throws LaivuPridejimoKlaida { // truksta vieno patirkinimo
+	public synchronized void pridekLaiva(Laivas laivas, String zaidejoId) throws LaivuPridejimoKlaida { // truksta vieno
+																										// patirkinimo
 		if (zaidejoId != zaidejoId1 & zaidejoId != zaidejoId2) {
 			System.out.println("Nera tokio zaidejo");
+
 		}
 		// tikrinam ar laivai dedami gerai
 		if (laivas.getLaivoKoordinates() == null) {
 			new LaivuPridejimoKlaida("Laivui nepriskirtos kordinates!");
 		}
-		boolean arLaivasGaliButPridetas = false;
-		try {
-			arLaivasGaliButPridetas = tikrinaArGalimaIdetiLaiva(laivas, zaidejoId);
-		} catch (Exception e) {
-			System.out.println("Ivyko klaida patikrinant ar galima deti laiva");
-		}
+		boolean arLaivasGaliButPridetas;
+		arLaivasGaliButPridetas = tikrinaArGalimaIdetiLaiva(laivas, zaidejoId);
 		if (arLaivasGaliButPridetas == false) {
 			throw new LaivuPridejimoKlaida("Laivo su siomis kordinatemis negalima peideti, bandykite is naujo");
 
@@ -168,6 +166,7 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 						.setLaivaLangeliui(laivelis);
 				einanciojiBusenaZaidejo1 = tavoEileZaidejas1;
 				pirmoZaidejoVaizdas.atnaujinkVaizda();
+				System.out.println("laivas pridetas");
 
 			}
 			laivai1.get(laivoIlgis - 1).setKordinates(laivoLangeliukopija);
@@ -248,7 +247,7 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 	public ZaidimoLenta duokZaidimoLenta(String zaidejoId) {// +
 
 		ZaidimoLenta lentosKopija;
-		if (zaidejoId != zaidejoId1 & zaidejoId != zaidejoId2) {
+		if (zaidejoId != zaidejoId1 || zaidejoId != zaidejoId2) {
 			System.out.println("Nera tokio zaidejo");
 			return new ZaidimoLenta();
 		}

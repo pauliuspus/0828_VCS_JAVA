@@ -57,7 +57,7 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 
 	@Override
 	public boolean sauk(String x, int y) {
-		zaidimoLentele.get(x).get(y).sauk();
+		zaidimoLentele.get(x).get(y-1).sauk();
 		boolean arPataike = ((lt.vcs.laivumusis.USSENTERPRISE.langelis.Langelis) zaidimoLentele.get(x).get(y))
 				.arLaivoDalisPasauta();
 		if (arPataike == true) {
