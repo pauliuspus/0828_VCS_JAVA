@@ -142,10 +142,10 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 				((lt.vcs.laivumusis.USSENTERPRISE.langelis.Langelis) lenta1.zaidimoLentele.get(x).get(y - 1))
 						.setLaivaLangeliui(laivelis);
 
-				pirmoZaidejoVaizdas.atnaujinkVaizda();
-				System.out.println("laivas pridetas");
-
 			}
+			System.out.println("laivas pridetas");
+			pirmoZaidejoVaizdas.atnaujinkVaizda();
+
 			laivai1.get(laivoIlgis - 1).setKordinates(laivoLangeliukopija);
 
 		}
@@ -173,7 +173,7 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 			return false;
 		}
 		if (zaidejoId == zaidejoId1) {
-
+			System.out.println("saunam");
 			boolean arPataike = lenta2.sauk(x, y);
 
 			pirmoZaidejoVaizdas.atnaujinkVaizda();
@@ -185,7 +185,7 @@ public class Zaidimas implements lt.vcs.laivumusis.common.Zaidimas {
 			}
 			return arPataike;
 		} else {
-
+			System.out.println("saunam");
 			boolean arPataike = lenta1.sauk(x, y);
 
 			antrojoZaidejoVaizdas.atnaujinkVaizda();
