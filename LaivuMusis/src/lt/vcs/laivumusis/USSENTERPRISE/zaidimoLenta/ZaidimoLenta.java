@@ -72,14 +72,14 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 	}
 
 	@Override
-	public List<Laivas> getLaivai() {
+	public synchronized List<Laivas> getLaivai() {
 		return laivuListas;
 	}
 
 	@Override
-	public boolean sauk(String x, int y) {
+	public synchronized boolean sauk(String x, int y) {
 		zaidimoLentele.get(x).get(y-1).sauk();
-		boolean arPataike = ((lt.vcs.laivumusis.USSENTERPRISE.langelis.Langelis) zaidimoLentele.get(x).get(y))
+		boolean arPataike = ((lt.vcs.laivumusis.USSENTERPRISE.langelis.Langelis) zaidimoLentele.get(x).get(y-1))
 				.arLaivoDalisPasauta();
 		if (arPataike == true) {
 			bendrosGyvyes--;
@@ -88,7 +88,7 @@ public class ZaidimoLenta implements lt.vcs.laivumusis.common.ZaidimoLenta {
 	}
 
 	@Override
-	public Map<String, List<Langelis>> getLangeliai() {
+	public synchronized Map<String, List<Langelis>> getLangeliai() {
 		return this.zaidimoLentele;
 	}
 	

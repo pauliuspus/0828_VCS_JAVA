@@ -15,13 +15,13 @@ public class Laivas implements lt.vcs.laivumusis.common.Laivas {
 	public List<Langelis> laivoKordinates = new ArrayList<Langelis>();
 
 	public Laivas() {
-		
+
 	}
-	
+
 	public Laivas(int laivoIlgis) {
 		this.laivoIlgis = laivoIlgis;
 	}
-	
+
 	public Laivas(int laivoIlgis, String laivoPavadinimas) {
 		this(laivoIlgis);
 		this.laivogyvybes = laivoIlgis;
@@ -30,11 +30,9 @@ public class Laivas implements lt.vcs.laivumusis.common.Laivas {
 
 	@Override
 	public void setKordinates(List<Langelis> langeliai) {
-//		if (langeliai.size() > laivoIlgis)
-//			System.out.println("Perilgas Laivas");
-		for (int i = 0; i < langeliai.size(); i++) {
-			((lt.vcs.laivumusis.USSENTERPRISE.langelis.Langelis) langeliai.get(i)).setLaivaLangeliui(this);
-		}
+		if (langeliai.size() != laivoIlgis)
+			System.out.println("Laivas per ilgas arba per trumpas");
+
 		laivoKordinates = langeliai;
 	}
 

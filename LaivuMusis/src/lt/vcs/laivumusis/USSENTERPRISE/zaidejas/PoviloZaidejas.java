@@ -139,9 +139,9 @@ public class PoviloZaidejas implements lt.vcs.laivumusis.common.Zaidejas {
 			List<Langelis> laivuLangeliai1 = laiveliukas.getLaivoKoordinates();
 			laivuLangeliai1.add(new lt.vcs.laivumusis.USSENTERPRISE.langelis.Langelis("C", 4));
 			laivuLangeliai1.add(new lt.vcs.laivumusis.USSENTERPRISE.langelis.Langelis("D", 4));
-			
+			System.out.println("tata");
 			laiveliukas.setKordinates(laivuLangeliai1);// klaida
-			
+			System.out.println("papa");
 			try {
 				this.zaidimas.pridekLaiva(laiveliukas, zaidejasId);
 			} catch (Exception e) {
